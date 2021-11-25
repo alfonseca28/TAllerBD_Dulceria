@@ -24,7 +24,6 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
 
 /**
- * 
  *
  * @author Erick Gonzalez
  */
@@ -41,7 +40,7 @@ public class ControladorVentas implements ActionListener {
 
     public ControladorVentas(VistaVentas vista, ModeloVentas modelo) {
         this.vista = vista;
-        this.modelo = modelo; 
+        this.modelo = modelo;
         
         vista.btnAgregar.addActionListener(this);
         vista.btnBuscar.addActionListener(this);
