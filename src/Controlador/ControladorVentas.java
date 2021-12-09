@@ -13,6 +13,7 @@ import Modelo.SqlProducto;
 import Modelo.SqlVenta;
 import Vistas.FormularioCliente;
 import Vistas.FormularioEmpleado;
+import Vistas.FormularioProducto;
 import Vistas.VistaPanelInicio;
 import Vistas.VistaVentas;
 import java.awt.event.ActionEvent;
@@ -40,7 +41,7 @@ public class ControladorVentas implements ActionListener {
     private int vendedor;
     private String puesto_vendedor;
     private float total;
-   
+    
     DefaultTableModel tabla = new DefaultTableModel();
        
 
@@ -59,6 +60,13 @@ public class ControladorVentas implements ActionListener {
         vista.menuFormularioCliente.addActionListener(this);
         vista.menuItemRegresarVentas.addActionListener(this);      
         vista.menuFormularioCliente.addActionListener(this);
+        vista.menuFormularioProducto.addActionListener(this);
+        
+        if(puesto_vendedor.equals("Vendedor")){
+            
+            vista.menuFormularioProducto.setVisible(false);
+            vista.menuFormularioCliente.setVisible(false);
+        }
         
     }
     
@@ -392,6 +400,16 @@ public class ControladorVentas implements ActionListener {
             
         }
         
+        if(ae.getSource()== vista.menuFormularioProducto){
+            
+            
+            FormularioProducto formularioProducto = new FormularioProducto();
+            Producto producto  = new Producto();
+            ControladorFormularioProducto controladorFormularioProducto = new ControladorFormularioProducto(formularioProducto,producto);
+            
+            controladorFormularioProducto.iniciar(vendedor, puesto_vendedor);
+            
+        }
         
         
         

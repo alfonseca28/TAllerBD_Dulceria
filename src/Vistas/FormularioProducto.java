@@ -48,6 +48,7 @@ public class FormularioProducto extends javax.swing.JFrame {
         btnReactivarProducto = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         txtIdProveedorProducto = new javax.swing.JTextField();
+        btnBuscarProveedor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -78,6 +79,8 @@ public class FormularioProducto extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Precio Venta");
+
+        txtStockProducto.setEditable(false);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Proveedor");
@@ -113,6 +116,8 @@ public class FormularioProducto extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setText("IdProveedor");
 
+        btnBuscarProveedor.setText("Buscar proveedor");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -141,7 +146,11 @@ public class FormularioProducto extends javax.swing.JFrame {
                                     .addComponent(txtPrecioCompraProducto)
                                     .addComponent(txtPrecioVentaProducto)
                                     .addComponent(txtProveedorProducto, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtIdProveedorProducto)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtIdProveedorProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnBuscarProveedor)
+                                        .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(layout.createSequentialGroup()
@@ -179,10 +188,11 @@ public class FormularioProducto extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(txtIdProveedorProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIdProveedorProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarProveedor))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -267,6 +277,7 @@ public class FormularioProducto extends javax.swing.JFrame {
     public javax.swing.JButton Cerrar;
     public javax.swing.JButton btnActualizarProducto;
     public javax.swing.JButton btnBuscarProducto;
+    public javax.swing.JButton btnBuscarProveedor;
     public javax.swing.JButton btnEliminarProducto;
     public javax.swing.JButton btnInsertarProducto;
     public javax.swing.JButton btnLimpiarProducto;

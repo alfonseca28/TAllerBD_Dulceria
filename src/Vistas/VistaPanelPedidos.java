@@ -35,28 +35,25 @@ public class VistaPanelPedidos extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         lblFechaPedidos = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtIdProducto = new javax.swing.JTextField();
-        btnLimpiar = new javax.swing.JButton();
+        txtIdProductoPedidos = new javax.swing.JTextField();
+        btnLimpiarCompra = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        txtMostrarProducto = new javax.swing.JTextField();
+        txtMostrarProductoPedidos = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaPanelPedidos = new javax.swing.JTable();
-        txtCantidadVenta = new javax.swing.JTextField();
+        txtCantidadCompra = new javax.swing.JTextField();
         btnAgregarPedido = new javax.swing.JButton();
-        btnCancelarTodoVenta = new javax.swing.JButton();
+        btnCancelarTodoCompra = new javax.swing.JButton();
         btnCerrarPedido = new javax.swing.JButton();
         txtTotalPedido = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        btnCancelarProducto = new javax.swing.JButton();
+        btnCancelarProductoPedido = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuPedidos = new javax.swing.JMenu();
         menuItemRegresarPedidos = new javax.swing.JMenuItem();
-        menuItemAltaProducto = new javax.swing.JMenuItem();
-        menuBajaProducto = new javax.swing.JMenuItem();
-        menuAltaProveedor = new javax.swing.JMenuItem();
-        menuBajaProveedor = new javax.swing.JMenuItem();
-        menuCambiarProveedor = new javax.swing.JMenuItem();
+        menuProductos = new javax.swing.JMenuItem();
+        menuProveedor = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Panel de pedidos");
@@ -81,8 +78,8 @@ public class VistaPanelPedidos extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Id Producto");
 
-        btnLimpiar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnLimpiar.setText("Limpiar");
+        btnLimpiarCompra.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnLimpiarCompra.setText("Limpiar");
 
         btnBuscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnBuscar.setText("Buscar");
@@ -90,7 +87,7 @@ public class VistaPanelPedidos extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Cantidad");
 
-        txtMostrarProducto.setEditable(false);
+        txtMostrarProductoPedidos.setEditable(false);
 
         tablaPanelPedidos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tablaPanelPedidos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -129,8 +126,8 @@ public class VistaPanelPedidos extends javax.swing.JFrame {
 
         btnAgregarPedido.setText("Agregar  al pedido");
 
-        btnCancelarTodoVenta.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnCancelarTodoVenta.setText("Cancelar todo");
+        btnCancelarTodoCompra.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnCancelarTodoCompra.setText("Cancelar todo");
 
         btnCerrarPedido.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnCerrarPedido.setText("Cerrar pedido");
@@ -151,11 +148,11 @@ public class VistaPanelPedidos extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Total    $");
 
-        btnCancelarProducto.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnCancelarProducto.setText("Cancelar Producto");
-        btnCancelarProducto.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelarProductoPedido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnCancelarProductoPedido.setText("Cancelar Producto");
+        btnCancelarProductoPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarProductoActionPerformed(evt);
+                btnCancelarProductoPedidoActionPerformed(evt);
             }
         });
 
@@ -164,25 +161,16 @@ public class VistaPanelPedidos extends javax.swing.JFrame {
         menuItemRegresarPedidos.setText("Regresar");
         menuPedidos.add(menuItemRegresarPedidos);
 
-        menuItemAltaProducto.setText("Alta Producto");
-        menuItemAltaProducto.addActionListener(new java.awt.event.ActionListener() {
+        menuProductos.setText("Agregar. Modificar o Eliminar Productos");
+        menuProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemAltaProductoActionPerformed(evt);
+                menuProductosActionPerformed(evt);
             }
         });
-        menuPedidos.add(menuItemAltaProducto);
+        menuPedidos.add(menuProductos);
 
-        menuBajaProducto.setText("Baja Producto");
-        menuPedidos.add(menuBajaProducto);
-
-        menuAltaProveedor.setText("Alta Proveedor");
-        menuPedidos.add(menuAltaProveedor);
-
-        menuBajaProveedor.setText("Baja Proveedor");
-        menuPedidos.add(menuBajaProveedor);
-
-        menuCambiarProveedor.setText("Cambiar Proveedor");
-        menuPedidos.add(menuCambiarProveedor);
+        menuProveedor.setText("Agregar. Modificar o Eliminar Proveedores");
+        menuPedidos.add(menuProveedor);
 
         jMenuBar1.add(menuPedidos);
 
@@ -199,17 +187,17 @@ public class VistaPanelPedidos extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnCancelarTodoVenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCancelarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnCancelarTodoCompra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCancelarProductoPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(67, 67, 67))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtIdProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtIdProductoPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnLimpiar))
+                                .addComponent(btnLimpiarCompra))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -221,13 +209,13 @@ public class VistaPanelPedidos extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(28, 28, 28)
-                                .addComponent(txtCantidadVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCantidadCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnAgregarPedido))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(btnBuscar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtMostrarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtMostrarProductoPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
@@ -255,16 +243,16 @@ public class VistaPanelPedidos extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtIdProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLimpiar))
+                    .addComponent(txtIdProductoPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimpiarCompra))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscar)
-                    .addComponent(txtMostrarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMostrarProductoPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtCantidadVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCantidadCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAgregarPedido))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -273,9 +261,9 @@ public class VistaPanelPedidos extends javax.swing.JFrame {
                         .addGap(92, 92, 92))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCancelarTodoVenta)
+                        .addComponent(btnCancelarTodoCompra)
                         .addGap(18, 18, 18)
-                        .addComponent(btnCancelarProducto)
+                        .addComponent(btnCancelarProductoPedido)
                         .addGap(118, 118, 118)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -296,13 +284,13 @@ public class VistaPanelPedidos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTotalPedidoActionPerformed
 
-    private void menuItemAltaProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAltaProductoActionPerformed
+    private void menuProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuProductosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_menuItemAltaProductoActionPerformed
+    }//GEN-LAST:event_menuProductosActionPerformed
 
-    private void btnCancelarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarProductoActionPerformed
+    private void btnCancelarProductoPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarProductoPedidoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelarProductoActionPerformed
+    }//GEN-LAST:event_btnCancelarProductoPedidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -354,33 +342,30 @@ public class VistaPanelPedidos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregarPedido;
-    private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnCancelarProducto;
-    private javax.swing.JButton btnCancelarTodoVenta;
-    private javax.swing.JButton btnCerrarPedido;
-    private javax.swing.JButton btnLimpiar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lblFechaPedidos;
-    private javax.swing.JLabel lblUsuarioPedidos;
-    private javax.swing.JMenuItem menuAltaProveedor;
-    private javax.swing.JMenuItem menuBajaProducto;
-    private javax.swing.JMenuItem menuBajaProveedor;
-    private javax.swing.JMenuItem menuCambiarProveedor;
-    private javax.swing.JMenuItem menuItemAltaProducto;
-    private javax.swing.JMenuItem menuItemRegresarPedidos;
-    private javax.swing.JMenu menuPedidos;
-    private javax.swing.JTable tablaPanelPedidos;
-    private javax.swing.JTextField txtCantidadVenta;
-    private javax.swing.JTextField txtIdProducto;
-    private javax.swing.JTextField txtMostrarProducto;
-    private javax.swing.JTextField txtTotalPedido;
+    public javax.swing.JButton btnAgregarPedido;
+    public javax.swing.JButton btnBuscar;
+    public javax.swing.JButton btnCancelarProductoPedido;
+    public javax.swing.JButton btnCancelarTodoCompra;
+    public javax.swing.JButton btnCerrarPedido;
+    public javax.swing.JButton btnLimpiarCompra;
+    public javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel4;
+    public javax.swing.JLabel jLabel5;
+    public javax.swing.JLabel jLabel6;
+    public javax.swing.JMenuBar jMenuBar1;
+    public javax.swing.JScrollPane jScrollPane2;
+    public javax.swing.JLabel lblFechaPedidos;
+    public javax.swing.JLabel lblUsuarioPedidos;
+    public javax.swing.JMenuItem menuItemRegresarPedidos;
+    public javax.swing.JMenu menuPedidos;
+    public javax.swing.JMenuItem menuProductos;
+    public javax.swing.JMenuItem menuProveedor;
+    public javax.swing.JTable tablaPanelPedidos;
+    public javax.swing.JTextField txtCantidadCompra;
+    public javax.swing.JTextField txtIdProductoPedidos;
+    public javax.swing.JTextField txtMostrarProductoPedidos;
+    public javax.swing.JTextField txtTotalPedido;
     // End of variables declaration//GEN-END:variables
 }

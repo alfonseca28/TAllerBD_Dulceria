@@ -82,10 +82,10 @@ public class SqlProducto extends Conexion {
         
         try {
             
-            cs = conexion.prepareCall("{CALL actualizarProducto (?,?,?,?,?,?,?)}");
-            cs.setInt(1, producto.getIdProducto());
-            cs.setInt(2, producto.getIdProducto());
-            cs.setString(3, producto.getNombre());
+            cs = conexion.prepareCall("{CALL actualizarProducto (?,?,?,?,?)}");
+            cs.setInt(1, producto.getIdProducto());            
+            cs.setString(2, producto.getNombre());
+            cs.setInt(3, producto.getIdProveedor());
             cs.setFloat(4, producto.getPrecioVenta());
             cs.setFloat(5, producto.getPrecioCompra());
             
@@ -220,6 +220,43 @@ public class SqlProducto extends Conexion {
                 Logger.getLogger(SqlProducto.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        
+    }
+    
+    
+    public String buscarProveedor(int id){
+        
+        Connection conexion = getconnection();
+        
+        PreparedStatement ps = null;        
+        ResultSet rs = null;
+        
+        try {
+            
+            ps = conexion.prepareStatement("select nombre from proveedor where idProveedor=?");
+            ps.setInt(1, id);                       
+            
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                
+                return rs.getString("nombre");
+                
+                
+            } else {
+                return null;
+            }
+            
+        } catch (SQLException ex) {
+            return null;
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(SqlProducto.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
         
     }
     

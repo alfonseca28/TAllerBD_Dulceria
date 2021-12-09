@@ -7,7 +7,7 @@ package Controlador;
 import Modelo.Empleado;
 import Modelo.ModeloPanelInformacion;
 import Modelo.ModeloPanelInicio;
-import Modelo.ModeloPanelPedidos;
+import Modelo.ModeloCompras;
 import Modelo.ModeloVentas;
 import Modelo.SqlEmpleado;
 import Vistas.FormularioEmpleado;
@@ -104,7 +104,7 @@ public class ControladorPanelInicio implements ActionListener {
         if(ae.getSource() == vista.btnPedidos){
             
             VistaPanelPedidos vistaPedidos = new VistaPanelPedidos();
-            ModeloPanelPedidos modeloPedidos = new ModeloPanelPedidos();
+            ModeloCompras modeloPedidos = new ModeloCompras();
             ControladorPanelPedidos controladorPedidos = new ControladorPanelPedidos(vistaPedidos,modeloPedidos);
             
             vista.dispose();
