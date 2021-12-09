@@ -4,11 +4,12 @@
  */
 package Controlador;
 
-import Modelo.ModeloFormularioEmpleado;
+import Modelo.Empleado;
 import Modelo.ModeloPanelInformacion;
 import Modelo.ModeloPanelInicio;
 import Modelo.ModeloPanelPedidos;
 import Modelo.ModeloVentas;
+import Modelo.SqlEmpleado;
 import Vistas.FormularioEmpleado;
 import Vistas.VistaInicio;
 import Vistas.VistaPanelInformacion;
@@ -135,8 +136,8 @@ public class ControladorPanelInicio implements ActionListener {
         
         if(ae.getSource() == vista.jMenuFormulario){
             FormularioEmpleado formularioEmpleado = new FormularioEmpleado();
-            ModeloFormularioEmpleado modeloFormularioEmpleado = new ModeloFormularioEmpleado();
-            ControladorFormularioEmpleado controladorFormularioEmpleado = new ControladorFormularioEmpleado(formularioEmpleado,modeloFormularioEmpleado);
+            Empleado empleado = new Empleado();
+            ControladorFormularioEmpleado controladorFormularioEmpleado = new ControladorFormularioEmpleado(formularioEmpleado,empleado);
             
             controladorFormularioEmpleado.iniciar(vendedor, puesto_vendedor);
         }

@@ -24,15 +24,14 @@ public class Main {
         try {
             UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ControladorInicio.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(VistaInicio.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            Logger.getLogger(ControladorInicio.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(VistaInicio.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            Logger.getLogger(ControladorInicio.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(VistaInicio.class.getName()).log(Level.SEVERE, null, ex);
         } catch (UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(ControladorInicio.class.getName()).log(Level.SEVERE, null, ex);
+           // Logger.getLogger(VistaInicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         
         VistaInicio vista = new VistaInicio();
         ControladorInicio controlador = new ControladorInicio(vista);

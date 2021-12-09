@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
+import java.sql.*;
+
 /**
  *
  * @author Erick Gonzalez
@@ -106,12 +108,11 @@ public class SqlVenta extends Conexion {
     public boolean insertarVenta(){
         
         Connection conexion = getconnection();
-        PreparedStatement ps = null;        
+        CallableStatement ps = null;        
         
         try{
             
-            ps = conexion.prepareStatement("insert into venta (fecha, hora, precio, cantidad, idEmpleado, idProducto, idCliente)"
-                    + "values (?,?,?,?,?,?,?)");
+            ps = conexion.prepareCall("{CALL ventaProducto(?,?,?,?,?,?,?)}");
             
             ps.setDate(1, Date.valueOf((fecha)));
             ps.setTime(2, Time.valueOf((hora)));
@@ -121,14 +122,12 @@ public class SqlVenta extends Conexion {
             ps.setInt(6, idProducto);
             ps.setInt(7, idCliente);
             
-            int resultado = ps.executeUpdate();
+            ps.execute();
             
-        if(resultado>0)return true;
-                
-                else{
-                    JOptionPane.showMessageDialog(null,"Error","Error",JOptionPane.ERROR_MESSAGE);
-                    return false;
-                }
+            return true;
+            
+            
+       
 
             }catch(SQLException ex){
                 return false;

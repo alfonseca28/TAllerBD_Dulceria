@@ -21,7 +21,7 @@ public class Conexion {
         Connection conexion =null;
         
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             conexion= DriverManager.getConnection(URL,usuario,contraseña);
         } catch(Exception ex){
             JOptionPane.showMessageDialog(null,"Error al conectar con la base de datos","Error",JOptionPane.ERROR_MESSAGE);

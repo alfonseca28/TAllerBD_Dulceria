@@ -4,10 +4,16 @@
  */
 package Controlador;
 
+import Modelo.Cliente;
+import Modelo.Empleado;
+import Modelo.ModeloPanelInicio;
 import Modelo.ModeloVentas;
 import Modelo.Producto;
 import Modelo.SqlProducto;
 import Modelo.SqlVenta;
+import Vistas.FormularioCliente;
+import Vistas.FormularioEmpleado;
+import Vistas.VistaPanelInicio;
 import Vistas.VistaVentas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -51,13 +57,8 @@ public class ControladorVentas implements ActionListener {
         vista.btnCerrarVenta.addActionListener(this);
         vista.btnLimpiar.addActionListener(this);
         vista.menuFormularioCliente.addActionListener(this);
-        vista.menuItemRegresarVentas.addActionListener(this);
-        
-        
-        
-        
-      
-        
+        vista.menuItemRegresarVentas.addActionListener(this);      
+        vista.menuFormularioCliente.addActionListener(this);
         
     }
     
@@ -291,6 +292,13 @@ public class ControladorVentas implements ActionListener {
                         JOptionPane.INFORMATION_MESSAGE,JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
                     
                     
+                float pago;    
+                float cambio;
+                    
+                pago = Float.parseFloat(JOptionPane.showInputDialog(null,"Ingrese el pago","Pago",JOptionPane.INFORMATION_MESSAGE));
+                
+                cambio = pago - total;
+                
                 Calendar fecha = new GregorianCalendar();
                 String sqlFecha = "";
                 String sqlHora = "";
@@ -344,6 +352,7 @@ public class ControladorVentas implements ActionListener {
                 vista.txtTotalVenta.setText("");
                 
                 JOptionPane.showMessageDialog(null,"¡Venta realizada con éxito!","Venta",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Cambio: $"+cambio,"Cambio",JOptionPane.INFORMATION_MESSAGE);
                 
                 
                 
@@ -355,6 +364,31 @@ public class ControladorVentas implements ActionListener {
             else{
                 JOptionPane.showMessageDialog(null,"Llenar todos los campos para continuar","Error", JOptionPane.ERROR_MESSAGE);
             }
+            
+        }
+        
+            
+        
+        if(ae.getSource()== vista.menuItemRegresarVentas){
+            
+            ModeloPanelInicio modeloInicio = new ModeloPanelInicio();
+            VistaPanelInicio vistaInicio = new VistaPanelInicio();
+            ControladorPanelInicio controladorInicio = new ControladorPanelInicio(vistaInicio,modeloInicio);
+            
+            controladorInicio.iniciar(vendedor, puesto_vendedor);
+            
+            vista.dispose();
+            
+        }
+        
+        if(ae.getSource() == vista.menuFormularioCliente){
+            
+            FormularioCliente formularioCliente = new FormularioCliente();
+            Cliente cliente = new Cliente();
+            ControladorFormularioCliente controladorFormularioCliente = new ControladorFormularioCliente(formularioCliente,cliente);
+            
+            controladorFormularioCliente.iniciar(vendedor, puesto_vendedor);
+            
             
         }
         

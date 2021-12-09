@@ -61,6 +61,7 @@ public class VistaVentas extends javax.swing.JFrame {
         menuOpcionesVentas = new javax.swing.JMenu();
         menuItemRegresarVentas = new javax.swing.JMenuItem();
         menuFormularioCliente = new javax.swing.JMenuItem();
+        menuFormularioProducto = new javax.swing.JMenuItem();
 
         jMenu2.setText("File");
         jMenuBar2.add(jMenu2);
@@ -183,7 +184,15 @@ public class VistaVentas extends javax.swing.JFrame {
         menuOpcionesVentas.add(menuItemRegresarVentas);
 
         menuFormularioCliente.setText("Agregar, Modificar o Eliminar Cliente");
+        menuFormularioCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuFormularioClienteActionPerformed(evt);
+            }
+        });
         menuOpcionesVentas.add(menuFormularioCliente);
+
+        menuFormularioProducto.setText("Agregar, Modificar o Añadir Producto");
+        menuOpcionesVentas.add(menuFormularioProducto);
 
         jMenuBar1.add(menuOpcionesVentas);
 
@@ -323,6 +332,10 @@ public class VistaVentas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarActionPerformed
 
+    private void menuFormularioClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFormularioClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuFormularioClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -395,6 +408,7 @@ public class VistaVentas extends javax.swing.JFrame {
     public javax.swing.JLabel lblFechaProducto;
     public javax.swing.JLabel lblUsuarioProducto;
     public javax.swing.JMenuItem menuFormularioCliente;
+    public javax.swing.JMenuItem menuFormularioProducto;
     public javax.swing.JMenuItem menuItemRegresarVentas;
     public javax.swing.JMenu menuOpcionesVentas;
     public javax.swing.JTable tablaPanelVentas;

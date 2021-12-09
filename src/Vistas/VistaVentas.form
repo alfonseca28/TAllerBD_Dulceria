@@ -45,6 +45,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agregar, Modificar o Eliminar Cliente"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuFormularioClienteActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuFormularioProducto">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Agregar, Modificar o A&#xf1;adir Producto"/>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
