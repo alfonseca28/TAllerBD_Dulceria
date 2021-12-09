@@ -75,7 +75,7 @@ public class VistaPanelInformacion extends javax.swing.JFrame {
         jLabel9.setText("Proveedores");
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Porductos");
+        jLabel10.setText("Productos");
 
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Clientes");
@@ -206,12 +206,12 @@ public class VistaPanelInformacion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu MenuPanelInformacion;
-    private javax.swing.JButton btnInformacionClientes;
-    private javax.swing.JButton btnInformacionCompras;
-    private javax.swing.JButton btnInformacionEmpleados;
-    private javax.swing.JButton btnInformacionProductos;
-    private javax.swing.JButton btnInformacionProveedores;
-    private javax.swing.JButton btnInformacionVentas;
+    public javax.swing.JButton btnInformacionClientes;
+    public javax.swing.JButton btnInformacionCompras;
+    public javax.swing.JButton btnInformacionEmpleados;
+    public javax.swing.JButton btnInformacionProductos;
+    public javax.swing.JButton btnInformacionProveedores;
+    public javax.swing.JButton btnInformacionVentas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -221,6 +221,6 @@ public class VistaPanelInformacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollBar jScrollBar1;
-    private javax.swing.JMenuItem menuItemRegresarPanelInformacion;
+    public javax.swing.JMenuItem menuItemRegresarPanelInformacion;
     // End of variables declaration//GEN-END:variables
 }

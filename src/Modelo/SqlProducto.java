@@ -30,8 +30,8 @@ public class SqlProducto extends Conexion {
             
             ps.setInt(1, producto.getIdProveedor());
             ps.setString(2, producto.getNombre());            
-            ps.setFloat(3, producto.getPrecioCompra());
-            ps.setFloat(4, producto.getPrecioVenta());
+            ps.setFloat(3, producto.getPrecioVenta());
+            ps.setFloat(4, producto.getPrecioCompra());
             
             ps.execute();
             

@@ -37,13 +37,7 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
         txtBuscarClientes = new javax.swing.JTextField();
         btnBuscarClientes = new javax.swing.JButton();
         btnCargarTodoClientes = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        boxOrdenarCliente = new javax.swing.JComboBox<>();
-        btnAscClientes = new javax.swing.JButton();
-        btnDesClientes = new javax.swing.JButton();
-        btnEliminarClientes = new javax.swing.JButton();
         btnEditarClientes = new javax.swing.JButton();
-        btnNuevoCliente = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuVistaInformacionClientes = new javax.swing.JMenu();
         menuRegresarInformacionClientes = new javax.swing.JMenuItem();
@@ -103,20 +97,7 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
         btnCargarTodoClientes.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnCargarTodoClientes.setText("Cagar todos los registros");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel3.setText("Ordenar por:");
-
-        boxOrdenarCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IdCliente", "Nombre", "ApPaterno" }));
-
-        btnAscClientes.setText("Ascendente");
-
-        btnDesClientes.setText("Descendente");
-
-        btnEliminarClientes.setText("Eliminar registro");
-
-        btnEditarClientes.setText("Editar y actualizar registro");
-
-        btnNuevoCliente.setText("Nuevo registro");
+        btnEditarClientes.setText("Agregar, Modificar o Dar de baja registros");
 
         jMenuVistaInformacionClientes.setText("Opciones");
 
@@ -136,7 +117,7 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
@@ -144,24 +125,12 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(txtBuscarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnBuscarClientes)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(boxOrdenarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnAscClientes)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnDesClientes))
+                                .addComponent(btnBuscarClientes))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnCargarTodoClientes)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnEliminarClientes)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnEditarClientes)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnNuevoCliente))
-                            .addComponent(jScrollPane1))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnEditarClientes))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 734, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 147, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -174,20 +143,14 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(BoxBuscarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtBuscarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarClientes)
-                    .addComponent(jLabel3)
-                    .addComponent(boxOrdenarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAscClientes)
-                    .addComponent(btnDesClientes))
+                    .addComponent(btnBuscarClientes))
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCargarTodoClientes)
-                    .addComponent(btnEliminarClientes)
-                    .addComponent(btnEditarClientes)
-                    .addComponent(btnNuevoCliente))
+                    .addComponent(btnEditarClientes))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(287, Short.MAX_VALUE))
         );
 
         pack();
@@ -243,23 +206,17 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> BoxBuscarClientes;
-    private javax.swing.JComboBox<String> boxOrdenarCliente;
-    private javax.swing.JButton btnAscClientes;
-    private javax.swing.JButton btnBuscarClientes;
-    private javax.swing.JButton btnCargarTodoClientes;
-    private javax.swing.JButton btnDesClientes;
-    private javax.swing.JButton btnEditarClientes;
-    private javax.swing.JButton btnEliminarClientes;
-    private javax.swing.JButton btnNuevoCliente;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    public javax.swing.JComboBox<String> BoxBuscarClientes;
+    public javax.swing.JButton btnBuscarClientes;
+    public javax.swing.JButton btnCargarTodoClientes;
+    public javax.swing.JButton btnEditarClientes;
+    public javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu jMenuVistaInformacionClientes;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JMenuItem menuRegresarInformacionClientes;
+    public javax.swing.JMenu jMenuVistaInformacionClientes;
+    public javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JMenuItem menuRegresarInformacionClientes;
     private javax.swing.JTable tablaClientes;
-    private javax.swing.JTextField txtBuscarClientes;
+    public javax.swing.JTextField txtBuscarClientes;
     // End of variables declaration//GEN-END:variables
 }

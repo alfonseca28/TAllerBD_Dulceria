@@ -8,6 +8,20 @@ package Modelo;
  *
  * @author Erick Gonzalez
  */
-public class ModeloPanelInformacion {
+public class ModeloInfoClientes extends Conexion{
+    
+    
+    
+    public boolean CargarTodo(){
+        
+        
+        return true;
+    }
+    
+    public boolean BuscarPor(){
+        return true;
+    }
+    
+    
     
 }

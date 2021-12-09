@@ -15,6 +15,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Regresar"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -124,6 +127,9 @@
           <Image iconType="2" name="C:\Program Files (x86)\Dulceria\Imagenes\ventas.jpg"/>
         </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="btnInformacionCompras">
       <Properties>
@@ -131,6 +137,9 @@
           <Image iconType="2" name="C:\Program Files (x86)\Dulceria\Imagenes\compras.jpg"/>
         </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="btnInformacionEmpleados">
       <Properties>
@@ -138,6 +147,9 @@
           <Image iconType="2" name="C:\Program Files (x86)\Dulceria\Imagenes\empleados.jpg"/>
         </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="btnInformacionProductos">
       <Properties>
@@ -145,6 +157,9 @@
           <Image iconType="2" name="C:\Program Files (x86)\Dulceria\Imagenes\productos.jpg"/>
         </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="btnInformacionProveedores">
       <Properties>
@@ -152,6 +167,9 @@
           <Image iconType="2" name="C:\Program Files (x86)\Dulceria\Imagenes\proveedores.jpg"/>
         </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="btnInformacionClientes">
       <Properties>
@@ -159,6 +177,9 @@
           <Image iconType="2" name="C:\Program Files (x86)\Dulceria\Imagenes\clientes.jpg"/>
         </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
@@ -180,7 +201,7 @@
     <Component class="javax.swing.JLabel" name="jLabel10">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Porductos"/>
+        <Property name="text" type="java.lang.String" value="Productos"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel11">

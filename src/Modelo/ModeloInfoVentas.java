@@ -8,6 +8,6 @@ package Modelo;
  *
  * @author Erick Gonzalez
  */
-public class ModeloPanelInformacion {
+public class ModeloInfoVentas {
     
 }

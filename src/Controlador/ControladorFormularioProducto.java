@@ -112,7 +112,7 @@ public class ControladorFormularioProducto implements ActionListener {
                 
                 producto.setIdProducto(Integer.parseInt(vista.txtIdProducto.getText()));
                 producto.setNombre(vista.txtNombreProducto.getText());
-                producto.setIdProveedor(Integer.parseInt(vista.txtIdProducto.getText()));
+                producto.setIdProveedor(Integer.parseInt(vista.txtIdProveedorProducto.getText()));
                 producto.setPrecioCompra(Float.parseFloat(vista.txtPrecioCompraProducto.getText()));
                 producto.setPrecioVenta(Float.parseFloat(vista.txtPrecioVentaProducto.getText()));
                 
