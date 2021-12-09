@@ -4,8 +4,16 @@
  */
 package Vistas;
 
+import Modelo.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -30,22 +38,9 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        BoxBuscarCompra = new javax.swing.JComboBox<>();
-        txtBuscarCompra = new javax.swing.JTextField();
-        btnBuscarCompra = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        boxOrdenarCompra = new javax.swing.JComboBox<>();
-        btnAscCompra = new javax.swing.JButton();
-        btnDesCompra = new javax.swing.JButton();
         btnCargarTodoCompa = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaInformacionCompra = new javax.swing.JTable();
-        jLabel4 = new javax.swing.JLabel();
-        boxFechaCompra = new javax.swing.JComboBox<>();
-        jDateChooserCompra = new com.toedter.calendar.JDateChooser();
-        jLabel5 = new javax.swing.JLabel();
-        btnBuscarFecha = new javax.swing.JButton();
+        tablaCompras = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         txtTotalGastadoCompras = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -60,32 +55,15 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Dulceria Itver");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setText("Buscar  por :");
-
-        BoxBuscarCompra.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IdCompra", "Proveedor", "Nombre Empleado", "Apellido Empleado" }));
-
-        txtBuscarCompra.addActionListener(new java.awt.event.ActionListener() {
+        btnCargarTodoCompa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnCargarTodoCompa.setText("Cagar todos los registros");
+        btnCargarTodoCompa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBuscarCompraActionPerformed(evt);
+                btnCargarTodoCompaActionPerformed(evt);
             }
         });
 
-        btnBuscarCompra.setText("Buscar");
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel3.setText("Ordenar por:");
-
-        boxOrdenarCompra.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IdCompra", "Proveedor", "Producto" }));
-
-        btnAscCompra.setText("Ascendente");
-
-        btnDesCompra.setText("Descendente");
-
-        btnCargarTodoCompa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnCargarTodoCompa.setText("Cagar todos los registros");
-
-        tablaInformacionCompra.setModel(new javax.swing.table.DefaultTableModel(
+        tablaCompras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null}
             },
@@ -108,36 +86,23 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tablaInformacionCompra);
-        if (tablaInformacionCompra.getColumnModel().getColumnCount() > 0) {
-            tablaInformacionCompra.getColumnModel().getColumn(0).setResizable(false);
-            tablaInformacionCompra.getColumnModel().getColumn(0).setPreferredWidth(45);
-            tablaInformacionCompra.getColumnModel().getColumn(1).setResizable(false);
-            tablaInformacionCompra.getColumnModel().getColumn(2).setResizable(false);
-            tablaInformacionCompra.getColumnModel().getColumn(3).setResizable(false);
-            tablaInformacionCompra.getColumnModel().getColumn(4).setResizable(false);
-            tablaInformacionCompra.getColumnModel().getColumn(5).setResizable(false);
-            tablaInformacionCompra.getColumnModel().getColumn(5).setPreferredWidth(50);
-            tablaInformacionCompra.getColumnModel().getColumn(6).setResizable(false);
-            tablaInformacionCompra.getColumnModel().getColumn(6).setPreferredWidth(50);
-            tablaInformacionCompra.getColumnModel().getColumn(7).setResizable(false);
-            tablaInformacionCompra.getColumnModel().getColumn(7).setPreferredWidth(50);
-            tablaInformacionCompra.getColumnModel().getColumn(8).setResizable(false);
-            tablaInformacionCompra.getColumnModel().getColumn(8).setPreferredWidth(50);
+        jScrollPane1.setViewportView(tablaCompras);
+        if (tablaCompras.getColumnModel().getColumnCount() > 0) {
+            tablaCompras.getColumnModel().getColumn(0).setResizable(false);
+            tablaCompras.getColumnModel().getColumn(0).setPreferredWidth(45);
+            tablaCompras.getColumnModel().getColumn(1).setResizable(false);
+            tablaCompras.getColumnModel().getColumn(2).setResizable(false);
+            tablaCompras.getColumnModel().getColumn(3).setResizable(false);
+            tablaCompras.getColumnModel().getColumn(4).setResizable(false);
+            tablaCompras.getColumnModel().getColumn(5).setResizable(false);
+            tablaCompras.getColumnModel().getColumn(5).setPreferredWidth(50);
+            tablaCompras.getColumnModel().getColumn(6).setResizable(false);
+            tablaCompras.getColumnModel().getColumn(6).setPreferredWidth(50);
+            tablaCompras.getColumnModel().getColumn(7).setResizable(false);
+            tablaCompras.getColumnModel().getColumn(7).setPreferredWidth(50);
+            tablaCompras.getColumnModel().getColumn(8).setResizable(false);
+            tablaCompras.getColumnModel().getColumn(8).setPreferredWidth(50);
         }
-
-        jLabel4.setText("Fecha: ");
-
-        boxFechaCompra.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todo el tiempo", "Hoy", "Esta semana", "Este mes", "Este año" }));
-
-        jLabel5.setText("Buscar fecha especifica");
-
-        btnBuscarFecha.setText("Buscar");
-        btnBuscarFecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarFechaActionPerformed(evt);
-            }
-        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Total Gastado:   $");
@@ -164,34 +129,7 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 856, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(BoxBuscarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtBuscarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnBuscarCompra)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(boxOrdenarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnAscCompra)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnDesCompra))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnCargarTodoCompa)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(boxFechaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jDateChooserCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnBuscarFecha))
+                            .addComponent(btnCargarTodoCompa)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addGap(18, 18, 18)
@@ -204,25 +142,8 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(BoxBuscarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtBuscarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarCompra)
-                    .addComponent(jLabel3)
-                    .addComponent(boxOrdenarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAscCompra)
-                    .addComponent(btnDesCompra))
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnCargarTodoCompa)
-                        .addComponent(jLabel4)
-                        .addComponent(boxFechaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5))
-                    .addComponent(jDateChooserCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarFecha))
+                .addGap(50, 50, 50)
+                .addComponent(btnCargarTodoCompa)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
@@ -235,13 +156,50 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtBuscarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarCompraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBuscarCompraActionPerformed
+    private void btnCargarTodoCompaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarTodoCompaActionPerformed
+            DefaultTableModel modelotabla = new DefaultTableModel();
+        tablaCompras.setModel(modelotabla);
 
-    private void btnBuscarFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarFechaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarFechaActionPerformed
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        Conexion con = new Conexion();
+        Connection conexion = con.getconnection();
+
+        try {
+            ps = conexion.prepareStatement("SELECT idCompra AS id, empleado.nombre AS NombreEmpleado, empleado.apellidoPaterno AS ApellidoEmpleado, producto.nombre AS Producto, cantidad AS Cantidad, importe AS Importe, proveedor.nombre AS Proveedor\n" +
+"FROM compra,empleado, producto, proveedor\n" +
+"WHERE compra.idEmpleado = empleado.idEmpleado AND compra.idProducto = producto.idProducto AND compra.idProveedor = proveedor.idproveedor;");
+            
+
+            rs = ps.executeQuery();
+
+            modelotabla.addColumn("IdCompra");
+            modelotabla.addColumn("Nombre Empleado");                               
+            modelotabla.addColumn("Apellidop Empleado");
+            modelotabla.addColumn("Producto");
+            modelotabla.addColumn("Cantidad");
+            modelotabla.addColumn("Importe");
+            modelotabla.addColumn("Proveedor");
+            
+            while(rs.next()){
+                Object fila [] = new Object [7];
+                for(int i =1 ; i<= 7;i++){
+                fila[i-1] = rs.getObject(i);
+            }
+                modelotabla.addRow(fila);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(VistaInformacionClientes.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(VistaInformacionClientes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btnCargarTodoCompaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,27 +251,14 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> BoxBuscarCompra;
-    private javax.swing.JComboBox<String> boxFechaCompra;
-    private javax.swing.JComboBox<String> boxOrdenarCompra;
-    private javax.swing.JButton btnAscCompra;
-    private javax.swing.JButton btnBuscarCompra;
-    private javax.swing.JButton btnBuscarFecha;
     private javax.swing.JButton btnCargarTodoCompa;
-    private javax.swing.JButton btnDesCompra;
-    private com.toedter.calendar.JDateChooser jDateChooserCompra;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenu menuInformacionCompras;
-    private javax.swing.JMenuItem menuRegresarInformacionCompras;
-    private javax.swing.JTable tablaInformacionCompra;
-    private javax.swing.JTextField txtBuscarCompra;
+    public javax.swing.JMenuItem menuRegresarInformacionCompras;
+    private javax.swing.JTable tablaCompras;
     private javax.swing.JTextField txtTotalGastadoCompras;
     // End of variables declaration//GEN-END:variables
 }
