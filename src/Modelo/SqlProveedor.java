@@ -82,8 +82,8 @@ public class SqlProveedor extends Conexion {
             cs = conexion.prepareCall("{CALL actualizarProveedor (?,?,?,?,?)}");
             cs.setInt(1, proveedor.getIdProveedor());
             cs.setString(2, proveedor.getNombre());
-            cs.setString(3, proveedor.getTelefono());
-            cs.setString(4, proveedor.getDireccion());
+            cs.setString(4, proveedor.getTelefono());
+            cs.setString(3, proveedor.getDireccion());
             cs.setString(5, proveedor.getEmail());
 
             cs.execute();
