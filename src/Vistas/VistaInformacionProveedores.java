@@ -4,8 +4,16 @@
  */
 package Vistas;
 
+import Modelo.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -33,17 +41,11 @@ public class VistaInformacionProveedores extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaProveedores = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        BoxBuscarProveedores = new javax.swing.JComboBox<>();
-        txtBuscarClientes = new javax.swing.JTextField();
+        txtBuscarProveedor = new javax.swing.JTextField();
         btnBuscarProveedores = new javax.swing.JButton();
         btnCargarTodoProveedor = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        boxOrdenarProveedor = new javax.swing.JComboBox<>();
-        btnAscProveedor = new javax.swing.JButton();
-        btnDesProveedor = new javax.swing.JButton();
-        btnEliminarProveedor = new javax.swing.JButton();
         btnEditarProveedor = new javax.swing.JButton();
-        btnNuevoProveedor = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuVistaInformacionProveedores = new javax.swing.JMenu();
         menuRegresarInformacionProveedores = new javax.swing.JMenuItem();
@@ -88,30 +90,31 @@ public class VistaInformacionProveedores extends javax.swing.JFrame {
         }
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setText("Buscar  por :");
-
-        BoxBuscarProveedores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IdProveedor", "Nombre", "Telefono", "Direccion", "Email" }));
-        BoxBuscarProveedores.setToolTipText("");
+        jLabel2.setText("Buscar  por Id Especifico:");
 
         btnBuscarProveedores.setText("Buscar");
+        btnBuscarProveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarProveedoresActionPerformed(evt);
+            }
+        });
 
         btnCargarTodoProveedor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnCargarTodoProveedor.setText("Cagar todos los registros");
+        btnCargarTodoProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarTodoProveedorActionPerformed(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel3.setText("Ordenar por:");
+        btnEditarProveedor.setText("Añadir, Modificar o Eliminar registro");
 
-        boxOrdenarProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IdProveedor", "Nombre" }));
-
-        btnAscProveedor.setText("Ascendente");
-
-        btnDesProveedor.setText("Descendente");
-
-        btnEliminarProveedor.setText("Eliminar registro");
-
-        btnEditarProveedor.setText("Editar y actualizar registro");
-
-        btnNuevoProveedor.setText("Nuevo registro");
+        jButton1.setText("Limpiar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jMenuVistaInformacionProveedores.setText("Opciones");
 
@@ -131,32 +134,20 @@ public class VistaInformacionProveedores extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(BoxBuscarProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtBuscarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnBuscarProveedores)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(boxOrdenarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnAscProveedor)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnDesProveedor))
+                                .addComponent(txtBuscarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnBuscarProveedores))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnCargarTodoProveedor)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnEliminarProveedor)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(30, 30, 30)
                                 .addComponent(btnEditarProveedor)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnNuevoProveedor))
-                            .addComponent(jScrollPane1))
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton1))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 130, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -167,19 +158,13 @@ public class VistaInformacionProveedores extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(BoxBuscarProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtBuscarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarProveedores)
-                    .addComponent(jLabel3)
-                    .addComponent(boxOrdenarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAscProveedor)
-                    .addComponent(btnDesProveedor))
+                    .addComponent(txtBuscarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarProveedores))
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCargarTodoProveedor)
-                    .addComponent(btnEliminarProveedor)
                     .addComponent(btnEditarProveedor)
-                    .addComponent(btnNuevoProveedor))
+                    .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(138, Short.MAX_VALUE))
@@ -187,6 +172,96 @@ public class VistaInformacionProveedores extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBuscarProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProveedoresActionPerformed
+        DefaultTableModel modelotabla = new DefaultTableModel();
+        tablaProveedores.setModel(modelotabla);
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        Conexion con = new Conexion();
+        Connection conexion = con.getconnection();
+
+        try {
+            ps = conexion.prepareStatement("Select * from proveedor where idProveedor = ?");
+            ps.setInt(1, Integer.parseInt(txtBuscarProveedor.getText()));
+
+            rs = ps.executeQuery();
+
+            modelotabla.addColumn("IdCliente");
+            modelotabla.addColumn("Nombre");                               
+            modelotabla.addColumn("Direccion");
+            modelotabla.addColumn("Telefono");
+            modelotabla.addColumn("Email");
+            modelotabla.addColumn("Estado");
+            
+            while(rs.next()){
+                Object fila [] = new Object [6];
+                for(int i =1 ; i<= 6;i++){
+                fila[i-1] = rs.getObject(i);
+            }
+                modelotabla.addRow(fila);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(VistaInformacionClientes.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(VistaInformacionClientes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btnBuscarProveedoresActionPerformed
+
+    private void btnCargarTodoProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarTodoProveedorActionPerformed
+        DefaultTableModel modelotabla = new DefaultTableModel();
+        tablaProveedores.setModel(modelotabla);
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        Conexion con = new Conexion();
+        Connection conexion = con.getconnection();
+
+        try {
+            ps = conexion.prepareStatement("Select * from proveedor where idProveedor ");
+            
+
+            rs = ps.executeQuery();
+
+            modelotabla.addColumn("IdCliente");
+            modelotabla.addColumn("Nombre");                               
+            modelotabla.addColumn("Direccion");
+            modelotabla.addColumn("Telefono");
+            modelotabla.addColumn("Email");
+            modelotabla.addColumn("Estado");
+            
+            while(rs.next()){
+                Object fila [] = new Object [6];
+                for(int i =1 ; i<= 6;i++){
+                fila[i-1] = rs.getObject(i);
+            }
+                modelotabla.addRow(fila);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(VistaInformacionClientes.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(VistaInformacionClientes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btnCargarTodoProveedorActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+           DefaultTableModel modelotabla = new DefaultTableModel();
+        tablaProveedores.setModel(modelotabla);
+        modelotabla.setNumRows(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,23 +313,17 @@ public class VistaInformacionProveedores extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> BoxBuscarProveedores;
-    private javax.swing.JComboBox<String> boxOrdenarProveedor;
-    private javax.swing.JButton btnAscProveedor;
     private javax.swing.JButton btnBuscarProveedores;
     private javax.swing.JButton btnCargarTodoProveedor;
-    private javax.swing.JButton btnDesProveedor;
-    private javax.swing.JButton btnEditarProveedor;
-    private javax.swing.JButton btnEliminarProveedor;
-    private javax.swing.JButton btnNuevoProveedor;
+    public javax.swing.JButton btnEditarProveedor;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuVistaInformacionProveedores;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JMenuItem menuRegresarInformacionProveedores;
+    public javax.swing.JMenuItem menuRegresarInformacionProveedores;
     private javax.swing.JTable tablaProveedores;
-    private javax.swing.JTextField txtBuscarClientes;
+    private javax.swing.JTextField txtBuscarProveedor;
     // End of variables declaration//GEN-END:variables
 }

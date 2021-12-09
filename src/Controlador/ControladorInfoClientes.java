@@ -14,6 +14,10 @@ import Vistas.VistaPanelInformacion;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.table.DefaultTableModel;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,7 +39,7 @@ public class ControladorInfoClientes extends Conexion implements ActionListener 
         vista.btnCargarTodoClientes.addActionListener(this);
         vista.btnEditarClientes.addActionListener(this);
         vista.menuRegresarInformacionClientes.addActionListener(this);
-        vista.btnBuscarClientes.addActionListener(this);
+        
         
 
        
@@ -60,50 +64,7 @@ public class ControladorInfoClientes extends Conexion implements ActionListener 
         }
         
         
-        if(ae.getSource() == vista.btnBuscarClientes){
-            
-            String atributo = "";
-            
-            switch(vista.BoxBuscarClientes.getSelectedIndex()){
-                
-                case 0:
-                    atributo = "idCliente";
-                    break;
-                    
-                case 1:
-                    atributo = "nombre";
-                    break;
-                    
-                case 2:
-                    atributo = "apellidoPaterno";
-                    break;
-                    
-                    
-                case 3:
-                    atributo = "apellidoMaterno";
-                    break;
-                    
-                case 4 :
-                    atributo = "telefono";
-                    break;
-                
-                case 5 :
-                     atributo = "direccion";
-                     break;
-                
-                case 6:
-                    atributo = "email";
-                    break;
-            }
-            
-            DefaultTableModel modelotabla = new DefaultTableModel();
-            vista.tablaClientes.setModel(modelotabla);
-            
-            
-            
-            
-        }
-        
+       
         
         if(ae.getSource() == vista.btnEditarClientes){
             
@@ -120,3 +81,4 @@ public class ControladorInfoClientes extends Conexion implements ActionListener 
     
     
 }
+

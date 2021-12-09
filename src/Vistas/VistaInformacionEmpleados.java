@@ -4,8 +4,16 @@
  */
 package Vistas;
 
+import Modelo.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -31,22 +39,18 @@ public class VistaInformacionEmpleados extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaClientes = new javax.swing.JTable();
+        tablaEmpleados = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        BoxBuscarEmpleados = new javax.swing.JComboBox<>();
         txtBuscarEmpleados = new javax.swing.JTextField();
         btnBuscarEmpleados = new javax.swing.JButton();
         btnCargarTodoEmpleados = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        boxOrdenarEmpleados = new javax.swing.JComboBox<>();
-        btnAscEmpleados = new javax.swing.JButton();
-        btnDesEmpleados = new javax.swing.JButton();
+        btnEditarEmpleados = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jMenuBarEmpleados = new javax.swing.JMenuBar();
         menuInformacionEmpleados = new javax.swing.JMenu();
         menuRegresarEmpleados = new javax.swing.JMenuItem();
-        MenuFormularioInformacionEmpleados = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Informacion Empleados");
         setPreferredSize(new java.awt.Dimension(890, 700));
         setResizable(false);
@@ -54,7 +58,7 @@ public class VistaInformacionEmpleados extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Dulceria Itver");
 
-        tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
+        tablaEmpleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null}
             },
@@ -77,50 +81,55 @@ public class VistaInformacionEmpleados extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tablaClientes);
-        if (tablaClientes.getColumnModel().getColumnCount() > 0) {
-            tablaClientes.getColumnModel().getColumn(0).setResizable(false);
-            tablaClientes.getColumnModel().getColumn(0).setPreferredWidth(80);
-            tablaClientes.getColumnModel().getColumn(1).setResizable(false);
-            tablaClientes.getColumnModel().getColumn(2).setResizable(false);
-            tablaClientes.getColumnModel().getColumn(3).setResizable(false);
-            tablaClientes.getColumnModel().getColumn(4).setResizable(false);
-            tablaClientes.getColumnModel().getColumn(5).setResizable(false);
-            tablaClientes.getColumnModel().getColumn(5).setPreferredWidth(120);
-            tablaClientes.getColumnModel().getColumn(6).setResizable(false);
-            tablaClientes.getColumnModel().getColumn(6).setPreferredWidth(120);
-            tablaClientes.getColumnModel().getColumn(7).setResizable(false);
-            tablaClientes.getColumnModel().getColumn(8).setResizable(false);
-            tablaClientes.getColumnModel().getColumn(8).setPreferredWidth(40);
-            tablaClientes.getColumnModel().getColumn(9).setResizable(false);
+        jScrollPane1.setViewportView(tablaEmpleados);
+        if (tablaEmpleados.getColumnModel().getColumnCount() > 0) {
+            tablaEmpleados.getColumnModel().getColumn(0).setResizable(false);
+            tablaEmpleados.getColumnModel().getColumn(0).setPreferredWidth(80);
+            tablaEmpleados.getColumnModel().getColumn(1).setResizable(false);
+            tablaEmpleados.getColumnModel().getColumn(2).setResizable(false);
+            tablaEmpleados.getColumnModel().getColumn(3).setResizable(false);
+            tablaEmpleados.getColumnModel().getColumn(4).setResizable(false);
+            tablaEmpleados.getColumnModel().getColumn(5).setResizable(false);
+            tablaEmpleados.getColumnModel().getColumn(5).setPreferredWidth(120);
+            tablaEmpleados.getColumnModel().getColumn(6).setResizable(false);
+            tablaEmpleados.getColumnModel().getColumn(6).setPreferredWidth(120);
+            tablaEmpleados.getColumnModel().getColumn(7).setResizable(false);
+            tablaEmpleados.getColumnModel().getColumn(8).setResizable(false);
+            tablaEmpleados.getColumnModel().getColumn(8).setPreferredWidth(40);
+            tablaEmpleados.getColumnModel().getColumn(9).setResizable(false);
         }
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setText("Buscar  por :");
-
-        BoxBuscarEmpleados.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IdEmpleado", "Nombre", "ApPaterno", "ApMaterno", "Telefono", "Direccion", "Email", "Puesto", "Edad" }));
+        jLabel2.setText("Buscar  por  IdEspecifico:");
 
         btnBuscarEmpleados.setText("Buscar");
+        btnBuscarEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarEmpleadosActionPerformed(evt);
+            }
+        });
 
         btnCargarTodoEmpleados.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnCargarTodoEmpleados.setText("Cagar todos los registros");
+        btnCargarTodoEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarTodoEmpleadosActionPerformed(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel3.setText("Ordenar por:");
+        btnEditarEmpleados.setText("Añadir, Editar o Eliminar registros");
 
-        boxOrdenarEmpleados.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IdEmpleado", "Nombre", "ApPaterno" }));
-
-        btnAscEmpleados.setText("Ascendente");
-
-        btnDesEmpleados.setText("Descendente");
+        jButton1.setText("Limpiar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         menuInformacionEmpleados.setText("Opciones");
 
         menuRegresarEmpleados.setText("Regresar");
         menuInformacionEmpleados.add(menuRegresarEmpleados);
-
-        MenuFormularioInformacionEmpleados.setText("Añadir, Modificar o Eliminar registros");
-        menuInformacionEmpleados.add(MenuFormularioInformacionEmpleados);
 
         jMenuBarEmpleados.add(menuInformacionEmpleados);
 
@@ -136,24 +145,21 @@ public class VistaInformacionEmpleados extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 794, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(BoxBuscarEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtBuscarEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtBuscarEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnCargarTodoEmpleados))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnBuscarEmpleados)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(boxOrdenarEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnAscEmpleados)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnDesEmpleados))
-                            .addComponent(btnCargarTodoEmpleados)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 794, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnEditarEmpleados)
+                                        .addGap(37, 37, 37)
+                                        .addComponent(jButton1))
+                                    .addComponent(btnBuscarEmpleados))))
                         .addGap(0, 196, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -164,22 +170,120 @@ public class VistaInformacionEmpleados extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(BoxBuscarEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtBuscarEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarEmpleados)
-                    .addComponent(jLabel3)
-                    .addComponent(boxOrdenarEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAscEmpleados)
-                    .addComponent(btnDesEmpleados))
+                    .addComponent(btnBuscarEmpleados))
                 .addGap(9, 9, 9)
-                .addComponent(btnCargarTodoEmpleados)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCargarTodoEmpleados)
+                    .addComponent(btnEditarEmpleados)
+                    .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBuscarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEmpleadosActionPerformed
+        DefaultTableModel modelotabla = new DefaultTableModel();
+        tablaEmpleados.setModel(modelotabla);
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        Conexion con = new Conexion();
+        Connection conexion = con.getconnection();
+
+        try {
+            ps = conexion.prepareStatement("Select * from empleado where idEmpleado = ?");
+            ps.setInt(1, Integer.parseInt(txtBuscarEmpleados.getText()));
+
+            rs = ps.executeQuery();
+
+            modelotabla.addColumn("IdCliente");
+            modelotabla.addColumn("Nombre");
+            modelotabla.addColumn("ApPaterno");
+            modelotabla.addColumn("ApMaterno");
+            modelotabla.addColumn("Telefono");
+            modelotabla.addColumn("Direccion");
+            modelotabla.addColumn("Email");
+            modelotabla.addColumn("Puesto");
+            modelotabla.addColumn("Edad");
+            modelotabla.addColumn("Contraseña");
+            modelotabla.addColumn("Estado");
+
+            while (rs.next()) {
+                Object fila[] = new Object[11];
+                for (int i = 1; i <= 11; i++) {
+                    fila[i - 1] = rs.getObject(i);
+                }
+                modelotabla.addRow(fila);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(VistaInformacionClientes.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(VistaInformacionClientes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }//GEN-LAST:event_btnBuscarEmpleadosActionPerformed
+
+    private void btnCargarTodoEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarTodoEmpleadosActionPerformed
+        DefaultTableModel modelotabla = new DefaultTableModel();
+        tablaEmpleados.setModel(modelotabla);
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        Conexion con = new Conexion();
+        Connection conexion = con.getconnection();
+
+        try {
+            ps = conexion.prepareStatement("Select * from empleado");
+
+            rs = ps.executeQuery();
+
+            modelotabla.addColumn("IdCliente");
+            modelotabla.addColumn("Nombre");
+            modelotabla.addColumn("ApPaterno");
+            modelotabla.addColumn("ApMaterno");
+            modelotabla.addColumn("Telefono");
+            modelotabla.addColumn("Direccion");
+            modelotabla.addColumn("Email");
+            modelotabla.addColumn("Puesto");
+            modelotabla.addColumn("Edad");
+            modelotabla.addColumn("Contraseña");
+            modelotabla.addColumn("Estado");
+
+            while (rs.next()) {
+                Object fila[] = new Object[11];
+                for (int i = 1; i <= 11; i++) {
+                    fila[i - 1] = rs.getObject(i);
+                }
+                modelotabla.addRow(fila);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(VistaInformacionClientes.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(VistaInformacionClientes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btnCargarTodoEmpleadosActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+           DefaultTableModel modelotabla = new DefaultTableModel();
+        tablaEmpleados.setModel(modelotabla);
+        modelotabla.setNumRows(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,8 +314,7 @@ public class VistaInformacionEmpleados extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        
-         try {
+        try {
             UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
         } catch (ClassNotFoundException ex) {
             //Logger.getLogger(VistaInicio.class.getName()).log(Level.SEVERE, null, ex);
@@ -220,9 +323,9 @@ public class VistaInformacionEmpleados extends javax.swing.JFrame {
         } catch (IllegalAccessException ex) {
             //Logger.getLogger(VistaInicio.class.getName()).log(Level.SEVERE, null, ex);
         } catch (UnsupportedLookAndFeelException ex) {
-           // Logger.getLogger(VistaInicio.class.getName()).log(Level.SEVERE, null, ex);
+            // Logger.getLogger(VistaInicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-         
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new VistaInformacionEmpleados().setVisible(true);
@@ -231,21 +334,17 @@ public class VistaInformacionEmpleados extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> BoxBuscarEmpleados;
-    private javax.swing.JMenuItem MenuFormularioInformacionEmpleados;
-    private javax.swing.JComboBox<String> boxOrdenarEmpleados;
-    private javax.swing.JButton btnAscEmpleados;
     private javax.swing.JButton btnBuscarEmpleados;
     private javax.swing.JButton btnCargarTodoEmpleados;
-    private javax.swing.JButton btnDesEmpleados;
+    public javax.swing.JButton btnEditarEmpleados;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBarEmpleados;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenu menuInformacionEmpleados;
-    private javax.swing.JMenuItem menuRegresarEmpleados;
-    private javax.swing.JTable tablaClientes;
+    public javax.swing.JMenuItem menuRegresarEmpleados;
+    public javax.swing.JTable tablaEmpleados;
     private javax.swing.JTextField txtBuscarEmpleados;
     // End of variables declaration//GEN-END:variables
 }

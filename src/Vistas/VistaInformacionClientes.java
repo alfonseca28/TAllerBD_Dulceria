@@ -4,8 +4,13 @@
  */
 package Vistas;
 
+import Modelo.Conexion;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -33,11 +38,11 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaClientes = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        BoxBuscarClientes = new javax.swing.JComboBox<>();
         txtBuscarClientes = new javax.swing.JTextField();
         btnBuscarClientes = new javax.swing.JButton();
         btnCargarTodoClientes = new javax.swing.JButton();
         btnEditarClientes = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuVistaInformacionClientes = new javax.swing.JMenu();
         menuRegresarInformacionClientes = new javax.swing.JMenuItem();
@@ -88,16 +93,36 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
         }
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setText("Buscar  por :");
-
-        BoxBuscarClientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IdCliente", "Nombre", "ApPaterno", "ApMaterno", "Telefono", "Direccion", "Email" }));
+        jLabel2.setText("Buscar  IdEspecifico");
 
         btnBuscarClientes.setText("Buscar");
+        btnBuscarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarClientesActionPerformed(evt);
+            }
+        });
 
         btnCargarTodoClientes.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnCargarTodoClientes.setText("Cagar todos los registros");
+        btnCargarTodoClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarTodoClientesActionPerformed(evt);
+            }
+        });
 
         btnEditarClientes.setText("Agregar, Modificar o Dar de baja registros");
+        btnEditarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarClientesActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Limpiar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jMenuVistaInformacionClientes.setText("Opciones");
 
@@ -120,16 +145,16 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(BoxBuscarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtBuscarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtBuscarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnBuscarClientes))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnCargarTodoClientes)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnEditarClientes))
+                                .addComponent(btnEditarClientes)
+                                .addGap(29, 29, 29)
+                                .addComponent(jButton1))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 734, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 147, Short.MAX_VALUE))))
         );
@@ -141,13 +166,13 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(BoxBuscarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtBuscarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarClientes))
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCargarTodoClientes)
-                    .addComponent(btnEditarClientes))
+                    .addComponent(btnEditarClientes)
+                    .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(287, Short.MAX_VALUE))
@@ -155,6 +180,106 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBuscarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClientesActionPerformed
+
+        DefaultTableModel modelotabla = new DefaultTableModel();
+        tablaClientes.setModel(modelotabla);
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        Conexion con = new Conexion();
+        Connection conexion = con.getconnection();
+
+        try {
+            ps = conexion.prepareStatement("Select idCliente,nombre,apellidoPaterno,apellidoMaterno,telefono,direccion,email,estado from cliente where idCliente = ?");
+            ps.setInt(1, Integer.parseInt(txtBuscarClientes.getText()));
+
+            rs = ps.executeQuery();
+
+            modelotabla.addColumn("IdCliente");
+            modelotabla.addColumn("Nombre");
+            modelotabla.addColumn("ApPaterno");
+            modelotabla.addColumn("ApMaterno");
+            modelotabla.addColumn("Telefono");
+            modelotabla.addColumn("Direccion");
+            modelotabla.addColumn("Email");
+            modelotabla.addColumn("Estado");
+            
+            while(rs.next()){
+                Object fila [] = new Object [8];
+                for(int i =1 ; i<= 8;i++){
+                fila[i-1] = rs.getObject(i);
+            }
+                modelotabla.addRow(fila);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(VistaInformacionClientes.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(VistaInformacionClientes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }//GEN-LAST:event_btnBuscarClientesActionPerformed
+
+    private void btnEditarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarClientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarClientesActionPerformed
+
+    private void btnCargarTodoClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarTodoClientesActionPerformed
+           DefaultTableModel modelotabla = new DefaultTableModel();
+        tablaClientes.setModel(modelotabla);
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        Conexion con = new Conexion();
+        Connection conexion = con.getconnection();
+
+        try {
+            ps = conexion.prepareStatement("Select idCliente,nombre,apellidoPaterno,apellidoMaterno,telefono,direccion,email,estado from cliente ");
+            
+
+            rs = ps.executeQuery();
+
+            modelotabla.addColumn("IdCliente");
+            modelotabla.addColumn("Nombre");
+            modelotabla.addColumn("ApPaterno");
+            modelotabla.addColumn("ApMaterno");
+            modelotabla.addColumn("Telefono");
+            modelotabla.addColumn("Direccion");
+            modelotabla.addColumn("Email");
+            modelotabla.addColumn("Estado");
+            
+            while(rs.next()){
+                Object fila [] = new Object [8];
+                for(int i =1 ; i<= 8;i++){
+                fila[i-1] = rs.getObject(i);
+            }
+                modelotabla.addRow(fila);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(VistaInformacionClientes.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(VistaInformacionClientes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btnCargarTodoClientesActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+           DefaultTableModel modelotabla = new DefaultTableModel();
+        tablaClientes.setModel(modelotabla);
+        modelotabla.setNumRows(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,8 +310,7 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        
-         try {
+        try {
             UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
         } catch (ClassNotFoundException ex) {
             //Logger.getLogger(VistaInicio.class.getName()).log(Level.SEVERE, null, ex);
@@ -195,9 +319,9 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
         } catch (IllegalAccessException ex) {
             //Logger.getLogger(VistaInicio.class.getName()).log(Level.SEVERE, null, ex);
         } catch (UnsupportedLookAndFeelException ex) {
-           // Logger.getLogger(VistaInicio.class.getName()).log(Level.SEVERE, null, ex);
+            // Logger.getLogger(VistaInicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-         
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new VistaInformacionClientes().setVisible(true);
@@ -206,10 +330,10 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JComboBox<String> BoxBuscarClientes;
     public javax.swing.JButton btnBuscarClientes;
     public javax.swing.JButton btnCargarTodoClientes;
     public javax.swing.JButton btnEditarClientes;
+    private javax.swing.JButton jButton1;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
