@@ -5,6 +5,7 @@
 package Controlador;
 
 import Modelo.Cliente;
+import Modelo.Conexion;
 import Modelo.ModeloInfoClientes;
 import Modelo.ModeloPanelInformacion;
 import Vistas.FormularioCliente;
@@ -12,12 +13,13 @@ import Vistas.VistaInformacionClientes;
 import Vistas.VistaPanelInformacion;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Erick Gonzalez
  */
-public class ControladorInfoClientes implements ActionListener{
+public class ControladorInfoClientes extends Conexion implements ActionListener {
 
     private VistaInformacionClientes vista;
     private ModeloInfoClientes modelo;
@@ -33,7 +35,8 @@ public class ControladorInfoClientes implements ActionListener{
         vista.btnCargarTodoClientes.addActionListener(this);
         vista.btnEditarClientes.addActionListener(this);
         vista.menuRegresarInformacionClientes.addActionListener(this);
-        //vista.btnBuscarClientes
+        vista.btnBuscarClientes.addActionListener(this);
+        
 
        
 
@@ -57,7 +60,7 @@ public class ControladorInfoClientes implements ActionListener{
         }
         
         
-        if(ae.getSource() == vista.btnCargarTodoClientes){
+        if(ae.getSource() == vista.btnBuscarClientes){
             
             String atributo = "";
             
@@ -92,6 +95,12 @@ public class ControladorInfoClientes implements ActionListener{
                     atributo = "email";
                     break;
             }
+            
+            DefaultTableModel modelotabla = new DefaultTableModel();
+            vista.tablaClientes.setModel(modelotabla);
+            
+            
+            
             
         }
         

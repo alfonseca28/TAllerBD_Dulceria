@@ -216,7 +216,7 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
     public javax.swing.JMenu jMenuVistaInformacionClientes;
     public javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JMenuItem menuRegresarInformacionClientes;
-    private javax.swing.JTable tablaClientes;
+    public javax.swing.JTable tablaClientes;
     public javax.swing.JTextField txtBuscarClientes;
     // End of variables declaration//GEN-END:variables
 }

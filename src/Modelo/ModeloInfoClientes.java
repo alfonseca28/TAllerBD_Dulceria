@@ -4,6 +4,8 @@
  */
 package Modelo;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Erick Gonzalez
@@ -12,15 +14,7 @@ public class ModeloInfoClientes extends Conexion{
     
     
     
-    public boolean CargarTodo(){
-        
-        
-        return true;
-    }
     
-    public boolean BuscarPor(){
-        return true;
-    }
     
     
     
