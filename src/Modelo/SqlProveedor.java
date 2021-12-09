@@ -26,8 +26,8 @@ public class SqlProveedor extends Conexion {
 
             ps = conexion.prepareCall("{CALL altaProveedor (?,?,?,?)}");
             ps.setString(1, proveedor.getNombre());
-            ps.setString(2, proveedor.getTelefono());
-            ps.setString(3, proveedor.getDireccion());
+            ps.setString(3, proveedor.getTelefono());
+            ps.setString(2, proveedor.getDireccion());
             ps.setString(4, proveedor.getEmail());
 
             ps.execute();
