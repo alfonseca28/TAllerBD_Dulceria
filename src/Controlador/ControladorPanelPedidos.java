@@ -5,9 +5,15 @@
 package Controlador;
 
 import Modelo.ModeloCompras;
+import Modelo.ModeloPanelInicio;
+import Modelo.Producto;
+import Modelo.Proveedor;
 import Modelo.SqlCompra;
 import Modelo.SqlProducto;
 import Modelo.SqlVenta;
+import Vistas.FormularioProducto;
+import Vistas.FormularioProveedor;
+import Vistas.VistaPanelInicio;
 import java.sql.*;
 import Vistas.VistaPanelPedidos;
 import java.awt.event.ActionEvent;
@@ -51,6 +57,7 @@ public class ControladorPanelPedidos implements ActionListener {
         vista.btnLimpiarCompra.addActionListener(this);
         vista.menuItemRegresarPedidos.addActionListener(this);
         vista.menuProveedor.addActionListener(this);
+        vista.menuProductos.addActionListener(this);
 
     }
 
@@ -305,6 +312,38 @@ public class ControladorPanelPedidos implements ActionListener {
             
         }
         
+        if(ae.getSource() == vista.menuItemRegresarPedidos){
+            
+            VistaPanelInicio vistaInicio = new VistaPanelInicio();
+            ModeloPanelInicio modeloInicio = new ModeloPanelInicio();
+            
+             ControladorPanelInicio controladorInicio = new   ControladorPanelInicio(vistaInicio,modeloInicio);
+             
+             controladorInicio.iniciar(vendedor, puesto_vendedor);
+             
+             vista.dispose();
+        }
+        
+        if(ae.getSource() == vista.menuProveedor){
+            
+            FormularioProveedor vistaProveedor = new FormularioProveedor();
+            Proveedor proveedor = new Proveedor();
+            
+            ControladorFormularioProveedor formularioProveedor = new ControladorFormularioProveedor(vistaProveedor,proveedor);
+            
+            formularioProveedor.iniciar(vendedor, puesto_vendedor);
+            
+        }
+        
+        if(ae.getSource() == vista.menuProductos){
+            
+            FormularioProducto formularioProducto = new FormularioProducto();
+            Producto producto  = new Producto();
+            ControladorFormularioProducto controladorFormularioProducto = new ControladorFormularioProducto(formularioProducto,producto);
+            
+            controladorFormularioProducto.iniciar(vendedor, puesto_vendedor);
+            
+        }
 
     }
 
