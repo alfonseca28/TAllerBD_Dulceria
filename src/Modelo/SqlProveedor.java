@@ -138,7 +138,7 @@ public class SqlProveedor extends Conexion {
 
         try {
 
-            ps = conexion.prepareStatement("select  nombre , apellidoPaterno, apellidoMaterno, telefono, direccion, email\n"
+            ps = conexion.prepareStatement("select  nombre , telefono, direccion, email\n"
                     + "from proveedor where idProveedor =?");
 
             ps.setInt(1, id);
