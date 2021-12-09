@@ -62,11 +62,7 @@ public class ControladorVentas implements ActionListener {
         vista.menuFormularioCliente.addActionListener(this);
         vista.menuFormularioProducto.addActionListener(this);
         
-        if(puesto_vendedor.equals("Vendedor")){
-            
-            vista.menuFormularioProducto.setVisible(false);
-            vista.menuFormularioCliente.setVisible(false);
-        }
+        
         
     }
     
@@ -78,6 +74,15 @@ public class ControladorVentas implements ActionListener {
         
         this.vendedor= vendedor;
         this.puesto_vendedor = puesto_vendedor;
+        
+        
+        if(puesto_vendedor.equals("Vendedor")){
+            
+            vista.menuFormularioProducto.setVisible(false);
+            vista.menuFormularioCliente.setVisible(false);
+        }
+        
+        
         
         vista.lblUsuarioProducto.setText(valueOf(vendedor));
         
