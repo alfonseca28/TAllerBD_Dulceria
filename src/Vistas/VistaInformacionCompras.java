@@ -41,8 +41,6 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
         btnCargarTodoCompa = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaCompras = new javax.swing.JTable();
-        jLabel6 = new javax.swing.JLabel();
-        txtTotalGastadoCompras = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuInformacionCompras = new javax.swing.JMenu();
         menuRegresarInformacionCompras = new javax.swing.JMenuItem();
@@ -104,11 +102,6 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
             tablaCompras.getColumnModel().getColumn(8).setPreferredWidth(50);
         }
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel6.setText("Total Gastado:   $");
-
-        txtTotalGastadoCompras.setEditable(false);
-
         menuInformacionCompras.setText("Opciones");
 
         menuRegresarInformacionCompras.setText("Regresar");
@@ -129,11 +122,7 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 856, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCargarTodoCompa)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtTotalGastadoCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnCargarTodoCompa))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -146,11 +135,7 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
                 .addComponent(btnCargarTodoCompa)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtTotalGastadoCompras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addContainerGap(283, Short.MAX_VALUE))
         );
 
         pack();
@@ -169,14 +154,14 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
         try {
             ps = conexion.prepareStatement("SELECT idCompra AS id, empleado.nombre AS NombreEmpleado, empleado.apellidoPaterno AS ApellidoEmpleado, producto.nombre AS Producto, cantidad AS Cantidad, importe AS Importe, proveedor.nombre AS Proveedor\n" +
 "FROM compra,empleado, producto, proveedor\n" +
-"WHERE compra.idEmpleado = empleado.idEmpleado AND compra.idProducto = producto.idProducto AND compra.idProveedor = proveedor.idproveedor;");
+"WHERE compra.idEmpleado = empleado.idEmpleado AND compra.idProducto = producto.idProducto AND compra.idProveedor = proveedor.idproveedor");
             
 
             rs = ps.executeQuery();
 
             modelotabla.addColumn("IdCompra");
             modelotabla.addColumn("Nombre Empleado");                               
-            modelotabla.addColumn("Apellidop Empleado");
+            modelotabla.addColumn("Apellido Empleado");
             modelotabla.addColumn("Producto");
             modelotabla.addColumn("Cantidad");
             modelotabla.addColumn("Importe");
@@ -253,12 +238,10 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCargarTodoCompa;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenu menuInformacionCompras;
     public javax.swing.JMenuItem menuRegresarInformacionCompras;
     private javax.swing.JTable tablaCompras;
-    private javax.swing.JTextField txtTotalGastadoCompras;
     // End of variables declaration//GEN-END:variables
 }

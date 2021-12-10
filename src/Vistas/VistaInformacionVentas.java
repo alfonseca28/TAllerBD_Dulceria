@@ -29,34 +29,12 @@ public class VistaInformacionVentas extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        BoxBuscarCompra = new javax.swing.JComboBox<>();
-        txtBuscarCompra = new javax.swing.JTextField();
-        btnBuscarCompra = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        boxOrdenarCompra = new javax.swing.JComboBox<>();
-        btnAscCompra = new javax.swing.JButton();
-        btnDesCompra = new javax.swing.JButton();
         btnCargarTodoCompa = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaInformacionCompra = new javax.swing.JTable();
-        jLabel4 = new javax.swing.JLabel();
-        boxFechaCompra = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
-        btnBuscarFecha = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        txtTotalGastadoCompras = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        tablaVentas = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuInformacionCompras = new javax.swing.JMenu();
-        menuRegresarInformacionCompras = new javax.swing.JMenuItem();
+        menuRegresarVentas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Informacion Ventas");
@@ -65,32 +43,10 @@ public class VistaInformacionVentas extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Dulceria Itver");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setText("Buscar  por :");
-
-        BoxBuscarCompra.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IdVenta", "Producto", "Apellido Empleado", "Apellido Cliente" }));
-
-        txtBuscarCompra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBuscarCompraActionPerformed(evt);
-            }
-        });
-
-        btnBuscarCompra.setText("Buscar");
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel3.setText("Ordenar por:");
-
-        boxOrdenarCompra.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IdVenta", "Producto" }));
-
-        btnAscCompra.setText("Ascendente");
-
-        btnDesCompra.setText("Descendente");
-
         btnCargarTodoCompa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnCargarTodoCompa.setText("Cagar todos los registros");
 
-        tablaInformacionCompra.setModel(new javax.swing.table.DefaultTableModel(
+        tablaVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null}
             },
@@ -113,89 +69,29 @@ public class VistaInformacionVentas extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tablaInformacionCompra);
-        if (tablaInformacionCompra.getColumnModel().getColumnCount() > 0) {
-            tablaInformacionCompra.getColumnModel().getColumn(0).setResizable(false);
-            tablaInformacionCompra.getColumnModel().getColumn(0).setPreferredWidth(40);
-            tablaInformacionCompra.getColumnModel().getColumn(1).setResizable(false);
-            tablaInformacionCompra.getColumnModel().getColumn(2).setResizable(false);
-            tablaInformacionCompra.getColumnModel().getColumn(3).setResizable(false);
-            tablaInformacionCompra.getColumnModel().getColumn(4).setResizable(false);
-            tablaInformacionCompra.getColumnModel().getColumn(5).setResizable(false);
-            tablaInformacionCompra.getColumnModel().getColumn(6).setResizable(false);
-            tablaInformacionCompra.getColumnModel().getColumn(6).setPreferredWidth(40);
-            tablaInformacionCompra.getColumnModel().getColumn(7).setResizable(false);
-            tablaInformacionCompra.getColumnModel().getColumn(7).setPreferredWidth(40);
-            tablaInformacionCompra.getColumnModel().getColumn(8).setResizable(false);
-            tablaInformacionCompra.getColumnModel().getColumn(8).setPreferredWidth(40);
-            tablaInformacionCompra.getColumnModel().getColumn(9).setResizable(false);
-            tablaInformacionCompra.getColumnModel().getColumn(9).setPreferredWidth(40);
+        jScrollPane1.setViewportView(tablaVentas);
+        if (tablaVentas.getColumnModel().getColumnCount() > 0) {
+            tablaVentas.getColumnModel().getColumn(0).setResizable(false);
+            tablaVentas.getColumnModel().getColumn(0).setPreferredWidth(40);
+            tablaVentas.getColumnModel().getColumn(1).setResizable(false);
+            tablaVentas.getColumnModel().getColumn(2).setResizable(false);
+            tablaVentas.getColumnModel().getColumn(3).setResizable(false);
+            tablaVentas.getColumnModel().getColumn(4).setResizable(false);
+            tablaVentas.getColumnModel().getColumn(5).setResizable(false);
+            tablaVentas.getColumnModel().getColumn(6).setResizable(false);
+            tablaVentas.getColumnModel().getColumn(6).setPreferredWidth(40);
+            tablaVentas.getColumnModel().getColumn(7).setResizable(false);
+            tablaVentas.getColumnModel().getColumn(7).setPreferredWidth(40);
+            tablaVentas.getColumnModel().getColumn(8).setResizable(false);
+            tablaVentas.getColumnModel().getColumn(8).setPreferredWidth(40);
+            tablaVentas.getColumnModel().getColumn(9).setResizable(false);
+            tablaVentas.getColumnModel().getColumn(9).setPreferredWidth(40);
         }
-
-        jLabel4.setText("Fecha: ");
-
-        boxFechaCompra.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todo el tiempo", "Hoy", "Esta semana", "Este mes", "Este año" }));
-
-        jLabel5.setText("Buscar fecha especifica");
-
-        btnBuscarFecha.setText("Buscar");
-        btnBuscarFecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarFechaActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel6.setText("Total ventas:   $");
-
-        txtTotalGastadoCompras.setEditable(false);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Id", "Nombre", "Apellido Paterno", "Apellido Materno", "Total"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, true, true
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
-        }
-
-        jButton3.setText("Producto más vendido");
-
-        jButton4.setText("Cliente con mayor gasto");
-
-        jButton5.setText("Empleado con más ventas");
-
-        jButton6.setText("Ascendente");
-
-        jButton7.setText("Descendente");
 
         menuInformacionCompras.setText("Opciones");
 
-        menuRegresarInformacionCompras.setText("Regresar");
-        menuInformacionCompras.add(menuRegresarInformacionCompras);
+        menuRegresarVentas.setText("Regresar");
+        menuInformacionCompras.add(menuRegresarVentas);
 
         jMenuBar1.add(menuInformacionCompras);
 
@@ -210,51 +106,9 @@ public class VistaInformacionVentas extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 856, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(BoxBuscarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtBuscarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnBuscarCompra)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(boxOrdenarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnAscCompra)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnDesCompra))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnCargarTodoCompa)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(boxFechaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)
-                                .addComponent(btnBuscarFecha))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtTotalGastadoCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton7))
-                            .addComponent(jScrollPane2))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 856, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCargarTodoCompa))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -263,54 +117,15 @@ public class VistaInformacionVentas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(BoxBuscarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtBuscarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarCompra)
-                    .addComponent(jLabel3)
-                    .addComponent(boxOrdenarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAscCompra)
-                    .addComponent(btnDesCompra))
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnCargarTodoCompa)
-                            .addComponent(jLabel4)
-                            .addComponent(boxFechaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addComponent(btnBuscarFecha))
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addComponent(btnCargarTodoCompa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtTotalGastadoCompras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(348, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtBuscarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarCompraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBuscarCompraActionPerformed
-
-    private void btnBuscarFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarFechaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarFechaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -361,35 +176,13 @@ public class VistaInformacionVentas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> BoxBuscarCompra;
-    private javax.swing.JComboBox<String> boxFechaCompra;
-    private javax.swing.JComboBox<String> boxOrdenarCompra;
-    private javax.swing.JButton btnAscCompra;
-    private javax.swing.JButton btnBuscarCompra;
-    private javax.swing.JButton btnBuscarFecha;
     private javax.swing.JButton btnCargarTodoCompa;
-    private javax.swing.JButton btnDesCompra;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JMenu menuInformacionCompras;
-    private javax.swing.JMenuItem menuRegresarInformacionCompras;
-    private javax.swing.JTable tablaInformacionCompra;
-    private javax.swing.JTextField txtBuscarCompra;
-    private javax.swing.JTextField txtTotalGastadoCompras;
+    public javax.swing.JMenu menuInformacionCompras;
+    public javax.swing.JMenuItem menuRegresarVentas;
+    private javax.swing.JTable tablaVentas;
     // End of variables declaration//GEN-END:variables
 
 }

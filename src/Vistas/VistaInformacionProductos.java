@@ -47,6 +47,7 @@ public class VistaInformacionProductos extends javax.swing.JFrame {
         btnEditarProductos = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         menuInformacionProductos = new javax.swing.JMenuBar();
         jMenuVistaInformacionProducto = new javax.swing.JMenu();
         menuRegresarInformacionProducto = new javax.swing.JMenuItem();
@@ -125,6 +126,13 @@ public class VistaInformacionProductos extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("Mostar Productos más vendidos");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         jMenuVistaInformacionProducto.setText("Opciones");
 
         menuRegresarInformacionProducto.setText("Regresar");
@@ -149,7 +157,9 @@ public class VistaInformacionProductos extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtBuscarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnBuscarProductos))
+                                .addComponent(btnBuscarProductos)
+                                .addGap(27, 27, 27)
+                                .addComponent(jButton3))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnCargarTodoProducto)
                                 .addGap(18, 18, 18)
@@ -170,7 +180,8 @@ public class VistaInformacionProductos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtBuscarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarProductos))
+                    .addComponent(btnBuscarProductos)
+                    .addComponent(jButton3))
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCargarTodoProducto)
@@ -323,6 +334,49 @@ public class VistaInformacionProductos extends javax.swing.JFrame {
         modelotabla.setNumRows(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+         DefaultTableModel modelotabla = new DefaultTableModel();
+        tablaProductos.setModel(modelotabla);
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        Conexion con = new Conexion();
+        Connection conexion = con.getconnection();
+
+        try {
+            ps = conexion.prepareStatement("SELECT v.idProducto AS Codigo, p.nombre AS Nombre, COUNT(v.idProducto) AS Vendidos FROM venta AS v\n" +
+"INNER JOIN producto AS p ON v.idProducto = p.idProducto\n" +
+"GROUP BY p.idproducto ORDER BY Vendidos DESC;");
+            
+
+            rs = ps.executeQuery();
+
+            modelotabla.addColumn("IdProducto");
+            modelotabla.addColumn("Nombre");
+            modelotabla.addColumn("Total ventas");
+         
+            
+            
+            while(rs.next()){
+                Object fila [] = new Object [3];
+                for(int i =1 ; i<= 3;i++){
+                fila[i-1] = rs.getObject(i);
+            }
+                modelotabla.addRow(fila);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(VistaInformacionClientes.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(VistaInformacionClientes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -377,6 +431,7 @@ public class VistaInformacionProductos extends javax.swing.JFrame {
     public javax.swing.JButton btnEditarProductos;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenuVistaInformacionProducto;

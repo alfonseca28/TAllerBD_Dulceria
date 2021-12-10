@@ -43,6 +43,7 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
         btnCargarTodoClientes = new javax.swing.JButton();
         btnEditarClientes = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuVistaInformacionClientes = new javax.swing.JMenu();
         menuRegresarInformacionClientes = new javax.swing.JMenuItem();
@@ -124,6 +125,13 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("Mostrar Clientes más frecuentes");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         jMenuVistaInformacionClientes.setText("Opciones");
 
         menuRegresarInformacionClientes.setText("Regresar");
@@ -154,7 +162,9 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnEditarClientes)
                                 .addGap(29, 29, 29)
-                                .addComponent(jButton1))
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton2))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 734, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 147, Short.MAX_VALUE))))
         );
@@ -172,7 +182,8 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCargarTodoClientes)
                     .addComponent(btnEditarClientes)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(287, Short.MAX_VALUE))
@@ -281,6 +292,51 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
         modelotabla.setNumRows(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+           DefaultTableModel modelotabla = new DefaultTableModel();
+        tablaClientes.setModel(modelotabla);
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        Conexion con = new Conexion();
+        Connection conexion = con.getconnection();
+
+        try {
+            ps = conexion.prepareStatement("SELECT venta.idCliente, cliente.nombre AS NombreCliente, cliente.apellidoPaterno AS ApellidoCliente, SUM(precio) AS Importe, COUNT(venta.idcliente) AS Total\n" +
+"FROM venta, cliente\n" +
+"WHERE venta.idCliente = cliente.idCliente\n" +
+"GROUP BY cliente.idcliente ORDER BY Importe DESC;");
+            
+
+            rs = ps.executeQuery();
+
+            modelotabla.addColumn("IdCliente");
+            modelotabla.addColumn("Nombre");
+            modelotabla.addColumn("ApPaterno");
+            modelotabla.addColumn("Importe");
+            modelotabla.addColumn("Total ventas");
+            
+            
+            while(rs.next()){
+                Object fila [] = new Object [5];
+                for(int i =1 ; i<= 5;i++){
+                fila[i-1] = rs.getObject(i);
+            }
+                modelotabla.addRow(fila);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(VistaInformacionClientes.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(VistaInformacionClientes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -334,6 +390,7 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
     public javax.swing.JButton btnCargarTodoClientes;
     public javax.swing.JButton btnEditarClientes;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;

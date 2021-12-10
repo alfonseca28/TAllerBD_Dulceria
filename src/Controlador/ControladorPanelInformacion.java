@@ -5,9 +5,19 @@
 package Controlador;
 
 import Modelo.ModeloInfoClientes;
+import Modelo.ModeloInfoCompras;
+import Modelo.ModeloInfoEmpleados;
+import Modelo.ModeloInfoProductos;
+import Modelo.ModeloInfoProveedores;
+import Modelo.ModeloInfoVentas;
 import Modelo.ModeloPanelInformacion;
 import Modelo.ModeloPanelInicio;
 import Vistas.VistaInformacionClientes;
+import Vistas.VistaInformacionCompras;
+import Vistas.VistaInformacionEmpleados;
+import Vistas.VistaInformacionProductos;
+import Vistas.VistaInformacionProveedores;
+import Vistas.VistaInformacionVentas;
 import Vistas.VistaPanelInformacion;
 import Vistas.VistaPanelInicio;
 import java.awt.event.ActionEvent;
@@ -95,7 +105,67 @@ public class ControladorPanelInformacion implements ActionListener {
         }
         
         
+        if(ae.getSource()==vista.btnInformacionCompras){
+            
+            VistaInformacionCompras vistaInfoCompras  = new VistaInformacionCompras();
+            ModeloInfoCompras modeloInfoCompras = new ModeloInfoCompras();
+            
+            ControladorInfoCompras controladorInfoCompras = new ControladorInfoCompras(vistaInfoCompras,modeloInfoCompras);
+            
+            controladorInfoCompras.iniciar(vendedor, puesto_vendedor);
+            
+            
+        }
         
+        if(ae.getSource()==vista.btnInformacionEmpleados){
+            
+            VistaInformacionEmpleados vistaInfoEmpleados  = new VistaInformacionEmpleados();
+            ModeloInfoEmpleados modeloInfoEmpleados = new ModeloInfoEmpleados();
+            
+            ControladorInfoEmpleados controladorInfoEmpleados = new ControladorInfoEmpleados(vistaInfoEmpleados,modeloInfoEmpleados);
+            
+            controladorInfoEmpleados.iniciar(vendedor, puesto_vendedor);
+            
+            
+        }
+        
+         if(ae.getSource()==vista.btnInformacionProductos){
+            
+            VistaInformacionProductos vistaInfoProductos  = new VistaInformacionProductos();
+            ModeloInfoProductos modeloInfoProductos = new ModeloInfoProductos();
+            
+            ControladorInfoProductos controladorInfoProductos = new ControladorInfoProductos(vistaInfoProductos,modeloInfoProductos);
+            
+            controladorInfoProductos.iniciar(vendedor, puesto_vendedor);
+            
+            
+        }
+         
+         
+         if(ae.getSource()==vista.btnInformacionProveedores){
+            
+            VistaInformacionProveedores vistaInfoProveedores  = new VistaInformacionProveedores();
+            ModeloInfoProveedores modeloInfoProveedores = new ModeloInfoProveedores();
+            
+            ControladorInfoProveedores controladorInfoProveedores = new ControladorInfoProveedores(vistaInfoProveedores,modeloInfoProveedores);
+            
+            controladorInfoProveedores.iniciar(vendedor, puesto_vendedor);
+            
+            
+        }
+        
+         if(ae.getSource()==vista.btnInformacionVentas){
+            
+            VistaInformacionVentas vistaInfoVentas  = new VistaInformacionVentas();
+            ModeloInfoVentas modeloInfoVentas = new ModeloInfoVentas();
+
+            
+            ControladorInfoVentas controladorInfoVentas = new ControladorInfoVentas(vistaInfoVentas,modeloInfoVentas);
+            
+            controladorInfoVentas.iniciar(vendedor, puesto_vendedor);
+            
+            
+        }
         
     }
 

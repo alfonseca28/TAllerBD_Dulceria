@@ -85,7 +85,7 @@ public class ControladorFormularioEmpleado implements ActionListener {
 
                 empleado.setNombre(vista.txtNombre.getText());
                 empleado.setApellidoPaterno(vista.txtApPaterno.getText());
-                empleado.setApellidoPaterno(vista.txtApMaterno.getText());
+                empleado.setApellidoMaterno(vista.txtApMaterno.getText());
                 empleado.setDireccion(vista.txtDireccion.getText());
                 empleado.setEmail(vista.txtEmail.getText());
                 empleado.setTelefono(vista.txtTelefono.getText());
@@ -125,7 +125,7 @@ public class ControladorFormularioEmpleado implements ActionListener {
 
                 empleado.setNombre(vista.txtNombre.getText());
                 empleado.setApellidoPaterno(vista.txtApPaterno.getText());
-                empleado.setApellidoPaterno(vista.txtApMaterno.getText());
+                empleado.setApellidoMaterno(vista.txtApMaterno.getText());
                 empleado.setDireccion(vista.txtDireccion.getText());
                 empleado.setEmail(vista.txtEmail.getText());
                 empleado.setTelefono(vista.txtTelefono.getText());
@@ -197,7 +197,6 @@ public class ControladorFormularioEmpleado implements ActionListener {
                     String puesto = empleado.getPuesto();
 
                     if (empleado.getPuesto().equals("Gerente")) {
-
                         vista.btnGerente.setSelected(true);
                     } else {
                         vista.btnVendedor.setSelected(true);

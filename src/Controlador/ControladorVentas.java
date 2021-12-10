@@ -354,7 +354,7 @@ public class ControladorVentas implements ActionListener {
                     
                     if(venta.insertarVenta()){
                         tabla.removeRow(0);
-                        actualizar.actualizarStock(venta.getIdProducto(),venta.getCantidad());
+                       
                     }
                                         
                     

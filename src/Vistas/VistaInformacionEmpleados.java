@@ -155,11 +155,10 @@ public class VistaInformacionEmpleados extends javax.swing.JFrame {
                                     .addComponent(btnCargarTodoEmpleados))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnEditarEmpleados)
-                                        .addGap(37, 37, 37)
-                                        .addComponent(jButton1))
-                                    .addComponent(btnBuscarEmpleados))))
+                                    .addComponent(btnBuscarEmpleados)
+                                    .addComponent(btnEditarEmpleados))
+                                .addGap(37, 37, 37)
+                                .addComponent(jButton1)))
                         .addGap(0, 196, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
