@@ -69,9 +69,14 @@ public class ControladorFormularioProveedor implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
 
         if (ae.getSource() == vista.btnInsertarProveedor) {
+            
+            SqlProveedor validacion = new SqlProveedor();
 
             if (!"".equals(vista.txtNombreProveedor.getText()) && !"".equals(vista.txtTelefonoProveedor.getText())
-                    && !"".equals(vista.txtEmailProveedor.getText()) && !"".equals(vista.txtTelefonoProveedor.getText())) {
+                    && !"".equals(vista.txtEmailProveedor.getText()) && !"".equals(vista.txtTelefonoProveedor.getText())
+                  && validacion.validarTodo(vista.txtEmailProveedor.getText(), vista.txtDireccionProveedor.getText(),
+                          vista.txtTelefonoProveedor.getText(), vista.txtNombreProveedor.getText()) 
+                  && validacion.validarFormato(vista.txtEmailProveedor.getText())  ) {
 
                 SqlProveedor snt = new SqlProveedor();
 
@@ -86,13 +91,22 @@ public class ControladorFormularioProveedor implements ActionListener {
                     JOptionPane.showMessageDialog(null, "Error", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
+            
+            else{
+                JOptionPane.showMessageDialog(null, "Ingrese todos los datos para continuar", "Error", JOptionPane.ERROR_MESSAGE);
+            }
 
         }
 
         if (ae.getSource() == vista.btnActualizarProveedor) {
+            
+            SqlProveedor validacion = new SqlProveedor(); 
 
-            if (!"".equals(vista.txtNombreProveedor.getText()) && !"".equals(vista.txtDireccionProveedor.getText())
-                    && !"".equals(vista.txtEmailProveedor.getText()) && !"".equals(vista.txtTelefonoProveedor.getText())) {
+            if (!"".equals(vista.txtIdProveedor.getText())&& !"".equals(vista.txtNombreProveedor.getText()) && !"".equals(vista.txtDireccionProveedor.getText())
+                    && !"".equals(vista.txtEmailProveedor.getText()) && !"".equals(vista.txtTelefonoProveedor.getText())
+                   && validacion.validarTodoActualizar(Integer.parseInt(vista.txtIdProveedor.getText()), vista.txtEmailProveedor.getText(), vista.txtDireccionProveedor.getText(),
+                          vista.txtTelefonoProveedor.getText(), vista.txtNombreProveedor.getText())
+                    && validacion.validarFormato(vista.txtEmailProveedor.getText())) {
 
                 SqlProveedor snt = new SqlProveedor();
 
@@ -107,6 +121,10 @@ public class ControladorFormularioProveedor implements ActionListener {
                 } else {
                     JOptionPane.showMessageDialog(null, "Error", "Error", JOptionPane.ERROR_MESSAGE);
                 }
+            }
+            
+            else{
+                JOptionPane.showMessageDialog(null, "Ingrese todos los datos para continuar", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
         }
@@ -174,6 +192,9 @@ public class ControladorFormularioProveedor implements ActionListener {
             vista.txtDireccionProveedor.setText("");
             vista.txtTelefonoProveedor.setText("");
             vista.txtEmailProveedor.setText("");
+            
+            SqlProveedor limpiar = new SqlProveedor ();
+            proveedor = limpiar.limpiar(proveedor);
 
         }
 

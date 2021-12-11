@@ -93,17 +93,17 @@ public class VistaPanelPedidos extends javax.swing.JFrame {
         tablaPanelPedidos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tablaPanelPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null}
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Id Producto", "Proveedor", "Nombre", "Cantidad", "Subotal"
+                "Id Producto", "Proveedor", "Nombre", "Precio Unitario", "Cantidad", "Subotal"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -122,6 +122,7 @@ public class VistaPanelPedidos extends javax.swing.JFrame {
             tablaPanelPedidos.getColumnModel().getColumn(2).setResizable(false);
             tablaPanelPedidos.getColumnModel().getColumn(3).setResizable(false);
             tablaPanelPedidos.getColumnModel().getColumn(4).setResizable(false);
+            tablaPanelPedidos.getColumnModel().getColumn(5).setResizable(false);
         }
 
         btnAgregarPedido.setText("Agregar  al pedido");
@@ -184,13 +185,13 @@ public class VistaPanelPedidos extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGap(38, 38, 38)
+                        .addComponent(jScrollPane2)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnCancelarTodoCompra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCancelarProductoPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(67, 67, 67))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel3)
@@ -224,7 +225,7 @@ public class VistaPanelPedidos extends javax.swing.JFrame {
                 .addComponent(txtTotalPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(76, 76, 76)
                 .addComponent(btnCerrarPedido)
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(340, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))

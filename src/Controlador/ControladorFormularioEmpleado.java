@@ -30,7 +30,6 @@ public class ControladorFormularioEmpleado implements ActionListener {
         vista.btnEliminar.addActionListener(this);
         vista.btnReactivar.addActionListener(this);
         vista.btnLimpiar.addActionListener(this);
-        
 
     }
 
@@ -64,10 +63,13 @@ public class ControladorFormularioEmpleado implements ActionListener {
 
         if (ae.getSource() == vista.btnInsertar) {
 
+            SqlEmpleado validacion = new SqlEmpleado();
+
             if (!"".equals(vista.txtNombre.getText()) && !"".equals(vista.txtApPaterno.getText())
                     && !"".equals(vista.txtApMaterno.getText()) && !"".equals(vista.txtDireccion.getText())
                     && !"".equals(vista.txtEmail.getText()) && !"".equals(vista.txtTelefono.getText())
-                    && !"".equals(vista.txtEdad) && !"".equals(vista.txtContraseña.getPassword()) && (vista.btnGerente.isSelected() || vista.btnVendedor.isSelected())) {
+                    && !"".equals(vista.txtEdad) && !"".equals(vista.txtContraseña.getPassword()) && (vista.btnGerente.isSelected() || vista.btnVendedor.isSelected())
+                    && validacion.validarCorreo(vista.txtEmail.getText()) && validacion.validarFormato(vista.txtEmail.getText())) {
 
                 String spuesto = "";
 
@@ -98,16 +100,21 @@ public class ControladorFormularioEmpleado implements ActionListener {
                 } else {
                     JOptionPane.showMessageDialog(null, "Error", "Error", JOptionPane.ERROR_MESSAGE);
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, "Rellene correctamente los campos para continuar", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
         }
 
         if (ae.getSource() == vista.btnActualizar) {
 
-            if (!"".equals(vista.txtNombre.getText()) && !"".equals(vista.txtApPaterno.getText())
+            SqlEmpleado validacion = new SqlEmpleado();
+
+            if (!"".equals(vista.txtIdEmpleado) && !"".equals(vista.txtNombre.getText()) && !"".equals(vista.txtApPaterno.getText())
                     && !"".equals(vista.txtApMaterno.getText()) && !"".equals(vista.txtDireccion.getText())
                     && !"".equals(vista.txtEmail.getText()) && !"".equals(vista.txtTelefono.getText())
-                    && !"".equals(vista.txtEdad) && !"".equals(vista.txtContraseña.getPassword()) && (vista.btnGerente.isSelected() || vista.btnVendedor.isSelected())) {
+                    && !"".equals(vista.txtEdad) && !"".equals(vista.txtContraseña.getPassword()) && (vista.btnGerente.isSelected() || vista.btnVendedor.isSelected())
+                    && validacion.validarCorreoActualizar(vista.txtEmail.getText(), Integer.parseInt(vista.txtIdEmpleado.getText())) && validacion.validarFormato(vista.txtEmail.getText())) {
 
                 String spuesto = "";
 
@@ -138,6 +145,8 @@ public class ControladorFormularioEmpleado implements ActionListener {
                 } else {
                     JOptionPane.showMessageDialog(null, "Error", "Error", JOptionPane.ERROR_MESSAGE);
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, "Rellene correctamente los campos para continuar", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
         }
@@ -150,7 +159,15 @@ public class ControladorFormularioEmpleado implements ActionListener {
 
                     empleado.setIdEmpleado(Integer.parseInt(vista.txtIdEmpleado.getText()));
                     SqlEmpleado snt = new SqlEmpleado();
-                    snt.bajaEmpleado(empleado);
+                    if (snt.bajaEmpleado(empleado)) {
+                        JOptionPane.showMessageDialog(null, "Empleado dado de baja", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                        if (empleado.getIdEmpleado() == vendedor) {
+                            vista.dispose();
+                            System.exit(0);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Error", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             } else {
 
@@ -167,7 +184,11 @@ public class ControladorFormularioEmpleado implements ActionListener {
 
                     empleado.setIdEmpleado(Integer.parseInt(vista.txtIdEmpleado.getText()));
                     SqlEmpleado snt = new SqlEmpleado();
-                    snt.reactivarEmpleado(empleado);
+                    if (snt.reactivarEmpleado(empleado)) {
+                        JOptionPane.showMessageDialog(null, "Empleado reactivado con exito", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Error", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             } else {
 
@@ -221,6 +242,12 @@ public class ControladorFormularioEmpleado implements ActionListener {
             vista.txtEmail.setText("");
             vista.txtContraseña.setText("");
             vista.txtEdad.setText("");
+
+            vista.buttonGroup1.clearSelection();
+
+            SqlEmpleado snt = new SqlEmpleado();
+
+            empleado = snt.limpiar(empleado);
 
         }
 

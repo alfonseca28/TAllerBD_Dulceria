@@ -62,6 +62,7 @@ public class VistaVentas extends javax.swing.JFrame {
         menuItemRegresarVentas = new javax.swing.JMenuItem();
         menuFormularioCliente = new javax.swing.JMenuItem();
         menuFormularioProducto = new javax.swing.JMenuItem();
+        menuItemCatalogo = new javax.swing.JMenuItem();
 
         jMenu2.setText("File");
         jMenuBar2.add(jMenu2);
@@ -114,17 +115,17 @@ public class VistaVentas extends javax.swing.JFrame {
         tablaPanelVentas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tablaPanelVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null}
+                {null, null, null, null, null}
             },
             new String [] {
-                "Id Producto", "Nombre", "Cantidad", "Subtotal"
+                "Id Producto", "Nombre", "Precio Unitario", "Cantidad", "Subtotal"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -142,6 +143,7 @@ public class VistaVentas extends javax.swing.JFrame {
             tablaPanelVentas.getColumnModel().getColumn(1).setResizable(false);
             tablaPanelVentas.getColumnModel().getColumn(2).setResizable(false);
             tablaPanelVentas.getColumnModel().getColumn(3).setResizable(false);
+            tablaPanelVentas.getColumnModel().getColumn(4).setResizable(false);
         }
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -194,6 +196,9 @@ public class VistaVentas extends javax.swing.JFrame {
         menuFormularioProducto.setText("Agregar, Modificar o Añadir Producto");
         menuOpcionesVentas.add(menuFormularioProducto);
 
+        menuItemCatalogo.setText("Catalogo de Productos");
+        menuOpcionesVentas.add(menuItemCatalogo);
+
         jMenuBar1.add(menuOpcionesVentas);
 
         setJMenuBar(jMenuBar1);
@@ -221,46 +226,48 @@ public class VistaVentas extends javax.swing.JFrame {
                         .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(404, 404, 404))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnBuscar)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblUsuarioProducto)
-                                .addGap(68, 68, 68)
-                                .addComponent(jLabel6)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblFechaProducto))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnCancelarTodoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnCancelarProductoVenta)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnBuscar)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtMostrarProductoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(27, 27, 27)
+                                        .addComponent(jLabel2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnLimpiar))
-                                    .addComponent(txtIdProductoVenta)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblUsuarioProducto)
+                                        .addGap(68, 68, 68)
+                                        .addComponent(jLabel6)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lblFechaProducto))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnBuscarCliente)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnCancelarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtMostrarCliente)))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(txtMostrarProductoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btnLimpiar))
+                                            .addComponent(txtIdProductoVenta, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(btnBuscarCliente)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel7)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(txtIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtMostrarCliente)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(btnCancelarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnCancelarTodoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCancelarProductoVenta))
+                        .addGap(50, 50, 50))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -301,15 +308,14 @@ public class VistaVentas extends javax.swing.JFrame {
                     .addComponent(btnCancelarCliente))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(104, 104, 104)
                         .addComponent(btnCancelarProductoVenta)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCancelarTodoVenta)
-                        .addGap(78, 78, 78))
+                        .addComponent(btnCancelarTodoVenta))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtTotalVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -409,6 +415,7 @@ public class VistaVentas extends javax.swing.JFrame {
     public javax.swing.JLabel lblUsuarioProducto;
     public javax.swing.JMenuItem menuFormularioCliente;
     public javax.swing.JMenuItem menuFormularioProducto;
+    public javax.swing.JMenuItem menuItemCatalogo;
     public javax.swing.JMenuItem menuItemRegresarVentas;
     public javax.swing.JMenu menuOpcionesVentas;
     public javax.swing.JTable tablaPanelVentas;

@@ -9,7 +9,6 @@ import Modelo.SqlCliente;
 import Vistas.FormularioCliente;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import static java.lang.String.valueOf;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -21,7 +20,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @author Erick Gonzalez
  */
 public class ControladorFormularioCliente implements ActionListener {
-    
+
     private FormularioCliente vista;
     private Cliente cliente;
 
@@ -38,7 +37,6 @@ public class ControladorFormularioCliente implements ActionListener {
         vista.btnEliminarCliente.addActionListener(this);
         vista.btnReactivarCliente.addActionListener(this);
         vista.btnLimpiarCliente.addActionListener(this);
-        
 
     }
 
@@ -72,58 +70,60 @@ public class ControladorFormularioCliente implements ActionListener {
 
         if (ae.getSource() == vista.btnInsertarCliente) {
 
+            SqlCliente validacion = new SqlCliente();
+
             if (!"".equals(vista.txtNombreCliente.getText()) && !"".equals(vista.txtApPaternoCliente.getText())
                     && !"".equals(vista.txtApMaternoCliente.getText())
-                    && !"".equals(vista.txtEmailCliente.getText()) && !"".equals(vista.txtTelefonoCliente.getText())) {
-
-                
+                    && !"".equals(vista.txtEmailCliente.getText()) && !"".equals(vista.txtTelefonoCliente.getText())
+                    && validacion.validarCorreo(vista.txtEmailCliente.getText()) && validacion.validarFormato(vista.txtEmailCliente.getText())) {
 
                 SqlCliente snt = new SqlCliente();
 
-                
-
                 cliente.setNombre(vista.txtNombreCliente.getText());
                 cliente.setApellidoPaterno(vista.txtApPaternoCliente.getText());
-                cliente.setApellidoPaterno(vista.txtApMaternoCliente.getText());
+                cliente.setApellidoMaterno(vista.txtApMaternoCliente.getText());
                 cliente.setDireccion(vista.txtDireccionCliente.getText());
                 cliente.setEmail(vista.txtEmailCliente.getText());
                 cliente.setTelefono(vista.txtTelefonoCliente.getText());
-                
 
                 if (snt.insertarCliente(cliente)) {
                     JOptionPane.showMessageDialog(null, "Cliente insertado con éxito", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     JOptionPane.showMessageDialog(null, "Error", "Error", JOptionPane.ERROR_MESSAGE);
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, "Rellene correctamente los campos para continuar", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
         }
 
         if (ae.getSource() == vista.btnActualizarCliente) {
 
-            if (!"".equals(vista.txtNombreCliente.getText()) && !"".equals(vista.txtApPaternoCliente.getText())
-                    && !"".equals(vista.txtApMaternoCliente.getText()) && !"".equals(vista.txtDireccionCliente.getText())
-                    && !"".equals(vista.txtEmailCliente.getText()) && !"".equals(vista.txtTelefonoCliente.getText())){
-                    
+            SqlCliente validacion = new SqlCliente();
 
-                
+            if (!"".equals(vista.txtIdCliente.getText()) && !"".equals(vista.txtNombreCliente.getText()) && !"".equals(vista.txtApPaternoCliente.getText())
+                    && !"".equals(vista.txtApMaternoCliente.getText()) && !"".equals(vista.txtDireccionCliente.getText())
+                    && !"".equals(vista.txtEmailCliente.getText()) && !"".equals(vista.txtTelefonoCliente.getText())
+                    && validacion.validarCorreoActualizar(vista.txtEmailCliente.getText(), Integer.parseInt(vista.txtIdCliente.getText()))
+                    && validacion.validarFormato(vista.txtEmailCliente.getText())) {
 
                 SqlCliente snt = new SqlCliente();
-                
+
                 cliente.setIdCliente(Integer.parseInt(vista.txtIdCliente.getText()));
                 cliente.setNombre(vista.txtNombreCliente.getText());
                 cliente.setApellidoPaterno(vista.txtApPaternoCliente.getText());
-                cliente.setApellidoPaterno(vista.txtApMaternoCliente.getText());
+                cliente.setApellidoMaterno(vista.txtApMaternoCliente.getText());
                 cliente.setDireccion(vista.txtDireccionCliente.getText());
                 cliente.setEmail(vista.txtEmailCliente.getText());
                 cliente.setTelefono(vista.txtTelefonoCliente.getText());
-                
 
                 if (snt.actualizarCliente(cliente)) {
                     JOptionPane.showMessageDialog(null, "Registro actualizado con éxito", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     JOptionPane.showMessageDialog(null, "Error", "Error", JOptionPane.ERROR_MESSAGE);
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, "Rellene correctamente los campos para continuar", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
         }
@@ -136,7 +136,15 @@ public class ControladorFormularioCliente implements ActionListener {
 
                     cliente.setIdCliente(Integer.parseInt(vista.txtIdCliente.getText()));
                     SqlCliente snt = new SqlCliente();
-                    snt.bajaCliente(cliente);
+                    if (snt.bajaCliente(cliente)) {
+
+                        JOptionPane.showMessageDialog(null, "Cliente dado de baja", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+
+                    } else {
+
+                        JOptionPane.showMessageDialog(null, "Error", "Error", JOptionPane.ERROR_MESSAGE);
+
+                    }
                 }
             } else {
 
@@ -153,7 +161,15 @@ public class ControladorFormularioCliente implements ActionListener {
 
                     cliente.setIdCliente(Integer.parseInt(vista.txtIdCliente.getText()));
                     SqlCliente snt = new SqlCliente();
-                    snt.reactivarCliente(cliente);
+                    if (snt.reactivarCliente(cliente)) {
+
+                        JOptionPane.showMessageDialog(null, "Cliente reactivado con exito", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+
+                    } else {
+
+                        JOptionPane.showMessageDialog(null, "Error", "Error", JOptionPane.ERROR_MESSAGE);
+
+                    }
                 }
             } else {
 
@@ -177,8 +193,6 @@ public class ControladorFormularioCliente implements ActionListener {
                     vista.txtDireccionCliente.setText(cliente.getDireccion());
                     vista.txtTelefonoCliente.setText(cliente.getTelefono());
                     vista.txtEmailCliente.setText(cliente.getEmail());
-                                        
-                    
 
                 } else {
                     JOptionPane.showMessageDialog(null, "Cliente no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
@@ -197,10 +211,13 @@ public class ControladorFormularioCliente implements ActionListener {
             vista.txtDireccionCliente.setText("");
             vista.txtTelefonoCliente.setText("");
             vista.txtEmailCliente.setText("");
-            
+
+            SqlCliente snt = new SqlCliente();
+
+            cliente = snt.limpiar(cliente);
 
         }
 
     }
-    
+
 }

@@ -10,6 +10,7 @@ import Modelo.Producto;
 import Modelo.Proveedor;
 import Modelo.SqlCompra;
 import Modelo.SqlProducto;
+import Modelo.SqlProveedor;
 import Modelo.SqlVenta;
 import Vistas.FormularioProducto;
 import Vistas.FormularioProveedor;
@@ -92,6 +93,7 @@ public class ControladorPanelPedidos implements ActionListener {
         tabla.addColumn("IdProducto");
         tabla.addColumn("Proveedor");
         tabla.addColumn("Nombre");
+        tabla.addColumn("Precio Unitario");
         tabla.addColumn("Cantidad");
         tabla.addColumn("Subtotal");
 
@@ -122,9 +124,15 @@ public class ControladorPanelPedidos implements ActionListener {
 
         if (ae.getSource() == vista.btnBuscar) {
 
+            
+            
             if (!"".equals(vista.txtIdProductoPedidos.getText())) {
+                
 
                 if (modelo.Buscar(Integer.parseInt(vista.txtIdProductoPedidos.getText()))) {
+                    
+                    
+                    
                     vista.txtMostrarProductoPedidos.setText(modelo.enviarNombre());
                 } else {
                     JOptionPane.showMessageDialog(null, "Producto no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
@@ -146,22 +154,29 @@ public class ControladorPanelPedidos implements ActionListener {
 
             String a = vista.txtIdProductoPedidos.getText();
             String b = vista.txtCantidadCompra.getText();
+            
+            SqlProveedor validacion = new SqlProveedor();
 
             if (!a.equals("") && !b.equals("")) {
 
                 if (Integer.parseInt(vista.txtCantidadCompra.getText()) >= 1) {
 
+                    
+                    if(validacion.comprobarEstado(modelo.enviarIdProveedor())){
+                    
                     int cantidad = Integer.parseInt(vista.txtCantidadCompra.getText());
                     int clave = modelo.enviarId();
                     String nombre = modelo.enviarNombre();
                     float subtotal = cantidad * modelo.enviarPrecio();
                     String nombreProv = modelo.enviarNombreProveedor();
-                    String info[] = new String[5];
+                    
+                    String info[] = new String[6];
                     info[0] = valueOf(clave);
                     info[1] = nombre;
                     info[2] = nombreProv;
-                    info[3] = valueOf(cantidad);
-                    info[4] = valueOf(subtotal);
+                    info[3] = valueOf(modelo.enviarPrecio());
+                    info[4] = valueOf(cantidad);
+                    info[5] = valueOf(subtotal);
 
                     tabla.addRow(info);
 
@@ -174,6 +189,12 @@ public class ControladorPanelPedidos implements ActionListener {
 
                     modelo.limpiar();
 
+                }
+                    else{                        
+                        JOptionPane.showMessageDialog(null, "No se puede agregar el producto debido a que el proveedor no esta activo", "Error",JOptionPane.WARNING_MESSAGE);
+                    }
+                
+                
                 } else {
                     JOptionPane.showMessageDialog(null, "No permitido", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -196,7 +217,7 @@ public class ControladorPanelPedidos implements ActionListener {
             else if(JOptionPane.showConfirmDialog(null, "¿Estas seguro?", "Confirmar",JOptionPane.WARNING_MESSAGE,
                     JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
             
-                total = total - Float.parseFloat((String) vista.tablaPanelPedidos.getValueAt(fsel, 3));
+                total = total - Float.parseFloat((String) vista.tablaPanelPedidos.getValueAt(fsel, 5));
                 tabla.removeRow(fsel);
                 modelo.limpiar();
                 vista.txtTotalPedido.setText(valueOf(total));
@@ -239,6 +260,9 @@ public class ControladorPanelPedidos implements ActionListener {
                     
                 pago = Float.parseFloat(JOptionPane.showInputDialog(null,"Ingrese el pago","Pago",JOptionPane.INFORMATION_MESSAGE));
                 
+                
+                if(pago>=total){
+                
                 cambio = pago - total;
                 
                 Calendar fecha = new GregorianCalendar();
@@ -274,11 +298,11 @@ public class ControladorPanelPedidos implements ActionListener {
                     dato = valueOf(tabla.getValueAt(0, 0));
                     compra.setIdProducto(Integer.parseInt(dato));
                     
-                    dato = valueOf(tabla.getValueAt(0, 3));
+                    dato = valueOf(tabla.getValueAt(0, 4));
                     compra.setCantidad(Integer.parseInt(dato));
                                                            
                     
-                    dato = valueOf(tabla.getValueAt(0, 4));
+                    dato = valueOf(tabla.getValueAt(0, 5));
                     compra.setPrecio(Float.parseFloat(dato));
                     
                     if(compra.insertarVenta()){
@@ -298,10 +322,12 @@ public class ControladorPanelPedidos implements ActionListener {
                 
                 JOptionPane.showMessageDialog(null,"¡Compra realizada con éxito!","Venta",JOptionPane.INFORMATION_MESSAGE);
                 JOptionPane.showMessageDialog(null,"Cambio: $"+cambio,"Cambio",JOptionPane.INFORMATION_MESSAGE);
+                   
+                }
                 
-                
-                
-                    
+                else{
+                    JOptionPane.showMessageDialog(null,"El pago debe ser mayor al total","Error",JOptionPane.ERROR_MESSAGE);
+                }
                 }
                 
             }

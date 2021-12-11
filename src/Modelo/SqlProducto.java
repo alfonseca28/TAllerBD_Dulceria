@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -259,5 +260,119 @@ public class SqlProducto extends Conexion {
         
         
     }
+    
+    
+    public boolean comprobarEstado(int id) {
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        Connection conexion = getconnection();
+
+        try {
+
+            ps = conexion.prepareStatement("Select estado from producto where idProducto = ?");
+            ps.setInt(1, id);
+
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+
+                if (rs.getInt("estado") == 0) {
+                    JOptionPane.showMessageDialog(null,"Producto no activo", "Error",JOptionPane.ERROR_MESSAGE);
+                    return false;
+                } else {
+                    return true;
+                }
+
+            }
+
+            return false;
+
+        } catch (Exception ex) {
+            return false;
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(SqlEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }
+ 
+    
+    public boolean validarNombre(String nombre){
+        
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        Connection conexion = getconnection();
+        
+        try {
+            ps = conexion.prepareStatement("select nombre from producto where nombre != ?");
+            ps.setString(1, nombre);
+            
+            rs = ps.executeQuery();
+            
+            if(rs.next()){
+                JOptionPane.showMessageDialog(null,"El nombre ya existe","Error",JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+            
+            else{
+                return true;
+            }
+                    
+                    
+                    } catch (SQLException ex) {
+            return false;
+        }
+        finally{
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                return false;
+            }
+        }
+        
+        
+    }
+    
+    public boolean validarNombreActualizar(String nombre, int id){
+         PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        Connection conexion = getconnection();
+        
+        try {
+            ps = conexion.prepareStatement("select nombre from producto where nombre != ? AND idProducto != ?");
+            ps.setString(1, nombre);
+            ps.setInt(2, id);
+            
+            rs = ps.executeQuery();
+            
+            if(rs.next()){
+                JOptionPane.showMessageDialog(null,"El nombre ya existe","Error",JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+            
+            else{
+                return true;
+            }
+                    
+                    
+                    } catch (SQLException ex) {
+            return false;
+        }
+        finally{
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                return false;
+            }
+        }
+    }
+    
     
 }

@@ -9,6 +9,8 @@ import Modelo.Empleado;
 import Modelo.ModeloPanelInicio;
 import Modelo.ModeloVentas;
 import Modelo.Producto;
+import Modelo.SqlCliente;
+import Modelo.SqlEmpleado;
 import Modelo.SqlProducto;
 import Modelo.SqlVenta;
 import Vistas.FormularioCliente;
@@ -78,13 +80,16 @@ public class ControladorVentas implements ActionListener {
         
         if(puesto_vendedor.equals("Vendedor")){
             
-            vista.menuFormularioProducto.setVisible(false);
-            vista.menuFormularioCliente.setVisible(false);
+            vista.menuFormularioProducto.setVisible(false);            
         }
         
         
+        Empleado nombre = new Empleado();
+        SqlEmpleado busqueda = new SqlEmpleado();
         
-        vista.lblUsuarioProducto.setText(valueOf(vendedor));
+        nombre = busqueda.buscarEmpleado(vendedor);
+        
+        vista.lblUsuarioProducto.setText(nombre.getNombre()+" "+nombre.getApellidoPaterno()+" "+nombre.getApellidoMaterno());
         
         Calendar fecha = new GregorianCalendar();
         
@@ -102,6 +107,7 @@ public class ControladorVentas implements ActionListener {
      
        tabla.addColumn("IdProducto");
        tabla.addColumn("Nombre");
+       tabla.addColumn("Precio Unitario");
        tabla.addColumn("Cantidad");
        tabla.addColumn("Subtotal");
        
@@ -137,9 +143,9 @@ public class ControladorVentas implements ActionListener {
             
             if(!"".equals(vista.txtIdProductoVenta.getText())){
                 
+            SqlProducto validar = new SqlProducto();
             
-            
-                    if(modelo.Buscar(Integer.parseInt(vista.txtIdProductoVenta.getText()))){
+                    if(modelo.Buscar(Integer.parseInt(vista.txtIdProductoVenta.getText())) && validar.comprobarEstado(Integer.parseInt(vista.txtIdProductoVenta.getText()))){
                       vista.txtMostrarProductoVenta.setText(modelo.enviarNombre());
                     }
 
@@ -181,11 +187,12 @@ public class ControladorVentas implements ActionListener {
                         int stock = modelo.enviarStock();
                         float subtotal = cantidad * modelo.enviarPrecio();
                         
-                        String info [] = new String[4];
+                        String info [] = new String[5];
                         info [0] = valueOf(clave);
                         info [1] = nombre;
-                        info [2] = valueOf(cantidad);
-                        info [3] = valueOf(subtotal);
+                        info [2] = valueOf(modelo.enviarPrecio());
+                        info [3] = valueOf(cantidad);
+                        info [4] = valueOf(subtotal);
                         
                         tabla.addRow(info);
                         
@@ -227,7 +234,7 @@ public class ControladorVentas implements ActionListener {
             else if(JOptionPane.showConfirmDialog(null, "¿Estas seguro?", "Confirmar",JOptionPane.WARNING_MESSAGE,
                     JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
             
-                total = total - Float.parseFloat((String) vista.tablaPanelVentas.getValueAt(fsel, 3));
+                total = total - Float.parseFloat((String) vista.tablaPanelVentas.getValueAt(fsel, 4));
                 tabla.removeRow(fsel);
                 modelo.limpiar();
                 vista.txtTotalVenta.setText(valueOf(total));
@@ -259,9 +266,10 @@ public class ControladorVentas implements ActionListener {
         
         if(ae.getSource() == vista.btnBuscarCliente){
             
+            SqlCliente comprobar = new SqlCliente();
             
             if(!"".equals(vista.txtIdCliente.getText())){
-                if(modelo.BuscarCliente(Integer.parseInt(vista.txtIdCliente.getText()))){
+                if(modelo.BuscarCliente(Integer.parseInt(vista.txtIdCliente.getText())) && comprobar.comprobarEstado(Integer.parseInt(vista.txtIdCliente.getText())) ){
                     
                     vista.txtMostrarCliente.setText(modelo.enviarNombreCliente());
                     vista.txtIdCliente.setText("");
@@ -310,6 +318,10 @@ public class ControladorVentas implements ActionListener {
                     
                 pago = Float.parseFloat(JOptionPane.showInputDialog(null,"Ingrese el pago","Pago",JOptionPane.INFORMATION_MESSAGE));
                 
+                
+                
+                if(pago>=total){
+                
                 cambio = pago - total;
                 
                 Calendar fecha = new GregorianCalendar();
@@ -345,11 +357,11 @@ public class ControladorVentas implements ActionListener {
                     dato = valueOf(tabla.getValueAt(0, 0));
                     venta.setIdProducto(Integer.parseInt(dato));
                     
-                    dato = valueOf(tabla.getValueAt(0, 2));
+                    dato = valueOf(tabla.getValueAt(0, 3));
                     venta.setCantidad(Integer.parseInt(dato));
                                                            
                     
-                    dato = valueOf(tabla.getValueAt(0, 3));
+                    dato = valueOf(tabla.getValueAt(0, 4));
                     venta.setPrecio(Float.parseFloat(dato));
                     
                     if(venta.insertarVenta()){
@@ -363,6 +375,7 @@ public class ControladorVentas implements ActionListener {
                 modelo.limpiar();
                 modelo.limpiarCliente();
                 vista.txtTotalVenta.setText("");
+                vista.txtMostrarCliente.setText("");
                 
                 JOptionPane.showMessageDialog(null,"¡Venta realizada con éxito!","Venta",JOptionPane.INFORMATION_MESSAGE);
                 JOptionPane.showMessageDialog(null,"Cambio: $"+cambio,"Cambio",JOptionPane.INFORMATION_MESSAGE);
@@ -371,6 +384,14 @@ public class ControladorVentas implements ActionListener {
                 
                     
                 }
+                
+                else{
+                     JOptionPane.showMessageDialog(null,"El pago debe ser igual o mayor al total","Error", JOptionPane.ERROR_MESSAGE);
+                }
+                
+                }
+                
+                
                 
             }
             

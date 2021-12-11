@@ -20,14 +20,13 @@ public class SqlEmpleado extends Conexion {
 
     public boolean insertarEmpleado(Empleado empleado) {
 
-        PreparedStatement ps = null;
+        CallableStatement ps = null;
 
         Connection conexion = getconnection();
 
         try {
 
-            ps = conexion.prepareStatement("insert into empleado(nombre,apellidoPaterno,apellidoMaterno,telefono"
-                    + "direccion,email,puesto,edad,contraseña,estado) values(?,?,?,?,?,?,?,?,?,?)");
+            ps = conexion.prepareCall("{CALL altaEmpleado (?,?,?,?,?,?,?,?,?)}");
             ps.setString(1, empleado.getNombre());
             ps.setString(2, empleado.getApellidoPaterno());
             ps.setString(3, empleado.getApellidoMaterno());
@@ -37,9 +36,8 @@ public class SqlEmpleado extends Conexion {
             ps.setString(7, empleado.getPuesto());
             ps.setInt(8, empleado.getEdad());
             ps.setString(9, empleado.getContraseña());
-            ps.setInt(10, 1);
 
-            ps.executeUpdate();
+            ps.execute();
 
             return true;
 
@@ -55,32 +53,7 @@ public class SqlEmpleado extends Conexion {
 
     }
 
-    public boolean bajaEmpleado(Empleado empleado) {
-
-        CallableStatement cs = null;
-
-        Connection conexion = getconnection();
-
-        try {
-
-            cs = conexion.prepareCall("{CALL bajaEmpleado (?)}");
-            cs.setInt(1, empleado.getIdEmpleado());
-
-            cs.execute();
-
-            return true;
-
-        } catch (SQLException ex) {
-            return false;
-        } finally {
-            try {
-                conexion.close();
-            } catch (SQLException ex) {
-
-            }
-        }
-    }
-
+   
     public boolean actualizarEmpleado(Empleado empleado) {
 
         CallableStatement cs = null;
@@ -180,6 +153,7 @@ public class SqlEmpleado extends Conexion {
             return true;
 
         } catch (SQLException ex) {
+
             return false;
         } finally {
             try {
@@ -189,6 +163,33 @@ public class SqlEmpleado extends Conexion {
             }
         }
 
+    }
+    
+     public boolean bajaEmpleado(Empleado empleado) {
+
+        CallableStatement cs = null;
+
+        Connection conexion = getconnection();
+
+        try {
+
+            cs = conexion.prepareCall("{CALL bajaEmpleado (?)}");
+            cs.setInt(1, empleado.getIdEmpleado());
+            
+            cs.execute();
+
+            return true;
+
+        } catch (SQLException ex) {
+
+            return false;
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+
+            }
+        }
     }
 
     public Empleado buscarEmpleado(int id) {
@@ -304,6 +305,109 @@ public class SqlEmpleado extends Conexion {
             }
         }
         return null;
+
+    }
+
+    public boolean validarCorreo(String correo) {
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        Connection conexion = getconnection();
+
+        try {
+
+            ps = conexion.prepareStatement("Select email from empleado where email = ?");
+            ps.setString(1, correo);
+
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+
+                JOptionPane.showMessageDialog(null, "El correo ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+
+            } else {
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            return false;
+
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                return false;
+
+            }
+        }
+    }
+    
+    
+    public boolean validarCorreoActualizar (String correo, int id){
+        
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        Connection conexion = getconnection();
+
+        try {
+
+            ps = conexion.prepareStatement("Select email from empleado where email = ? AND idEmpleado != ?");
+            ps.setString(1, correo);
+            ps.setInt(2, id);
+
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+
+                JOptionPane.showMessageDialog(null, "El correo ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+
+            } else {
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            return false;
+
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                return false;
+
+            }
+        }
+        
+    }
+
+    public boolean validarFormato(String correo) {
+
+        if (correo.contains("@")) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, "El correo no tiene un formato aceptado ", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+    }
+
+    public Empleado limpiar(Empleado empleado) {
+
+        empleado.setApellidoMaterno("");
+        empleado.setApellidoPaterno("");
+        empleado.setContraseña("");;
+        empleado.setDireccion("");
+        empleado.setEdad(0);
+        empleado.setEmail("");
+        empleado.setIdEmpleado(0);
+        empleado.setNombre("");
+        empleado.setPuesto("");
+        empleado.setTelefono("");
+
+        return empleado;
 
     }
 
