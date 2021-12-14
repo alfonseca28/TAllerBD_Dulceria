@@ -5,12 +5,15 @@
 package Vistas;
 
 import Modelo.Conexion;
+import Modelo.ReporteCompras;
+import Modelo.ReporteVentas;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
@@ -41,6 +44,7 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
         btnCargarTodoCompa = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaCompras = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuInformacionCompras = new javax.swing.JMenu();
         menuRegresarInformacionCompras = new javax.swing.JMenuItem();
@@ -102,6 +106,13 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
             tablaCompras.getColumnModel().getColumn(8).setPreferredWidth(50);
         }
 
+        jButton1.setText("Generar reporte");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         menuInformacionCompras.setText("Opciones");
 
         menuRegresarInformacionCompras.setText("Regresar");
@@ -122,7 +133,10 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 856, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCargarTodoCompa))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnCargarTodoCompa)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton1)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -132,10 +146,12 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(50, 50, 50)
-                .addComponent(btnCargarTodoCompa)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCargarTodoCompa)
+                    .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(283, Short.MAX_VALUE))
+                .addContainerGap(282, Short.MAX_VALUE))
         );
 
         pack();
@@ -185,6 +201,16 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnCargarTodoCompaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        
+        int mes = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingresa el número del mes a generar el reporte","Mensaje",JOptionPane.INFORMATION_MESSAGE));
+        
+        ReporteCompras reporte = new ReporteCompras();
+        
+        reporte.reporte(mes);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,6 +263,7 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCargarTodoCompa;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;

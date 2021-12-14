@@ -45,6 +45,14 @@ public class ControladorInfoProductos extends Conexion implements ActionListener
 
         vista.setLocationRelativeTo(null);
         vista.setVisible(true);
+        
+        
+        if(puesto_vendedor == "Vendedor"){
+            
+            vista.btnEditarProductos.setVisible(true);
+            
+        }
+        
     }
     
     @Override

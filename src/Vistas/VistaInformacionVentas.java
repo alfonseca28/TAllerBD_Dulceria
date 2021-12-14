@@ -5,8 +5,19 @@
 
 package Vistas;
 
+import Modelo.Conexion;
+import Modelo.ReporteProductos;
+import Modelo.ReporteVentas;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -32,6 +43,7 @@ public class VistaInformacionVentas extends javax.swing.JFrame {
         btnCargarTodoCompa = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaVentas = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuInformacionCompras = new javax.swing.JMenu();
         menuRegresarVentas = new javax.swing.JMenuItem();
@@ -45,6 +57,11 @@ public class VistaInformacionVentas extends javax.swing.JFrame {
 
         btnCargarTodoCompa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnCargarTodoCompa.setText("Cagar todos los registros");
+        btnCargarTodoCompa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarTodoCompaActionPerformed(evt);
+            }
+        });
 
         tablaVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -88,6 +105,13 @@ public class VistaInformacionVentas extends javax.swing.JFrame {
             tablaVentas.getColumnModel().getColumn(9).setPreferredWidth(40);
         }
 
+        jButton1.setText("Generar reporte");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         menuInformacionCompras.setText("Opciones");
 
         menuRegresarVentas.setText("Regresar");
@@ -107,8 +131,11 @@ public class VistaInformacionVentas extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 856, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCargarTodoCompa))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 962, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnCargarTodoCompa)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton1)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -117,15 +144,81 @@ public class VistaInformacionVentas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(50, 50, 50)
-                .addComponent(btnCargarTodoCompa)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(348, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(btnCargarTodoCompa))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(257, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCargarTodoCompaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarTodoCompaActionPerformed
+          DefaultTableModel modelotabla = new DefaultTableModel();
+        tablaVentas.setModel(modelotabla);
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        Conexion con = new Conexion();
+        Connection conexion = con.getconnection();
+
+        try {
+            ps = conexion.prepareStatement("select idVenta as ID, Fecha, precio as Importe, Cantidad, producto.nombre as Producto,\n" +
+"empleado.nombre as NombreEmpleado, empleado.apellidoPaterno as ApellidoEmpleado, empleado.apellidoMaterno as ApellidoEmpleado, \n" +
+"cliente.nombre as nombreCliente, cliente.apellidoPaterno as ClienteApellido, cliente.apellidoMaterno as apellidoCliente\n" +
+"from  venta \n" +
+"inner join empleado on venta.idEmpleado = empleado.idEmpleado\n" +
+"inner join producto on venta.idProducto = producto.idProducto\n" +
+"inner join cliente on venta.idCliente = cliente.idCliente");
+            
+
+            rs = ps.executeQuery();
+
+            modelotabla.addColumn("IdVenta");
+            modelotabla.addColumn("Fecha");                               
+            modelotabla.addColumn("Importe");
+            modelotabla.addColumn("Cantidad");
+            modelotabla.addColumn("Producto");
+            modelotabla.addColumn("Nombre empleado");
+            modelotabla.addColumn("ApPaterno");
+            modelotabla.addColumn("ApMaterno");
+            modelotabla.addColumn("Nombre Cliente");
+            modelotabla.addColumn("ApPaterno");
+            modelotabla.addColumn("ApMaterno");
+            
+            while(rs.next()){
+                Object fila [] = new Object [11];
+                for(int i =1 ; i<= 11;i++){
+                fila[i-1] = rs.getObject(i);
+            }
+                modelotabla.addRow(fila);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(VistaInformacionClientes.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(VistaInformacionClientes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btnCargarTodoCompaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int mes = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingresa el número del mes a generar el reporte","Mensaje",JOptionPane.INFORMATION_MESSAGE));
+        
+        ReporteVentas reporte = new ReporteVentas();
+        
+        reporte.reporte(mes);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,6 +270,7 @@ public class VistaInformacionVentas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCargarTodoCompa;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;

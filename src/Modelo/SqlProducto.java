@@ -310,7 +310,7 @@ public class SqlProducto extends Conexion {
         Connection conexion = getconnection();
         
         try {
-            ps = conexion.prepareStatement("select nombre from producto where nombre != ?");
+            ps = conexion.prepareStatement("select nombre from producto where nombre = ?");
             ps.setString(1, nombre);
             
             rs = ps.executeQuery();
@@ -346,7 +346,7 @@ public class SqlProducto extends Conexion {
         Connection conexion = getconnection();
         
         try {
-            ps = conexion.prepareStatement("select nombre from producto where nombre != ? AND idProducto != ?");
+            ps = conexion.prepareStatement("select nombre from producto where nombre = ? AND idProducto != ?");
             ps.setString(1, nombre);
             ps.setInt(2, id);
             

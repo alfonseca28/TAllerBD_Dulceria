@@ -5,12 +5,15 @@
 package Vistas;
 
 import Modelo.Conexion;
+import Modelo.ReporteEmpleados;
+import Modelo.ReporteVentas;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
@@ -46,6 +49,7 @@ public class VistaInformacionEmpleados extends javax.swing.JFrame {
         btnCargarTodoEmpleados = new javax.swing.JButton();
         btnEditarEmpleados = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jMenuBarEmpleados = new javax.swing.JMenuBar();
         menuInformacionEmpleados = new javax.swing.JMenu();
         menuRegresarEmpleados = new javax.swing.JMenuItem();
@@ -126,6 +130,13 @@ public class VistaInformacionEmpleados extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("Generar reporte de ventas mensuales por empleado");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         menuInformacionEmpleados.setText("Opciones");
 
         menuRegresarEmpleados.setText("Regresar");
@@ -154,11 +165,15 @@ public class VistaInformacionEmpleados extends javax.swing.JFrame {
                                         .addComponent(txtBuscarEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(btnCargarTodoEmpleados))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnBuscarEmpleados)
-                                    .addComponent(btnEditarEmpleados))
-                                .addGap(37, 37, 37)
-                                .addComponent(jButton1)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnBuscarEmpleados)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton2))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnEditarEmpleados)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jButton1)))))
                         .addGap(0, 196, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -170,7 +185,8 @@ public class VistaInformacionEmpleados extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtBuscarEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarEmpleados))
+                    .addComponent(btnBuscarEmpleados)
+                    .addComponent(jButton2))
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCargarTodoEmpleados)
@@ -284,6 +300,16 @@ public class VistaInformacionEmpleados extends javax.swing.JFrame {
         modelotabla.setNumRows(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        
+        int mes = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingresa el número del mes a generar el reporte","Mensaje",JOptionPane.INFORMATION_MESSAGE));
+        
+        ReporteEmpleados reporte = new ReporteEmpleados();
+        
+        reporte.reporte(mes);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -337,6 +363,7 @@ public class VistaInformacionEmpleados extends javax.swing.JFrame {
     private javax.swing.JButton btnCargarTodoEmpleados;
     public javax.swing.JButton btnEditarEmpleados;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBarEmpleados;

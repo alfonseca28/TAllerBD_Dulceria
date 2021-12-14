@@ -172,8 +172,8 @@ public class ControladorPanelPedidos implements ActionListener {
                     
                     String info[] = new String[6];
                     info[0] = valueOf(clave);
-                    info[1] = nombre;
-                    info[2] = nombreProv;
+                    info[1] = nombreProv;
+                    info[2] = nombre;
                     info[3] = valueOf(modelo.enviarPrecio());
                     info[4] = valueOf(cantidad);
                     info[5] = valueOf(subtotal);

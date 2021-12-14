@@ -5,12 +5,14 @@
 package Vistas;
 
 import Modelo.Conexion;
+import Modelo.ReporteProductos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
@@ -48,6 +50,7 @@ public class VistaInformacionProductos extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         menuInformacionProductos = new javax.swing.JMenuBar();
         jMenuVistaInformacionProducto = new javax.swing.JMenu();
         menuRegresarInformacionProducto = new javax.swing.JMenuItem();
@@ -133,6 +136,13 @@ public class VistaInformacionProductos extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setText("Generar reporte");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         jMenuVistaInformacionProducto.setText("Opciones");
 
         menuRegresarInformacionProducto.setText("Regresar");
@@ -152,23 +162,26 @@ public class VistaInformacionProductos extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtBuscarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnBuscarProductos)
-                                .addGap(27, 27, 27)
-                                .addComponent(jButton3))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnCargarTodoProducto)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnEditarProductos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton2))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 749, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 749, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtBuscarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btnBuscarProductos)
+                                    .addGap(27, 27, 27)
+                                    .addComponent(jButton3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton4))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(btnCargarTodoProducto)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnEditarProductos)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jButton1)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jButton2))))
                         .addGap(0, 140, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -181,7 +194,8 @@ public class VistaInformacionProductos extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(txtBuscarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarProductos)
-                    .addComponent(jButton3))
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCargarTodoProducto)
@@ -207,14 +221,14 @@ public class VistaInformacionProductos extends javax.swing.JFrame {
         Connection conexion = con.getconnection();
 
         try {
-            ps = conexion.prepareStatement("Select * from Producto where idProducto = ?");
+            ps = conexion.prepareStatement("Select idProducto,  producto.nombre, proveedor.nombre,precioventa, preciocompra, stock,producto.estado from Producto inner join proveedor on proveedor.idProveedor = producto.idProveedor where idProducto = ?");
             ps.setInt(1, Integer.parseInt(txtBuscarProductos.getText()));
 
             rs = ps.executeQuery();
 
-            modelotabla.addColumn("IdProducto");
-            modelotabla.addColumn("IdProveedor");
+            modelotabla.addColumn("IdProducto");            
             modelotabla.addColumn("Nombre");
+            modelotabla.addColumn("Proveedor");
             modelotabla.addColumn("PrecioVenta");
             modelotabla.addColumn("PrecioCompra");          
             modelotabla.addColumn("Stock");
@@ -246,23 +260,26 @@ public class VistaInformacionProductos extends javax.swing.JFrame {
 
         PreparedStatement ps = null;
         ResultSet rs = null;
-
+        
+       
         Conexion con = new Conexion();
         Connection conexion = con.getconnection();
 
         try {
-            ps = conexion.prepareStatement("Select * from Producto");
+            ps = conexion.prepareStatement("Select idProducto,  producto.nombre, proveedor.nombre,precioventa, preciocompra, stock,producto.estado from Producto inner join proveedor on proveedor.idProveedor = producto.idProveedor\n" +
+"order by idProducto");
             
 
             rs = ps.executeQuery();
 
-            modelotabla.addColumn("IdProducto");
-            modelotabla.addColumn("IdProveedor");
+            modelotabla.addColumn("IdProducto");            
             modelotabla.addColumn("Nombre");
+            modelotabla.addColumn("Proveedor");
             modelotabla.addColumn("PrecioVenta");
             modelotabla.addColumn("PrecioCompra");           
             modelotabla.addColumn("Stock");
             modelotabla.addColumn("Estado");
+            
             
             
             while(rs.next()){
@@ -295,14 +312,14 @@ public class VistaInformacionProductos extends javax.swing.JFrame {
         Connection conexion = con.getconnection();
 
         try {
-            ps = conexion.prepareStatement("Select * from Producto ORDER BY STOCK DESC");
+            ps = conexion.prepareStatement("Select idProducto,  producto.nombre, proveedor.nombre,precioventa, preciocompra, stock,producto.estado from Producto inner join proveedor on proveedor.idProveedor = producto.idProveedor order by stock desc");
             
 
             rs = ps.executeQuery();
 
-            modelotabla.addColumn("IdProducto");
-            modelotabla.addColumn("IdProveedor");
+            modelotabla.addColumn("IdProducto");            
             modelotabla.addColumn("Nombre");
+            modelotabla.addColumn("Proveedor");
             modelotabla.addColumn("PrecioVenta");
             modelotabla.addColumn("PrecioCompra");            
             modelotabla.addColumn("Stock");
@@ -377,6 +394,19 @@ public class VistaInformacionProductos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        
+        int mes = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingresa el número del mes a generar el reporte","Mensaje",JOptionPane.INFORMATION_MESSAGE));
+        
+        ReporteProductos reporte = new ReporteProductos();
+        
+        reporte.reporte(mes);
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -432,6 +462,7 @@ public class VistaInformacionProductos extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenuVistaInformacionProducto;
