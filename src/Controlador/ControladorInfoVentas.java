@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 
 /**
  *
- * @author Erick Gonzalez
+ * @author Erick Gonzalez, Damian Cazarin & Aaron Alfonseca
  */
 public class ControladorInfoVentas extends Conexion implements ActionListener {
 

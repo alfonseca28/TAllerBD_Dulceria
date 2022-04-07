@@ -34,7 +34,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Erick Gonzalez
+ * @author Erick Gonzalez, Damian Cazarin & Aaron Alfonseca
  */
 public class ControladorVentas implements ActionListener {
  

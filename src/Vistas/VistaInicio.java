@@ -15,7 +15,7 @@ import Vistas.VistaPanelInicio;
 
 /**
  *
- * @author Erick Gonzalez
+ * @author Erick Gonzalez, Damian Cazarin & Aaron Alfonseca
  */
 public class VistaInicio extends javax.swing.JFrame {
 

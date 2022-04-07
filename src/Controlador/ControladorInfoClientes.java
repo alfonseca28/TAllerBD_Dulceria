@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Erick Gonzalez
+ * @author Erick Gonzalez, Damian Cazarin & Aaron Alfonseca
  */
 public class ControladorInfoClientes extends Conexion implements ActionListener {
 

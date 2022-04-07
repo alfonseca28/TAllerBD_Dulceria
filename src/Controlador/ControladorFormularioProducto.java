@@ -18,7 +18,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
- * @author Erick Gonzalez
+ * @author Erick Gonzalez, Damian Cazarin & Aaron Alfonseca
  */
 public class ControladorFormularioProducto implements ActionListener {
 
