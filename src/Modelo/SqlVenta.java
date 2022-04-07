@@ -15,11 +15,10 @@ import javax.swing.JOptionPane;
 import java.sql.*;
 
 /**
- *
- * @author Erick Gonzalez
+ * @author Erick Gonzalez, Damian Cazarin & Aaron Alfonseca
  */
 public class SqlVenta extends Conexion {
-    
+
     private int idVenta;
     private String fecha;
     private String hora;
@@ -30,16 +29,10 @@ public class SqlVenta extends Conexion {
     private int idCliente;
 
     public SqlVenta() {
-        
+
     }
 
-    
-    
-    
-    
 
-    
-    
     public int getIdVenta() {
         return idVenta;
     }
@@ -103,17 +96,17 @@ public class SqlVenta extends Conexion {
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
-    
-    
-    public boolean insertarVenta(){
-        
+
+
+    public boolean insertarVenta() {
+
         Connection conexion = getconnection();
-        CallableStatement ps = null;        
-        
-        try{
-            
+        CallableStatement ps = null;
+
+        try {
+
             ps = conexion.prepareCall("{CALL ventaProducto(?,?,?,?,?,?,?)}");
-            
+
             ps.setDate(1, Date.valueOf((fecha)));
             ps.setTime(2, Time.valueOf((hora)));
             ps.setFloat(3, precio);
@@ -121,26 +114,23 @@ public class SqlVenta extends Conexion {
             ps.setInt(5, idEmpleado);
             ps.setInt(6, idProducto);
             ps.setInt(7, idCliente);
-            
-            ps.execute();
-            
-            return true;
-            
-            
-       
 
-            }catch(SQLException ex){
-                return false;
-            }finally{
-                try{
-                    conexion.close();
-                }catch(SQLException ex){
-                    
-                }
+            ps.execute();
+
+            return true;
+
+
+        } catch (SQLException ex) {
+            return false;
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+
             }
-        
+        }
+
     }
-    
-    
-    
+
+
 }

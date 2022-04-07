@@ -13,8 +13,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Erick Gonzalez
+ * @author Erick Gonzalez, Damian Cazarin & Aaron Alfonseca
  */
 public class SqlEmpleado extends Conexion {
 
@@ -53,7 +52,7 @@ public class SqlEmpleado extends Conexion {
 
     }
 
-   
+
     public boolean actualizarEmpleado(Empleado empleado) {
 
         CallableStatement cs = null;
@@ -164,8 +163,8 @@ public class SqlEmpleado extends Conexion {
         }
 
     }
-    
-     public boolean bajaEmpleado(Empleado empleado) {
+
+    public boolean bajaEmpleado(Empleado empleado) {
 
         CallableStatement cs = null;
 
@@ -175,7 +174,7 @@ public class SqlEmpleado extends Conexion {
 
             cs = conexion.prepareCall("{CALL bajaEmpleado (?)}");
             cs.setInt(1, empleado.getIdEmpleado());
-            
+
             cs.execute();
 
             return true;
@@ -343,10 +342,10 @@ public class SqlEmpleado extends Conexion {
             }
         }
     }
-    
-    
-    public boolean validarCorreoActualizar (String correo, int id){
-        
+
+
+    public boolean validarCorreoActualizar(String correo, int id) {
+
         PreparedStatement ps = null;
         ResultSet rs = null;
 
@@ -380,7 +379,7 @@ public class SqlEmpleado extends Conexion {
 
             }
         }
-        
+
     }
 
     public boolean validarFormato(String correo) {
@@ -398,7 +397,8 @@ public class SqlEmpleado extends Conexion {
 
         empleado.setApellidoMaterno("");
         empleado.setApellidoPaterno("");
-        empleado.setContraseña("");;
+        empleado.setContraseña("");
+        ;
         empleado.setDireccion("");
         empleado.setEdad(0);
         empleado.setEmail("");

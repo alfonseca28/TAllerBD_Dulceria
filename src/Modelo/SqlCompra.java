@@ -11,12 +11,11 @@ import java.sql.SQLException;
 import java.sql.Time;
 
 /**
- *
- * @author Erick Gonzalez
+ * @author Erick Gonzalez, Damian Cazarin & Aaron Alfonseca
  */
-public class SqlCompra extends Conexion{
-    
-    
+public class SqlCompra extends Conexion {
+
+
     private int idCompra;
     private String fecha;
     private String hora;
@@ -92,18 +91,17 @@ public class SqlCompra extends Conexion{
     public void setIdProveedor(int idProveedor) {
         this.idProveedor = idProveedor;
     }
-    
-    
-    
-    public boolean insertarVenta(){
-        
+
+
+    public boolean insertarVenta() {
+
         Connection conexion = getconnection();
-        CallableStatement ps = null;        
-        
-        try{
-            
+        CallableStatement ps = null;
+
+        try {
+
             ps = conexion.prepareCall("{CALL compraProducto(?,?,?,?,?,?,?)}");
-            
+
             ps.setDate(1, Date.valueOf((fecha)));
             ps.setTime(2, Time.valueOf((hora)));
             ps.setFloat(3, precio);
@@ -111,23 +109,21 @@ public class SqlCompra extends Conexion{
             ps.setInt(5, idEmpleado);
             ps.setInt(6, idProducto);
             ps.setInt(7, idProveedor);
-            
-            ps.execute();
-            
-            return true;
-            
-            
-       
 
-            }catch(SQLException ex){
-                return false;
-            }finally{
-                try{
-                    conexion.close();
-                }catch(SQLException ex){
-                    
-                }
+            ps.execute();
+
+            return true;
+
+
+        } catch (SQLException ex) {
+            return false;
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+
             }
-        
+        }
+
     }
 }

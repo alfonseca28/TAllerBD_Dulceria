@@ -13,145 +13,138 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Erick Gonzalez
+ * @author Erick Gonzalez, Damian Cazarin & Aaron Alfonseca
  */
-public class ModeloVentas extends Conexion{
-    
-    Producto  producto = new Producto();
+public class ModeloVentas extends Conexion {
+
+    Producto producto = new Producto();
     Cliente cliente = new Cliente();
     int cantidad;
-    
-    public boolean Buscar(int id){
-        
+
+    public boolean Buscar(int id) {
+
         Connection conexion = getconnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        
-        try{
-            
-            
+
+        try {
+
+
             ps = conexion.prepareStatement("select * from producto where idProducto=? ");
             ps.setInt(1, id);
-            
+
             rs = ps.executeQuery();
-            
-            if(rs.next()){
-                
-                
-                    
-                
-                producto.setIdProducto(id);                
+
+            if (rs.next()) {
+
+
+                producto.setIdProducto(id);
                 producto.setNombre(rs.getString("nombre"));
                 producto.setPrecioVenta(rs.getFloat("precioVenta"));
                 producto.setStock(rs.getInt("stock"));
-                
-                
+
+
                 return true;
-                
-            }
-            else{
+
+            } else {
                 return false;
             }
-            
-        }catch(SQLException ex){
+
+        } catch (SQLException ex) {
             return false;
-        }finally{
+        } finally {
             try {
                 conexion.close();
             } catch (SQLException ex) {
                 Logger.getLogger(ModeloVentas.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+
     }
 
-    
-    public boolean BuscarCliente(int id){
-        
-        Connection conexion = getconnection();       
+
+    public boolean BuscarCliente(int id) {
+
+        Connection conexion = getconnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        
-        try{
-            
+
+        try {
+
             ps = conexion.prepareStatement("select nombre, apellidoPaterno, apellidoMaterno from Cliente where IdCliente=?");
             ps.setInt(1, id);
-            
+
             rs = ps.executeQuery();
-            
-            if(rs.next()){
-                
+
+            if (rs.next()) {
+
                 cliente.setIdCliente(id);
                 cliente.setNombre(rs.getString("nombre"));
                 cliente.setApellidoPaterno(rs.getString("apellidoPaterno"));
                 cliente.setApellidoMaterno(rs.getString("apellidoMaterno"));
-                
+
                 return true;
-                
-            }
-            else{
+
+            } else {
                 return false;
             }
-            
-        }catch(SQLException ex){
+
+        } catch (SQLException ex) {
             return false;
-        }finally{
+        } finally {
             try {
                 conexion.close();
             } catch (SQLException ex) {
                 Logger.getLogger(ModeloVentas.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }        
+        }
     }
-    
-    public String enviarNombreCliente(){
-        return cliente.getNombre()+" "+cliente.getApellidoPaterno()+" "+cliente.getApellidoMaterno();
+
+    public String enviarNombreCliente() {
+        return cliente.getNombre() + " " + cliente.getApellidoPaterno() + " " + cliente.getApellidoMaterno();
     }
-    
-    public  String enviarNombre(){
+
+    public String enviarNombre() {
         return producto.getNombre();
     }
-    
-    public void limpiar(){
-         producto.setIdProducto(0);                
-         producto.setNombre("");
-         producto.setPrecioVenta(0);
-         producto.setStock(0);
+
+    public void limpiar() {
+        producto.setIdProducto(0);
+        producto.setNombre("");
+        producto.setPrecioVenta(0);
+        producto.setStock(0);
     }
-    
-    public boolean comprobarStock(int s){
-        
-        if(s<=producto.getStock()){
+
+    public boolean comprobarStock(int s) {
+
+        if (s <= producto.getStock()) {
             return true;
-        }
-        
-        else return false;
-        
-    } 
-    
-    public int enviarId(){
-        return producto.getIdProducto();                
+        } else return false;
+
     }
-    
-    public float enviarPrecio(){
-        return producto.getPrecioVenta();                
+
+    public int enviarId() {
+        return producto.getIdProducto();
     }
-    
-    public int enviarStock(){
+
+    public float enviarPrecio() {
+        return producto.getPrecioVenta();
+    }
+
+    public int enviarStock() {
         return producto.getStock();
     }
-    
-    public void limpiarCliente(){
-        
+
+    public void limpiarCliente() {
+
         cliente.setIdCliente(0);
         cliente.setNombre("");
         cliente.setApellidoPaterno("");
         cliente.setApellidoMaterno("");
-        
+
     }
-    
-    public int enviarIdCliente(){
+
+    public int enviarIdCliente() {
         return cliente.getIdCliente();
     }
 

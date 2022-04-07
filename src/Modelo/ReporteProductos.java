@@ -16,6 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -36,23 +37,18 @@ import org.apache.poi.util.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
- *
- * @author Erick Gonzalez
+ * @author Erick Gonzalez, Damian Cazarin & Aaron Alfonseca
  */
-public class ReporteProductos extends Conexion{
-    
-    
-    
-    
-     public  void reporte(int mes) {
+public class ReporteProductos extends Conexion {
+
+
+    public void reporte(int mes) {
 
         Workbook book = new XSSFWorkbook();
         Sheet sheet = book.createSheet("Productos");
 
         try {
-                        
 
-            
 
             String[] cabecera = new String[]{"Código", "Nombre", "Vendidos"};
 
@@ -79,7 +75,7 @@ public class ReporteProductos extends Conexion{
                 celdaEnzabezado.setCellValue(cabecera[i]);
             }
 
-            
+
             PreparedStatement ps;
             ResultSet rs;
             Connection conexion = getconnection();
@@ -93,11 +89,11 @@ public class ReporteProductos extends Conexion{
             datosEstilo.setBorderBottom(BorderStyle.THIN);
 
             ps = conexion.prepareStatement("SELECT venta.idProducto AS Codigo, producto.nombre AS Nombre, SUM(venta.cantidad) AS Vendidos\n" +
-"FROM venta\n" +
-"INNER JOIN producto ON venta.idProducto = producto.idProducto\n" +
-"WHERE month (fecha) = ?\n" +
-"GROUP BY producto.idproducto ORDER BY Vendidos DESC;");
-            
+                    "FROM venta\n" +
+                    "INNER JOIN producto ON venta.idProducto = producto.idProducto\n" +
+                    "WHERE month (fecha) = ?\n" +
+                    "GROUP BY producto.idproducto ORDER BY Vendidos DESC;");
+
             ps.setInt(1, mes);
             rs = ps.executeQuery();
 
@@ -111,24 +107,24 @@ public class ReporteProductos extends Conexion{
                     Cell CeldaDatos = filaDatos.createCell(a);
                     CeldaDatos.setCellStyle(datosEstilo);
 
-                    if (a == 2 ) {
+                    if (a == 2) {
                         CeldaDatos.setCellValue(rs.getInt(a + 1));
                     } else {
                         CeldaDatos.setCellValue(rs.getString(a + 1));
                     }
                 }
-               
+
 
                 numFilaDatos++;
 
             }
-            
+
             sheet.autoSizeColumn(0);
             sheet.autoSizeColumn(1);
             sheet.autoSizeColumn(2);
             sheet.autoSizeColumn(3);
             sheet.autoSizeColumn(4);
-            
+
             sheet.setZoom(150);
 
             FileOutputStream fileOut = new FileOutputStream("ReporteProductos.xlsx");

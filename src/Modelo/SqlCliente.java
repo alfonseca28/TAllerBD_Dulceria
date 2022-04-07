@@ -14,8 +14,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Erick Gonzalez
+ * @author Erick Gonzalez, Damian Cazarin & Aaron Alfonseca
  */
 public class SqlCliente extends Conexion {
 
@@ -153,7 +152,7 @@ public class SqlCliente extends Conexion {
             if (rs.next()) {
 
                 if (rs.getInt("estado") == 0) {
-                    JOptionPane.showMessageDialog(null,"Cliente no activo", "Error",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Cliente no activo", "Error", JOptionPane.ERROR_MESSAGE);
                     return false;
                 } else {
                     return true;

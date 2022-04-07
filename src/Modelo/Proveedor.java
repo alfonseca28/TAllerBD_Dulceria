@@ -5,8 +5,7 @@
 package Modelo;
 
 /**
- *
- * @author Erick Gonzalez
+ * @author Erick Gonzalez, Damian Cazarin & Aaron Alfonseca
  */
 public class Proveedor {
 
@@ -55,11 +54,6 @@ public class Proveedor {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    
-    
-    
-    
 
-    
+
 }
