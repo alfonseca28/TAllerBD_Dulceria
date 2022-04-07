@@ -108,18 +108,18 @@ public class VistaInicio extends javax.swing.JFrame {
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         Empleado empleado = new Empleado();
         SqlEmpleado sqlEmpleado = new SqlEmpleado();
-        
+
         String contraseña = new String(txtContraseña.getPassword());
-        
+
         if (txtUsuario.getText().equals("") || contraseña.equals("")) {
             JOptionPane.showMessageDialog(null, "Rellene todos los campos para continuar", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            
+
             if (isNumeric(txtUsuario.getText())) {
-                
+
                 empleado.setIdEmpleado(Integer.parseInt(txtUsuario.getText()));
                 empleado.setContraseña(contraseña);
-                
+
                 if (sqlEmpleado.IniciarSesion(empleado)) {
                     JOptionPane.showMessageDialog(null, "Conexion aceptada", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
                     VistaPanelInicio vista = new VistaPanelInicio();
@@ -127,13 +127,13 @@ public class VistaInicio extends javax.swing.JFrame {
                     ControladorPanelInicio c = new ControladorPanelInicio(vista, modelo);
                     this.dispose();
                     c.iniciar(empleado.getIdEmpleado(), sqlEmpleado.obtenerPuesto(empleado.getIdEmpleado()));
-                    
+
                 }
-                
+
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
             }
-            
+
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
@@ -186,11 +186,11 @@ public class VistaInicio extends javax.swing.JFrame {
                 new VistaInicio().setVisible(true);
             }
         });
-        
+
     }
-    
+
     public boolean isNumeric(String str) {
-        
+
         try {
             Integer.parseInt(str);
             return true;
