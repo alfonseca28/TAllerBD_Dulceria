@@ -5,6 +5,7 @@
 package Vistas;
 
 import Modelo.Conexion;
+
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import java.sql.*;
@@ -13,8 +14,7 @@ import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author Erick Gonzalez
+ * @author Erick Gonzalez, Damian Cazarin & Aaron Alfonseca
  */
 public class VistaInformacionClientes extends javax.swing.JFrame {
 
@@ -57,26 +57,26 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
         jLabel1.setText("Dulceria Itver");
 
         tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "IdCliente", "Nombre", "ApPaterno", "ApMaterno", "Telefono", "Direccion", "Email"
-            }
+                new Object[][]{
+                        {null, null, null, null, null, null, null}
+                },
+                new String[]{
+                        "IdCliente", "Nombre", "ApPaterno", "ApMaterno", "Telefono", "Direccion", "Email"
+                }
         ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            Class[] types = new Class[]{
+                    java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+            boolean[] canEdit = new boolean[]{
+                    false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+                return types[columnIndex];
             }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         jScrollPane1.setViewportView(tablaClientes);
@@ -144,49 +144,49 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtBuscarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnBuscarClientes))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnCargarTodoClientes)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnEditarClientes)
-                                .addGap(29, 29, 29)
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 734, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 147, Short.MAX_VALUE))))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(jLabel2)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(txtBuscarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(btnBuscarClientes))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(btnCargarTodoClientes)
+                                                                .addGap(18, 18, 18)
+                                                                .addComponent(btnEditarClientes)
+                                                                .addGap(29, 29, 29)
+                                                                .addComponent(jButton1)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(jButton2))
+                                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 734, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(0, 147, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtBuscarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarClientes))
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCargarTodoClientes)
-                    .addComponent(btnEditarClientes)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(287, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel1)
+                                .addGap(34, 34, 34)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel2)
+                                        .addComponent(txtBuscarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnBuscarClientes))
+                                .addGap(9, 9, 9)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnCargarTodoClientes)
+                                        .addComponent(btnEditarClientes)
+                                        .addComponent(jButton1)
+                                        .addComponent(jButton2))
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(287, Short.MAX_VALUE))
         );
 
         pack();
@@ -217,12 +217,12 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
             modelotabla.addColumn("Direccion");
             modelotabla.addColumn("Email");
             modelotabla.addColumn("Estado");
-            
-            while(rs.next()){
-                Object fila [] = new Object [8];
-                for(int i =1 ; i<= 8;i++){
-                fila[i-1] = rs.getObject(i);
-            }
+
+            while (rs.next()) {
+                Object fila[] = new Object[8];
+                for (int i = 1; i <= 8; i++) {
+                    fila[i - 1] = rs.getObject(i);
+                }
                 modelotabla.addRow(fila);
             }
 
@@ -243,7 +243,7 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarClientesActionPerformed
 
     private void btnCargarTodoClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarTodoClientesActionPerformed
-           DefaultTableModel modelotabla = new DefaultTableModel();
+        DefaultTableModel modelotabla = new DefaultTableModel();
         tablaClientes.setModel(modelotabla);
 
         PreparedStatement ps = null;
@@ -254,7 +254,7 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
 
         try {
             ps = conexion.prepareStatement("Select idCliente,nombre,apellidoPaterno,apellidoMaterno,telefono,direccion,email,estado from cliente ");
-            
+
 
             rs = ps.executeQuery();
 
@@ -266,12 +266,12 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
             modelotabla.addColumn("Direccion");
             modelotabla.addColumn("Email");
             modelotabla.addColumn("Estado");
-            
-            while(rs.next()){
-                Object fila [] = new Object [8];
-                for(int i =1 ; i<= 8;i++){
-                fila[i-1] = rs.getObject(i);
-            }
+
+            while (rs.next()) {
+                Object fila[] = new Object[8];
+                for (int i = 1; i <= 8; i++) {
+                    fila[i - 1] = rs.getObject(i);
+                }
                 modelotabla.addRow(fila);
             }
 
@@ -287,13 +287,13 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCargarTodoClientesActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-           DefaultTableModel modelotabla = new DefaultTableModel();
+        DefaultTableModel modelotabla = new DefaultTableModel();
         tablaClientes.setModel(modelotabla);
         modelotabla.setNumRows(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-           DefaultTableModel modelotabla = new DefaultTableModel();
+        DefaultTableModel modelotabla = new DefaultTableModel();
         tablaClientes.setModel(modelotabla);
 
         PreparedStatement ps = null;
@@ -304,10 +304,10 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
 
         try {
             ps = conexion.prepareStatement("SELECT venta.idCliente, cliente.nombre AS NombreCliente, cliente.apellidoPaterno AS ApellidoCliente, SUM(precio) AS Importe, COUNT(venta.idcliente) AS Total\n" +
-"FROM venta, cliente\n" +
-"WHERE venta.idCliente = cliente.idCliente\n" +
-"GROUP BY cliente.idcliente ORDER BY Importe DESC;");
-            
+                    "FROM venta, cliente\n" +
+                    "WHERE venta.idCliente = cliente.idCliente\n" +
+                    "GROUP BY cliente.idcliente ORDER BY Importe DESC;");
+
 
             rs = ps.executeQuery();
 
@@ -316,13 +316,13 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
             modelotabla.addColumn("ApPaterno");
             modelotabla.addColumn("Importe");
             modelotabla.addColumn("Total ventas");
-            
-            
-            while(rs.next()){
-                Object fila [] = new Object [5];
-                for(int i =1 ; i<= 5;i++){
-                fila[i-1] = rs.getObject(i);
-            }
+
+
+            while (rs.next()) {
+                Object fila[] = new Object[5];
+                for (int i = 1; i <= 5; i++) {
+                    fila[i - 1] = rs.getObject(i);
+                }
                 modelotabla.addRow(fila);
             }
 
@@ -344,7 +344,7 @@ public class VistaInformacionClientes extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

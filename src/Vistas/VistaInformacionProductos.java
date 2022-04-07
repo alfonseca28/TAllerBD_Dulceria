@@ -6,6 +6,7 @@ package Vistas;
 
 import Modelo.Conexion;
 import Modelo.ReporteProductos;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,8 +19,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author Erick Gonzalez
+ * @author Erick Gonzalez, Damian Cazarin & Aaron Alfonseca
  */
 public class VistaInformacionProductos extends javax.swing.JFrame {
 
@@ -63,26 +63,26 @@ public class VistaInformacionProductos extends javax.swing.JFrame {
         jLabel1.setText("Dulceria Itver");
 
         tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "IdProducto", "Proveedor", "Nombre", "PrecioVenta", "PrecioCompra", "Stock"
-            }
+                new Object[][]{
+                        {null, null, null, null, null, null}
+                },
+                new String[]{
+                        "IdProducto", "Proveedor", "Nombre", "PrecioVenta", "PrecioCompra", "Stock"
+                }
         ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            Class[] types = new Class[]{
+                    java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+            boolean[] canEdit = new boolean[]{
+                    false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+                return types[columnIndex];
             }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         jScrollPane1.setViewportView(tablaProductos);
@@ -155,56 +155,56 @@ public class VistaInformacionProductos extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 749, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtBuscarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(btnBuscarProductos)
-                                    .addGap(27, 27, 27)
-                                    .addComponent(jButton3)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton4))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(btnCargarTodoProducto)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnEditarProductos)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jButton1)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jButton2))))
-                        .addGap(0, 140, Short.MAX_VALUE))))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 749, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                                        .addComponent(jLabel2)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                        .addComponent(txtBuscarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                        .addComponent(btnBuscarProductos)
+                                                                        .addGap(27, 27, 27)
+                                                                        .addComponent(jButton3)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                        .addComponent(jButton4))
+                                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                                        .addComponent(btnCargarTodoProducto)
+                                                                        .addGap(18, 18, 18)
+                                                                        .addComponent(btnEditarProductos)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                        .addComponent(jButton1)
+                                                                        .addGap(18, 18, 18)
+                                                                        .addComponent(jButton2))))
+                                                .addGap(0, 140, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtBuscarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarProductos)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCargarTodoProducto)
-                    .addComponent(btnEditarProductos)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(265, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel1)
+                                .addGap(34, 34, 34)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel2)
+                                        .addComponent(txtBuscarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnBuscarProductos)
+                                        .addComponent(jButton3)
+                                        .addComponent(jButton4))
+                                .addGap(9, 9, 9)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnCargarTodoProducto)
+                                        .addComponent(btnEditarProductos)
+                                        .addComponent(jButton1)
+                                        .addComponent(jButton2))
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(265, Short.MAX_VALUE))
         );
 
         pack();
@@ -226,20 +226,20 @@ public class VistaInformacionProductos extends javax.swing.JFrame {
 
             rs = ps.executeQuery();
 
-            modelotabla.addColumn("IdProducto");            
+            modelotabla.addColumn("IdProducto");
             modelotabla.addColumn("Nombre");
             modelotabla.addColumn("Proveedor");
             modelotabla.addColumn("PrecioVenta");
-            modelotabla.addColumn("PrecioCompra");          
+            modelotabla.addColumn("PrecioCompra");
             modelotabla.addColumn("Stock");
             modelotabla.addColumn("Estado");
-            
-            
-            while(rs.next()){
-                Object fila [] = new Object [7];
-                for(int i =1 ; i<= 7;i++){
-                fila[i-1] = rs.getObject(i);
-            }
+
+
+            while (rs.next()) {
+                Object fila[] = new Object[7];
+                for (int i = 1; i <= 7; i++) {
+                    fila[i - 1] = rs.getObject(i);
+                }
                 modelotabla.addRow(fila);
             }
 
@@ -260,33 +260,32 @@ public class VistaInformacionProductos extends javax.swing.JFrame {
 
         PreparedStatement ps = null;
         ResultSet rs = null;
-        
-       
+
+
         Conexion con = new Conexion();
         Connection conexion = con.getconnection();
 
         try {
             ps = conexion.prepareStatement("Select idProducto,  producto.nombre, proveedor.nombre,precioventa, preciocompra, stock,producto.estado from Producto inner join proveedor on proveedor.idProveedor = producto.idProveedor\n" +
-"order by idProducto");
-            
+                    "order by idProducto");
+
 
             rs = ps.executeQuery();
 
-            modelotabla.addColumn("IdProducto");            
+            modelotabla.addColumn("IdProducto");
             modelotabla.addColumn("Nombre");
             modelotabla.addColumn("Proveedor");
             modelotabla.addColumn("PrecioVenta");
-            modelotabla.addColumn("PrecioCompra");           
+            modelotabla.addColumn("PrecioCompra");
             modelotabla.addColumn("Stock");
             modelotabla.addColumn("Estado");
-            
-            
-            
-            while(rs.next()){
-                Object fila [] = new Object [7];
-                for(int i =1 ; i<= 7;i++){
-                fila[i-1] = rs.getObject(i);
-            }
+
+
+            while (rs.next()) {
+                Object fila[] = new Object[7];
+                for (int i = 1; i <= 7; i++) {
+                    fila[i - 1] = rs.getObject(i);
+                }
                 modelotabla.addRow(fila);
             }
 
@@ -302,7 +301,7 @@ public class VistaInformacionProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCargarTodoProductoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         DefaultTableModel modelotabla = new DefaultTableModel();
+        DefaultTableModel modelotabla = new DefaultTableModel();
         tablaProductos.setModel(modelotabla);
 
         PreparedStatement ps = null;
@@ -313,24 +312,24 @@ public class VistaInformacionProductos extends javax.swing.JFrame {
 
         try {
             ps = conexion.prepareStatement("Select idProducto,  producto.nombre, proveedor.nombre,precioventa, preciocompra, stock,producto.estado from Producto inner join proveedor on proveedor.idProveedor = producto.idProveedor order by stock desc");
-            
+
 
             rs = ps.executeQuery();
 
-            modelotabla.addColumn("IdProducto");            
+            modelotabla.addColumn("IdProducto");
             modelotabla.addColumn("Nombre");
             modelotabla.addColumn("Proveedor");
             modelotabla.addColumn("PrecioVenta");
-            modelotabla.addColumn("PrecioCompra");            
+            modelotabla.addColumn("PrecioCompra");
             modelotabla.addColumn("Stock");
             modelotabla.addColumn("Estado");
-            
-            
-            while(rs.next()){
-                Object fila [] = new Object [7];
-                for(int i =1 ; i<= 7;i++){
-                fila[i-1] = rs.getObject(i);
-            }
+
+
+            while (rs.next()) {
+                Object fila[] = new Object[7];
+                for (int i = 1; i <= 7; i++) {
+                    fila[i - 1] = rs.getObject(i);
+                }
                 modelotabla.addRow(fila);
             }
 
@@ -346,13 +345,13 @@ public class VistaInformacionProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-           DefaultTableModel modelotabla = new DefaultTableModel();
+        DefaultTableModel modelotabla = new DefaultTableModel();
         tablaProductos.setModel(modelotabla);
         modelotabla.setNumRows(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-         DefaultTableModel modelotabla = new DefaultTableModel();
+        DefaultTableModel modelotabla = new DefaultTableModel();
         tablaProductos.setModel(modelotabla);
 
         PreparedStatement ps = null;
@@ -363,23 +362,22 @@ public class VistaInformacionProductos extends javax.swing.JFrame {
 
         try {
             ps = conexion.prepareStatement("SELECT v.idProducto AS Codigo, p.nombre AS Nombre, COUNT(v.idProducto) AS Vendidos FROM venta AS v\n" +
-"INNER JOIN producto AS p ON v.idProducto = p.idProducto\n" +
-"GROUP BY p.idproducto ORDER BY Vendidos DESC;");
-            
+                    "INNER JOIN producto AS p ON v.idProducto = p.idProducto\n" +
+                    "GROUP BY p.idproducto ORDER BY Vendidos DESC;");
+
 
             rs = ps.executeQuery();
 
             modelotabla.addColumn("IdProducto");
             modelotabla.addColumn("Nombre");
             modelotabla.addColumn("Total ventas");
-         
-            
-            
-            while(rs.next()){
-                Object fila [] = new Object [3];
-                for(int i =1 ; i<= 3;i++){
-                fila[i-1] = rs.getObject(i);
-            }
+
+
+            while (rs.next()) {
+                Object fila[] = new Object[3];
+                for (int i = 1; i <= 3; i++) {
+                    fila[i - 1] = rs.getObject(i);
+                }
                 modelotabla.addRow(fila);
             }
 
@@ -395,16 +393,14 @@ public class VistaInformacionProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        
-        int mes = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingresa el número del mes a generar el reporte","Mensaje",JOptionPane.INFORMATION_MESSAGE));
-        
+
+        int mes = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingresa el número del mes a generar el reporte", "Mensaje", JOptionPane.INFORMATION_MESSAGE));
+
         ReporteProductos reporte = new ReporteProductos();
-        
+
         reporte.reporte(mes);
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
@@ -414,7 +410,7 @@ public class VistaInformacionProductos extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -436,7 +432,7 @@ public class VistaInformacionProductos extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-         try {
+        try {
             UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
         } catch (ClassNotFoundException ex) {
             //Logger.getLogger(VistaInicio.class.getName()).log(Level.SEVERE, null, ex);
@@ -445,9 +441,9 @@ public class VistaInformacionProductos extends javax.swing.JFrame {
         } catch (IllegalAccessException ex) {
             //Logger.getLogger(VistaInicio.class.getName()).log(Level.SEVERE, null, ex);
         } catch (UnsupportedLookAndFeelException ex) {
-           // Logger.getLogger(VistaInicio.class.getName()).log(Level.SEVERE, null, ex);
+            // Logger.getLogger(VistaInicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-         
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new VistaInformacionProductos().setVisible(true);

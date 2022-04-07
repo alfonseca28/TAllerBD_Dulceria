@@ -6,13 +6,13 @@ package Principal;
 
 import Controlador.ControladorInicio;
 import Vistas.VistaInicio;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
- *
  * @author Erick Gonzalez, Damian Cazarin & Aaron Alfonseca
  */
 public class Main {

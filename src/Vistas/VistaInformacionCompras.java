@@ -7,6 +7,7 @@ package Vistas;
 import Modelo.Conexion;
 import Modelo.ReporteCompras;
 import Modelo.ReporteVentas;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,8 +20,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author Erick Gonzalez
+ * @author Erick Gonzalez, Damian Cazarin & Aaron Alfonseca
  */
 public class VistaInformacionCompras extends javax.swing.JFrame {
 
@@ -66,26 +66,26 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
         });
 
         tablaCompras.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "IdCompra", "Proveedor", "Producto", "Nombre Empleado", "Apelllido Empleado", "Fecha", "Hora", "Cantidad", "Importe"
-            }
+                new Object[][]{
+                        {null, null, null, null, null, null, null, null, null}
+                },
+                new String[]{
+                        "IdCompra", "Proveedor", "Producto", "Nombre Empleado", "Apelllido Empleado", "Fecha", "Hora", "Cantidad", "Importe"
+                }
         ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            Class[] types = new Class[]{
+                    java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+            boolean[] canEdit = new boolean[]{
+                    false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+                return types[columnIndex];
             }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         jScrollPane1.setViewportView(tablaCompras);
@@ -125,40 +125,40 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 870, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 856, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnCargarTodoCompa)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 870, Short.MAX_VALUE)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 856, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(btnCargarTodoCompa)
+                                                                .addGap(18, 18, 18)
+                                                                .addComponent(jButton1)))
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCargarTodoCompa)
-                    .addComponent(jButton1))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(282, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel1)
+                                .addGap(50, 50, 50)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnCargarTodoCompa)
+                                        .addComponent(jButton1))
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(282, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCargarTodoCompaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarTodoCompaActionPerformed
-            DefaultTableModel modelotabla = new DefaultTableModel();
+        DefaultTableModel modelotabla = new DefaultTableModel();
         tablaCompras.setModel(modelotabla);
 
         PreparedStatement ps = null;
@@ -169,25 +169,25 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
 
         try {
             ps = conexion.prepareStatement("SELECT idCompra AS id, empleado.nombre AS NombreEmpleado, empleado.apellidoPaterno AS ApellidoEmpleado, producto.nombre AS Producto, cantidad AS Cantidad, importe AS Importe, proveedor.nombre AS Proveedor\n" +
-"FROM compra,empleado, producto, proveedor\n" +
-"WHERE compra.idEmpleado = empleado.idEmpleado AND compra.idProducto = producto.idProducto AND compra.idProveedor = proveedor.idproveedor");
-            
+                    "FROM compra,empleado, producto, proveedor\n" +
+                    "WHERE compra.idEmpleado = empleado.idEmpleado AND compra.idProducto = producto.idProducto AND compra.idProveedor = proveedor.idproveedor");
+
 
             rs = ps.executeQuery();
 
             modelotabla.addColumn("IdCompra");
-            modelotabla.addColumn("Nombre Empleado");                               
+            modelotabla.addColumn("Nombre Empleado");
             modelotabla.addColumn("Apellido Empleado");
             modelotabla.addColumn("Producto");
             modelotabla.addColumn("Cantidad");
             modelotabla.addColumn("Importe");
             modelotabla.addColumn("Proveedor");
-            
-            while(rs.next()){
-                Object fila [] = new Object [7];
-                for(int i =1 ; i<= 7;i++){
-                fila[i-1] = rs.getObject(i);
-            }
+
+            while (rs.next()) {
+                Object fila[] = new Object[7];
+                for (int i = 1; i <= 7; i++) {
+                    fila[i - 1] = rs.getObject(i);
+                }
                 modelotabla.addRow(fila);
             }
 
@@ -203,12 +203,12 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCargarTodoCompaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        
-        int mes = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingresa el número del mes a generar el reporte","Mensaje",JOptionPane.INFORMATION_MESSAGE));
-        
+
+
+        int mes = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingresa el número del mes a generar el reporte", "Mensaje", JOptionPane.INFORMATION_MESSAGE));
+
         ReporteCompras reporte = new ReporteCompras();
-        
+
         reporte.reporte(mes);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -219,7 +219,7 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -241,8 +241,8 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        
-         try {
+
+        try {
             UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
         } catch (ClassNotFoundException ex) {
             //Logger.getLogger(VistaInicio.class.getName()).log(Level.SEVERE, null, ex);
@@ -251,9 +251,9 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
         } catch (IllegalAccessException ex) {
             //Logger.getLogger(VistaInicio.class.getName()).log(Level.SEVERE, null, ex);
         } catch (UnsupportedLookAndFeelException ex) {
-           // Logger.getLogger(VistaInicio.class.getName()).log(Level.SEVERE, null, ex);
+            // Logger.getLogger(VistaInicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-         
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new VistaInformacionCompras().setVisible(true);

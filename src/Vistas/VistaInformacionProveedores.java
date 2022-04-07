@@ -5,6 +5,7 @@
 package Vistas;
 
 import Modelo.Conexion;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,8 +17,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author Erick Gonzalez
+ * @author Erick Gonzalez, Damian Cazarin & Aaron Alfonseca
  */
 public class VistaInformacionProveedores extends javax.swing.JFrame {
 
@@ -58,26 +58,26 @@ public class VistaInformacionProveedores extends javax.swing.JFrame {
         jLabel1.setText("Dulceria Itver");
 
         tablaProveedores.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "IdProveedor", "Nombre", "Direccion", "Telefono", "Email"
-            }
+                new Object[][]{
+                        {null, null, null, null, null}
+                },
+                new String[]{
+                        "IdProveedor", "Nombre", "Direccion", "Telefono", "Email"
+                }
         ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            Class[] types = new Class[]{
+                    java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+            boolean[] canEdit = new boolean[]{
+                    false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+                return types[columnIndex];
             }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         jScrollPane1.setViewportView(tablaProveedores);
@@ -128,46 +128,46 @@ public class VistaInformacionProveedores extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtBuscarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnBuscarProveedores))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnCargarTodoProveedor)
-                                .addGap(30, 30, 30)
-                                .addComponent(btnEditarProveedor)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 130, Short.MAX_VALUE))))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(jLabel2)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(txtBuscarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(btnBuscarProveedores))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(btnCargarTodoProveedor)
+                                                                .addGap(30, 30, 30)
+                                                                .addComponent(btnEditarProveedor)
+                                                                .addGap(18, 18, 18)
+                                                                .addComponent(jButton1))
+                                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(0, 130, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtBuscarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarProveedores))
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCargarTodoProveedor)
-                    .addComponent(btnEditarProveedor)
-                    .addComponent(jButton1))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(138, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel1)
+                                .addGap(34, 34, 34)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel2)
+                                        .addComponent(txtBuscarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnBuscarProveedores))
+                                .addGap(9, 9, 9)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnCargarTodoProveedor)
+                                        .addComponent(btnEditarProveedor)
+                                        .addComponent(jButton1))
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(138, Short.MAX_VALUE))
         );
 
         pack();
@@ -190,17 +190,17 @@ public class VistaInformacionProveedores extends javax.swing.JFrame {
             rs = ps.executeQuery();
 
             modelotabla.addColumn("IdCliente");
-            modelotabla.addColumn("Nombre");                               
+            modelotabla.addColumn("Nombre");
             modelotabla.addColumn("Direccion");
             modelotabla.addColumn("Telefono");
             modelotabla.addColumn("Email");
             modelotabla.addColumn("Estado");
-            
-            while(rs.next()){
-                Object fila [] = new Object [6];
-                for(int i =1 ; i<= 6;i++){
-                fila[i-1] = rs.getObject(i);
-            }
+
+            while (rs.next()) {
+                Object fila[] = new Object[6];
+                for (int i = 1; i <= 6; i++) {
+                    fila[i - 1] = rs.getObject(i);
+                }
                 modelotabla.addRow(fila);
             }
 
@@ -227,22 +227,22 @@ public class VistaInformacionProveedores extends javax.swing.JFrame {
 
         try {
             ps = conexion.prepareStatement("Select * from proveedor where idProveedor ");
-            
+
 
             rs = ps.executeQuery();
 
             modelotabla.addColumn("IdCliente");
-            modelotabla.addColumn("Nombre");                               
+            modelotabla.addColumn("Nombre");
             modelotabla.addColumn("Direccion");
             modelotabla.addColumn("Telefono");
             modelotabla.addColumn("Email");
             modelotabla.addColumn("Estado");
-            
-            while(rs.next()){
-                Object fila [] = new Object [6];
-                for(int i =1 ; i<= 6;i++){
-                fila[i-1] = rs.getObject(i);
-            }
+
+            while (rs.next()) {
+                Object fila[] = new Object[6];
+                for (int i = 1; i <= 6; i++) {
+                    fila[i - 1] = rs.getObject(i);
+                }
                 modelotabla.addRow(fila);
             }
 
@@ -258,7 +258,7 @@ public class VistaInformacionProveedores extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCargarTodoProveedorActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-           DefaultTableModel modelotabla = new DefaultTableModel();
+        DefaultTableModel modelotabla = new DefaultTableModel();
         tablaProveedores.setModel(modelotabla);
         modelotabla.setNumRows(0);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -270,7 +270,7 @@ public class VistaInformacionProveedores extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -292,8 +292,8 @@ public class VistaInformacionProveedores extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        
-         try {
+
+        try {
             UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
         } catch (ClassNotFoundException ex) {
             //Logger.getLogger(VistaInicio.class.getName()).log(Level.SEVERE, null, ex);
@@ -302,9 +302,9 @@ public class VistaInformacionProveedores extends javax.swing.JFrame {
         } catch (IllegalAccessException ex) {
             //Logger.getLogger(VistaInicio.class.getName()).log(Level.SEVERE, null, ex);
         } catch (UnsupportedLookAndFeelException ex) {
-           // Logger.getLogger(VistaInicio.class.getName()).log(Level.SEVERE, null, ex);
+            // Logger.getLogger(VistaInicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-         
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new VistaInformacionProveedores().setVisible(true);
