@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="Librerias">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../Librerias/commons-collections4-4.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Librerias/jcalendar-1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Librerias/JTattoo-1.6.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Librerias/mysql-connector-java-8.0.26.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Librerias/poi-3.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Librerias/poi-examples-3.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Librerias/poi-excelant-3.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Librerias/poi-ooxml-3.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Librerias/poi-ooxml-schemas-3.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Librerias/poi-scratchpad-3.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Librerias/xmlbeans-2.6.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
