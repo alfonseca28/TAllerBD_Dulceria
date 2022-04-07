@@ -16,11 +16,9 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @author Erick Gonzalez, Damian Cazarin & Aaron Alfonseca
  */
 public class Main {
-    
-    
-    
-    public static void main(String[]args){
-        
+
+    public static void main(String[] args) {
+
         try {
             UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
         } catch (ClassNotFoundException ex) {
@@ -30,14 +28,13 @@ public class Main {
         } catch (IllegalAccessException ex) {
             //Logger.getLogger(VistaInicio.class.getName()).log(Level.SEVERE, null, ex);
         } catch (UnsupportedLookAndFeelException ex) {
-           // Logger.getLogger(VistaInicio.class.getName()).log(Level.SEVERE, null, ex);
+            // Logger.getLogger(VistaInicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         VistaInicio vista = new VistaInicio();
         ControladorInicio controlador = new ControladorInicio(vista);
         controlador.iniciar();
-        
+
     }
-    
-    
+
 }
