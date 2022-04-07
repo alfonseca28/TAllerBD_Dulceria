@@ -7,15 +7,9 @@ package Modelo;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author Erick Gonzalez
+ * @author Erick Gonzalez, Damian Cazarin & Aaron Alfonseca
  */
-public class ModeloInfoClientes extends Conexion{
-    
-    
-    
-    
-    
-    
-    
+public class ModeloInfoClientes extends Conexion {
+
+
 }

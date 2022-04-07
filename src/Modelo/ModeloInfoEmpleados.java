@@ -5,9 +5,8 @@
 package Modelo;
 
 /**
- *
- * @author Erick Gonzalez
+ * @author Erick Gonzalez, Damian Cazarin & Aaron Alfonseca
  */
 public class ModeloInfoEmpleados {
-    
+
 }

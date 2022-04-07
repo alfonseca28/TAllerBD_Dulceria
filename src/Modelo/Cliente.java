@@ -5,7 +5,6 @@
 package Modelo;
 
 /**
- *
  * @author Erick Gonzalez, Damian Cazarin & Aaron Alfonseca
  */
 public class Cliente {
@@ -74,5 +73,5 @@ public class Cliente {
         this.email = email;
     }
 
-    
+
 }

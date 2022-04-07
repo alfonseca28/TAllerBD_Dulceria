@@ -5,11 +5,10 @@
 package Modelo;
 
 /**
- *
- * @author Erick Gonzalez
+ * @author Erick Gonzalez, Damian Cazarin & Aaron Alfonseca
  */
 public class Empleado {
-    
+
     private int idEmpleado;
     private String nombre;
     private String apellidoPaterno;
@@ -19,7 +18,7 @@ public class Empleado {
     private String email;
     private String puesto;
     private int edad;
-    private String contraseña;  
+    private String contraseña;
 
     public int getIdEmpleado() {
         return idEmpleado;
@@ -60,8 +59,8 @@ public class Empleado {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    
-       public String getDireccion() {
+
+    public String getDireccion() {
         return direccion;
     }
 
@@ -100,6 +99,6 @@ public class Empleado {
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
-    
-    
+
+
 }

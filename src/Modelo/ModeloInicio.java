@@ -10,11 +10,10 @@ import java.sql.Connection;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Erick Gonzalez
+ * @author Erick Gonzalez, Damian Cazarin & Aaron Alfonseca
  */
-public class ModeloInicio extends Conexion{
-    
+public class ModeloInicio extends Conexion {
+
     private String usuario;
     private String contraseña;
 
@@ -33,13 +32,6 @@ public class ModeloInicio extends Conexion{
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
-    
-    
-    
-   
-    
 
-    
-    
-    
+
 }

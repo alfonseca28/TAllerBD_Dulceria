@@ -11,21 +11,21 @@ import javax.swing.JOptionPane;
 
 
 public class Conexion {
-    
-    public  static final String URL = "jdbc:mysql://localhost:3306/dulceria?autoReconnet=true&useSSL=false";
-    public static final String  usuario = "root";
+
+    public static final String URL = "jdbc:mysql://localhost:3306/dulceria?autoReconnet=true&useSSL=false";
+    public static final String usuario = "root";
     public static final String contraseña = "1234";
-    
-    public Connection getconnection(){
-        
-        Connection conexion =null;
-        
-        try{
+
+    public Connection getconnection() {
+
+        Connection conexion = null;
+
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conexion= DriverManager.getConnection(URL,usuario,contraseña);
-        } catch(Exception ex){
-            JOptionPane.showMessageDialog(null,"Error al conectar con la base de datos","Error",JOptionPane.ERROR_MESSAGE);
+            conexion = DriverManager.getConnection(URL, usuario, contraseña);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
         }
         return conexion;
-    }  
+    }
 }
