@@ -7,6 +7,7 @@ package Controlador;
 import Modelo.Proveedor;
 import Modelo.SqlProveedor;
 import Vistas.FormularioProveedor;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Level;
@@ -16,7 +17,6 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
- *
  * @author Erick Gonzalez, Damian Cazarin & Aaron Alfonseca
  */
 public class ControladorFormularioProveedor implements ActionListener {
@@ -69,14 +69,14 @@ public class ControladorFormularioProveedor implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
 
         if (ae.getSource() == vista.btnInsertarProveedor) {
-            
+
             SqlProveedor validacion = new SqlProveedor();
 
             if (!"".equals(vista.txtNombreProveedor.getText()) && !"".equals(vista.txtTelefonoProveedor.getText())
                     && !"".equals(vista.txtEmailProveedor.getText()) && !"".equals(vista.txtTelefonoProveedor.getText())
-                  && validacion.validarTodo(vista.txtEmailProveedor.getText(), vista.txtDireccionProveedor.getText(),
-                          vista.txtTelefonoProveedor.getText(), vista.txtNombreProveedor.getText()) 
-                  && validacion.validarFormato(vista.txtEmailProveedor.getText())  ) {
+                    && validacion.validarTodo(vista.txtEmailProveedor.getText(), vista.txtDireccionProveedor.getText(),
+                    vista.txtTelefonoProveedor.getText(), vista.txtNombreProveedor.getText())
+                    && validacion.validarFormato(vista.txtEmailProveedor.getText())) {
 
                 SqlProveedor snt = new SqlProveedor();
 
@@ -90,22 +90,20 @@ public class ControladorFormularioProveedor implements ActionListener {
                 } else {
                     JOptionPane.showMessageDialog(null, "Error", "Error", JOptionPane.ERROR_MESSAGE);
                 }
-            }
-            
-            else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Ingrese todos los datos para continuar", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
         }
 
         if (ae.getSource() == vista.btnActualizarProveedor) {
-            
-            SqlProveedor validacion = new SqlProveedor(); 
 
-            if (!"".equals(vista.txtIdProveedor.getText())&& !"".equals(vista.txtNombreProveedor.getText()) && !"".equals(vista.txtDireccionProveedor.getText())
+            SqlProveedor validacion = new SqlProveedor();
+
+            if (!"".equals(vista.txtIdProveedor.getText()) && !"".equals(vista.txtNombreProveedor.getText()) && !"".equals(vista.txtDireccionProveedor.getText())
                     && !"".equals(vista.txtEmailProveedor.getText()) && !"".equals(vista.txtTelefonoProveedor.getText())
-                   && validacion.validarTodoActualizar(Integer.parseInt(vista.txtIdProveedor.getText()), vista.txtEmailProveedor.getText(), vista.txtDireccionProveedor.getText(),
-                          vista.txtTelefonoProveedor.getText(), vista.txtNombreProveedor.getText())
+                    && validacion.validarTodoActualizar(Integer.parseInt(vista.txtIdProveedor.getText()), vista.txtEmailProveedor.getText(), vista.txtDireccionProveedor.getText(),
+                    vista.txtTelefonoProveedor.getText(), vista.txtNombreProveedor.getText())
                     && validacion.validarFormato(vista.txtEmailProveedor.getText())) {
 
                 SqlProveedor snt = new SqlProveedor();
@@ -121,9 +119,7 @@ public class ControladorFormularioProveedor implements ActionListener {
                 } else {
                     JOptionPane.showMessageDialog(null, "Error", "Error", JOptionPane.ERROR_MESSAGE);
                 }
-            }
-            
-            else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Ingrese todos los datos para continuar", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
@@ -192,8 +188,8 @@ public class ControladorFormularioProveedor implements ActionListener {
             vista.txtDireccionProveedor.setText("");
             vista.txtTelefonoProveedor.setText("");
             vista.txtEmailProveedor.setText("");
-            
-            SqlProveedor limpiar = new SqlProveedor ();
+
+            SqlProveedor limpiar = new SqlProveedor();
             proveedor = limpiar.limpiar(proveedor);
 
         }

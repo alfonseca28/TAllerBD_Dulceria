@@ -7,9 +7,12 @@ package Controlador;
 import Modelo.Producto;
 import Modelo.SqlProducto;
 import Vistas.FormularioProducto;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import static java.lang.String.valueOf;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -17,7 +20,6 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
- *
  * @author Erick Gonzalez, Damian Cazarin & Aaron Alfonseca
  */
 public class ControladorFormularioProducto implements ActionListener {
@@ -71,7 +73,7 @@ public class ControladorFormularioProducto implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
 
         if (ae.getSource() == vista.btnInsertarProducto) {
-            
+
             SqlProducto validacion = new SqlProducto();
 
             if (!"".equals(vista.txtNombreProducto.getText()) && !"".equals(vista.txtIdProveedorProducto.getText())
@@ -101,24 +103,21 @@ public class ControladorFormularioProducto implements ActionListener {
                     JOptionPane.showMessageDialog(null, "El precio de venta debe ser mayor al de compra", "Error", JOptionPane.ERROR_MESSAGE);
 
                 }
-            }
-            
-            else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Ingrese todos los datos para continuar", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
         }
 
         if (ae.getSource() == vista.btnActualizarProducto) {
-            
+
             SqlProducto validacion = new SqlProducto();
-            
+
 
             if (!"".equals(vista.txtNombreProducto.getText()) && !"".equals(vista.txtIdProducto.getText())
                     && !"".equals(vista.txtProveedorProducto.getText()) && !"".equals(vista.txtPrecioCompraProducto.getText())
                     && !"".equals(vista.txtPrecioVentaProducto.getText()) && !"".equals(vista.txtIdProveedorProducto.getText())
-                    && validacion.validarNombreActualizar(vista.txtNombreProducto.getText(),Integer.parseInt(vista.txtIdProducto.getText())) ) 
-            {
+                    && validacion.validarNombreActualizar(vista.txtNombreProducto.getText(), Integer.parseInt(vista.txtIdProducto.getText()))) {
 
                 float pVenta = Float.parseFloat(vista.txtPrecioVentaProducto.getText());
                 float pCompra = Float.parseFloat(vista.txtPrecioCompraProducto.getText());
@@ -141,8 +140,7 @@ public class ControladorFormularioProducto implements ActionListener {
                 } else {
                     JOptionPane.showMessageDialog(null, "El precio de venta debe ser mayor al de compra", "Error", JOptionPane.ERROR_MESSAGE);
                 }
-            }
-            else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Ingrese todos los datos para continuar", "Error", JOptionPane.ERROR_MESSAGE);
             }
 

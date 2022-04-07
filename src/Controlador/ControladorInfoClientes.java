@@ -11,6 +11,7 @@ import Modelo.ModeloPanelInformacion;
 import Vistas.FormularioCliente;
 import Vistas.VistaInformacionClientes;
 import Vistas.VistaPanelInformacion;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.table.DefaultTableModel;
@@ -20,33 +21,29 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- *
  * @author Erick Gonzalez, Damian Cazarin & Aaron Alfonseca
  */
 public class ControladorInfoClientes extends Conexion implements ActionListener {
 
     private VistaInformacionClientes vista;
     private ModeloInfoClientes modelo;
-    
+
     private int vendedor;
     private String puesto_vendedor;
-    
-    
+
+
     public ControladorInfoClientes(VistaInformacionClientes vista, ModeloInfoClientes modelo) {
         this.vista = vista;
         this.modelo = modelo;
-               
+
         vista.btnCargarTodoClientes.addActionListener(this);
         vista.btnEditarClientes.addActionListener(this);
         vista.menuRegresarInformacionClientes.addActionListener(this);
-        
-        
 
-       
 
     }
-    
-    
+
+
     public void iniciar(int vendedor, String puesto_vendedor) {
         this.vendedor = vendedor;
         this.puesto_vendedor = puesto_vendedor;
@@ -54,31 +51,28 @@ public class ControladorInfoClientes extends Conexion implements ActionListener 
         vista.setLocationRelativeTo(null);
         vista.setVisible(true);
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent ae) {
-        
-        
-        if(ae.getSource() == vista.menuRegresarInformacionClientes){
+
+
+        if (ae.getSource() == vista.menuRegresarInformacionClientes) {
             vista.dispose();
         }
-        
-        
-       
-        
-        if(ae.getSource() == vista.btnEditarClientes){
-            
+
+
+        if (ae.getSource() == vista.btnEditarClientes) {
+
             FormularioCliente vistaFormularioCliente = new FormularioCliente();
-            Cliente cliente = new Cliente();            
-            ControladorFormularioCliente controladorFormularioCliente = new ControladorFormularioCliente(vistaFormularioCliente,cliente);
-            
+            Cliente cliente = new Cliente();
+            ControladorFormularioCliente controladorFormularioCliente = new ControladorFormularioCliente(vistaFormularioCliente, cliente);
+
             controladorFormularioCliente.iniciar(vendedor, puesto_vendedor);
         }
-        
-        
+
+
     }
-    
-    
-    
+
+
 }
 

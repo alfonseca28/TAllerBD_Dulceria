@@ -3,9 +3,12 @@ package Controlador;
 import Modelo.Empleado;
 import Modelo.SqlEmpleado;
 import Vistas.FormularioEmpleado;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import static java.lang.String.valueOf;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;

@@ -20,6 +20,7 @@ import Vistas.VistaInformacionProveedores;
 import Vistas.VistaInformacionVentas;
 import Vistas.VistaPanelInformacion;
 import Vistas.VistaPanelInicio;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Level;
@@ -28,7 +29,6 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
- *
  * @author Erick Gonzalez, Damian Cazarin & Aaron Alfonseca
  */
 public class ControladorPanelInformacion implements ActionListener {
@@ -81,92 +81,92 @@ public class ControladorPanelInformacion implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
 
         if (ae.getSource() == vista.menuItemRegresarPanelInformacion) {
-            
+
             VistaPanelInicio panelInicio = new VistaPanelInicio();
             ModeloPanelInicio modeloInicio = new ModeloPanelInicio();
-            ControladorPanelInicio Inicio = new ControladorPanelInicio( panelInicio,modeloInicio);
-            
+            ControladorPanelInicio Inicio = new ControladorPanelInicio(panelInicio, modeloInicio);
+
             Inicio.iniciar(vendedor, puesto_vendedor);
             vista.dispose();
-            
+
         }
-        
-        
-        if(ae.getSource() == vista.btnInformacionClientes){
-            
-            VistaInformacionClientes vistaInfoClientes  = new VistaInformacionClientes();
+
+
+        if (ae.getSource() == vista.btnInformacionClientes) {
+
+            VistaInformacionClientes vistaInfoClientes = new VistaInformacionClientes();
             ModeloInfoClientes modeloInfoClientes = new ModeloInfoClientes();
-            
-            ControladorInfoClientes controladorInfoClientes = new ControladorInfoClientes(vistaInfoClientes,modeloInfoClientes);
-            
+
+            ControladorInfoClientes controladorInfoClientes = new ControladorInfoClientes(vistaInfoClientes, modeloInfoClientes);
+
             controladorInfoClientes.iniciar(vendedor, puesto_vendedor);
-            
-            
+
+
         }
-        
-        
-        if(ae.getSource()==vista.btnInformacionCompras){
-            
-            VistaInformacionCompras vistaInfoCompras  = new VistaInformacionCompras();
+
+
+        if (ae.getSource() == vista.btnInformacionCompras) {
+
+            VistaInformacionCompras vistaInfoCompras = new VistaInformacionCompras();
             ModeloInfoCompras modeloInfoCompras = new ModeloInfoCompras();
-            
-            ControladorInfoCompras controladorInfoCompras = new ControladorInfoCompras(vistaInfoCompras,modeloInfoCompras);
-            
+
+            ControladorInfoCompras controladorInfoCompras = new ControladorInfoCompras(vistaInfoCompras, modeloInfoCompras);
+
             controladorInfoCompras.iniciar(vendedor, puesto_vendedor);
-            
-            
+
+
         }
-        
-        if(ae.getSource()==vista.btnInformacionEmpleados){
-            
-            VistaInformacionEmpleados vistaInfoEmpleados  = new VistaInformacionEmpleados();
+
+        if (ae.getSource() == vista.btnInformacionEmpleados) {
+
+            VistaInformacionEmpleados vistaInfoEmpleados = new VistaInformacionEmpleados();
             ModeloInfoEmpleados modeloInfoEmpleados = new ModeloInfoEmpleados();
-            
-            ControladorInfoEmpleados controladorInfoEmpleados = new ControladorInfoEmpleados(vistaInfoEmpleados,modeloInfoEmpleados);
-            
+
+            ControladorInfoEmpleados controladorInfoEmpleados = new ControladorInfoEmpleados(vistaInfoEmpleados, modeloInfoEmpleados);
+
             controladorInfoEmpleados.iniciar(vendedor, puesto_vendedor);
-            
-            
+
+
         }
-        
-         if(ae.getSource()==vista.btnInformacionProductos){
-            
-            VistaInformacionProductos vistaInfoProductos  = new VistaInformacionProductos();
+
+        if (ae.getSource() == vista.btnInformacionProductos) {
+
+            VistaInformacionProductos vistaInfoProductos = new VistaInformacionProductos();
             ModeloInfoProductos modeloInfoProductos = new ModeloInfoProductos();
-            
-            ControladorInfoProductos controladorInfoProductos = new ControladorInfoProductos(vistaInfoProductos,modeloInfoProductos);
-            
+
+            ControladorInfoProductos controladorInfoProductos = new ControladorInfoProductos(vistaInfoProductos, modeloInfoProductos);
+
             controladorInfoProductos.iniciar(vendedor, puesto_vendedor);
-            
-            
+
+
         }
-         
-         
-         if(ae.getSource()==vista.btnInformacionProveedores){
-            
-            VistaInformacionProveedores vistaInfoProveedores  = new VistaInformacionProveedores();
+
+
+        if (ae.getSource() == vista.btnInformacionProveedores) {
+
+            VistaInformacionProveedores vistaInfoProveedores = new VistaInformacionProveedores();
             ModeloInfoProveedores modeloInfoProveedores = new ModeloInfoProveedores();
-            
-            ControladorInfoProveedores controladorInfoProveedores = new ControladorInfoProveedores(vistaInfoProveedores,modeloInfoProveedores);
-            
+
+            ControladorInfoProveedores controladorInfoProveedores = new ControladorInfoProveedores(vistaInfoProveedores, modeloInfoProveedores);
+
             controladorInfoProveedores.iniciar(vendedor, puesto_vendedor);
-            
-            
+
+
         }
-        
-         if(ae.getSource()==vista.btnInformacionVentas){
-            
-            VistaInformacionVentas vistaInfoVentas  = new VistaInformacionVentas();
+
+        if (ae.getSource() == vista.btnInformacionVentas) {
+
+            VistaInformacionVentas vistaInfoVentas = new VistaInformacionVentas();
             ModeloInfoVentas modeloInfoVentas = new ModeloInfoVentas();
 
-            
-            ControladorInfoVentas controladorInfoVentas = new ControladorInfoVentas(vistaInfoVentas,modeloInfoVentas);
-            
+
+            ControladorInfoVentas controladorInfoVentas = new ControladorInfoVentas(vistaInfoVentas, modeloInfoVentas);
+
             controladorInfoVentas.iniciar(vendedor, puesto_vendedor);
-            
-            
+
+
         }
-        
+
     }
 
 }
