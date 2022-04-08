@@ -89,7 +89,7 @@
           <Font name="Montserrat" size="24" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Dulcer&#xed;a Itver"/>
+        <Property name="text" type="java.lang.String" value="Dulcer&#xed;a ITVER"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
