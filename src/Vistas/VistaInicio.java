@@ -51,7 +51,7 @@ public class VistaInicio extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Dulcería Itver");
+        jLabel1.setText("Dulcería ITVER");
 
         jLabel2.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
