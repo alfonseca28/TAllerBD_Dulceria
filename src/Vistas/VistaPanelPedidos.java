@@ -165,6 +165,7 @@ public class VistaPanelPedidos extends javax.swing.JFrame {
         menuPedidos.add(menuItemRegresarPedidos);
 
         menuProductos.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        menuProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graficos/icon_producto16.png"))); // NOI18N
         menuProductos.setText("Agregar. Modificar o Eliminar Productos");
         menuProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,6 +175,7 @@ public class VistaPanelPedidos extends javax.swing.JFrame {
         menuPedidos.add(menuProductos);
 
         menuProveedor.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        menuProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graficos/icon_provee16.png"))); // NOI18N
         menuProveedor.setText("Agregar. Modificar o Eliminar Proveedores");
         menuPedidos.add(menuProveedor);
 
