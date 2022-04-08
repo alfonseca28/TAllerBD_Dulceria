@@ -248,7 +248,7 @@
                   <Component id="txtIdCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtMostrarCliente" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="15" max="32767" attributes="0"/>
+              <EmptySpace pref="13" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnBuscarCliente" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="btnCancelarCliente" min="-2" max="-2" attributes="0"/>
@@ -280,7 +280,7 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Microsoft Sans Serif" size="24" style="0"/>
+          <Font name="Montserrat" size="24" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Dulceria Itver"/>
         <Property name="verticalAlignment" type="int" value="1"/>
