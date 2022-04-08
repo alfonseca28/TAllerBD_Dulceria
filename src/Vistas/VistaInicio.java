@@ -49,20 +49,21 @@ public class VistaInicio extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(400, 350));
 
-        jLabel1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Dulceria Itver");
+        jLabel1.setText("Dulcería Itver");
 
-        jLabel2.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Usuario");
         jLabel2.setPreferredSize(new java.awt.Dimension(100, 20));
 
-        jLabel3.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Contraseña");
         jLabel3.setPreferredSize(new java.awt.Dimension(100, 20));
 
+        txtUsuario.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         txtUsuario.setPreferredSize(new java.awt.Dimension(100, 20));
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,8 +71,12 @@ public class VistaInicio extends javax.swing.JFrame {
             }
         });
 
-        btnIngresar.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 14)); // NOI18N
+        btnIngresar.setBackground(new java.awt.Color(242, 242, 242));
+        btnIngresar.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
+        btnIngresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graficos/icon_ingresar16.png"))); // NOI18N
         btnIngresar.setText("Ingresar");
+        btnIngresar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnIngresar.setPreferredSize(new java.awt.Dimension(80, 25));
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,10 +84,14 @@ public class VistaInicio extends javax.swing.JFrame {
             }
         });
 
+        txtContraseña.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         txtContraseña.setPreferredSize(new java.awt.Dimension(100, 20));
 
-        btnIngresar1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 14)); // NOI18N
+        btnIngresar1.setBackground(new java.awt.Color(242, 242, 242));
+        btnIngresar1.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
+        btnIngresar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graficos/icon_salir16.png"))); // NOI18N
         btnIngresar1.setText("Salir");
+        btnIngresar1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         btnIngresar1.setPreferredSize(new java.awt.Dimension(55, 25));
         btnIngresar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,11 +117,11 @@ public class VistaInicio extends javax.swing.JFrame {
                 .addGap(110, 110, 110)
                 .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(160, 160, 160)
-                .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(300, 300, 300)
+                .addComponent(btnIngresar1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(310, 310, 310)
-                .addComponent(btnIngresar1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(154, 154, 154)
+                .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,9 +136,9 @@ public class VistaInicio extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(31, 31, 31)
                 .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
+                .addGap(14, 14, 14)
                 .addComponent(btnIngresar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 

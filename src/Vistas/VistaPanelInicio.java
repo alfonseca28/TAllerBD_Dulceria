@@ -51,11 +51,13 @@ public class VistaPanelInicio extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
         jLabel1.setText("Panel de inicio");
 
-        btnVentas.setIcon(new javax.swing.ImageIcon("C:\\Program Files (x86)\\Dulceria\\Imagenes\\caja.jpg")); // NOI18N
-        btnVentas.setToolTipText("");
+        btnVentas.setBackground(new java.awt.Color(242, 242, 242));
+        btnVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graficos/icon_ventas32.png"))); // NOI18N
+        btnVentas.setToolTipText("Realice ventas");
+        btnVentas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         btnVentas.setPreferredSize(new java.awt.Dimension(165, 149));
         btnVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,28 +65,42 @@ public class VistaPanelInicio extends javax.swing.JFrame {
             }
         });
 
-        btnPedidos.setIcon(new javax.swing.ImageIcon("C:\\Program Files (x86)\\Dulceria\\Imagenes\\pedido.jpg")); // NOI18N
+        btnPedidos.setBackground(new java.awt.Color(242, 242, 242));
+        btnPedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graficos/icon_pedidos32.png"))); // NOI18N
+        btnPedidos.setToolTipText("Solicite pedidos de productos");
+        btnPedidos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
 
-        btnInformacion.setIcon(new javax.swing.ImageIcon("C:\\Program Files (x86)\\Dulceria\\Imagenes\\buscar.jpg")); // NOI18N
+        btnInformacion.setBackground(new java.awt.Color(242, 242, 242));
+        btnInformacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graficos/icon_info32.png"))); // NOI18N
+        btnInformacion.setToolTipText("Consulte informacion relacionada con la dulceria");
+        btnInformacion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         btnInformacion.setRequestFocusEnabled(false);
 
-        lblVentas.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblVentas.setFont(new java.awt.Font("Montserrat Medium", 0, 18)); // NOI18N
         lblVentas.setText("Panel de ventas");
 
-        lblPedidos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblPedidos.setFont(new java.awt.Font("Montserrat Medium", 0, 18)); // NOI18N
         lblPedidos.setText("Panel de pedidos");
 
-        lblInformacion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblInformacion.setText("Consulta de informacion");
+        lblInformacion.setFont(new java.awt.Font("Montserrat Medium", 0, 18)); // NOI18N
+        lblInformacion.setText("Panel de información");
 
+        MenuOpciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graficos/icon_opciones16.png"))); // NOI18N
         MenuOpciones.setText("Opciones");
+        MenuOpciones.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
 
+        jMenuCerrarSesion.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        jMenuCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graficos/icon_logout16.png"))); // NOI18N
         jMenuCerrarSesion.setText("Cerrar sesión");
         MenuOpciones.add(jMenuCerrarSesion);
 
+        jMenuCambiarContraseña.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        jMenuCambiarContraseña.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graficos/icon_password16.png"))); // NOI18N
         jMenuCambiarContraseña.setText("Cambiar contraseña");
         MenuOpciones.add(jMenuCambiarContraseña);
 
+        jMenuFormulario.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        jMenuFormulario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graficos/icon_users16.png"))); // NOI18N
         jMenuFormulario.setText("Agregar, Modificar o Eliminar Usuarios");
         MenuOpciones.add(jMenuFormulario);
 
@@ -95,50 +111,50 @@ public class VistaPanelInicio extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel1)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(btnPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(btnInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(32, 32, 32)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(lblInformacion)
-                                                        .addComponent(lblPedidos)
-                                                        .addComponent(lblVentas))))
-                                .addContainerGap(242, Short.MAX_VALUE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(126, 126, 126)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblInformacion)
+                            .addComponent(lblPedidos)
+                            .addComponent(lblVentas)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(jLabel1)))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(33, 33, 33)
-                                                .addComponent(jLabel1)
-                                                .addGap(47, 47, 47)
-                                                .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(137, 137, 137)
-                                                .addComponent(lblVentas)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(27, 27, 27)
-                                                .addComponent(btnPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(48, 48, 48)
-                                                .addComponent(lblPedidos)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(37, 37, 37)
-                                                .addComponent(btnInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(62, 62, 62)
-                                                .addComponent(lblInformacion)))
-                                .addContainerGap(63, Short.MAX_VALUE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel1)
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(lblVentas)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(btnPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(lblPedidos)))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(lblInformacion)))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         btnInformacion.getAccessibleContext().setAccessibleDescription("");
