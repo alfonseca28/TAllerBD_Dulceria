@@ -27,7 +27,13 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="menuOpcionesVentas">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Graficos/icon_opciones16.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Opciones"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Montserrat" size="12" style="0"/>
+            </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -35,6 +41,12 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemRegresarVentas">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Montserrat" size="12" style="0"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Graficos/icon_regresar16.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Regresar"/>
               </Properties>
               <AuxValues>
@@ -43,6 +55,12 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuFormularioCliente">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Montserrat" size="12" style="0"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Graficos/icon_users16.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Agregar, Modificar o Eliminar Cliente"/>
               </Properties>
               <Events>
@@ -54,6 +72,12 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuFormularioProducto">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Montserrat" size="12" style="0"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Graficos/icon_producto16.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Agregar, Modificar o A&#xf1;adir Producto"/>
               </Properties>
               <AuxValues>
@@ -62,6 +86,12 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemCatalogo">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Montserrat" size="12" style="0"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Graficos/icon_producto16.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Catalogo de Productos"/>
               </Properties>
               <AuxValues>
@@ -219,9 +249,9 @@
                   <Component id="txtMostrarCliente" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="15" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnBuscarCliente" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnCancelarCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnCancelarCliente" min="-2" max="-2" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -432,7 +462,6 @@
                 </Column>
               </TableColumnModel>
             </Property>
-            <Property name="rowHeight" type="int" value="20"/>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
