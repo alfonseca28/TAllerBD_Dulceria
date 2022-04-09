@@ -63,7 +63,7 @@ public class FormularioEmpleado extends javax.swing.JFrame {
         setTitle("Formulario Empleado");
 
         jLabel1.setFont(new java.awt.Font("Montserrat", 1, 22)); // NOI18N
-        jLabel1.setText("Panel empleado");
+        jLabel1.setText("Panel empleados");
 
         jLabel2.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jLabel2.setText("IdEmpleado");

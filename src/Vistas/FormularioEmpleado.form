@@ -173,7 +173,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Montserrat" size="22" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Panel empleado"/>
+        <Property name="text" type="java.lang.String" value="Panel empleados"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
