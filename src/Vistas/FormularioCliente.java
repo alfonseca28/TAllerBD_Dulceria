@@ -66,10 +66,10 @@ public class FormularioCliente extends javax.swing.JFrame {
         jLabel5.setText("Apellido Paterno");
 
         jLabel6.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jLabel6.setText("Direccion");
+        jLabel6.setText("Dirección");
 
         jLabel7.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        jLabel7.setText("Telefono");
+        jLabel7.setText("Teléfono");
 
         jLabel9.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jLabel9.setText("Email");
