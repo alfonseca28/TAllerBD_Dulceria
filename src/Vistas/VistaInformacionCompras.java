@@ -54,10 +54,10 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(890, 700));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Dulceria Itver");
+        jLabel1.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
+        jLabel1.setText("Consulta compras");
 
-        btnCargarTodoCompa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnCargarTodoCompa.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         btnCargarTodoCompa.setText("Cagar todos los registros");
         btnCargarTodoCompa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,27 +65,28 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
             }
         });
 
+        tablaCompras.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         tablaCompras.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][]{
-                        {null, null, null, null, null, null, null, null, null}
-                },
-                new String[]{
-                        "IdCompra", "Proveedor", "Producto", "Nombre Empleado", "Apelllido Empleado", "Fecha", "Hora", "Cantidad", "Importe"
-                }
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "IdCompra", "Proveedor", "Producto", "Nombre Empleado", "Apelllido Empleado", "Fecha", "Hora", "Cantidad", "Importe"
+            }
         ) {
-            Class[] types = new Class[]{
-                    java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean[]{
-                    false, false, false, false, false, false, false, false, false
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
-                return types[columnIndex];
+                return types [columnIndex];
             }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
+                return canEdit [columnIndex];
             }
         });
         jScrollPane1.setViewportView(tablaCompras);
@@ -106,6 +107,7 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
             tablaCompras.getColumnModel().getColumn(8).setPreferredWidth(50);
         }
 
+        jButton1.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jButton1.setText("Generar reporte");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,8 +115,12 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
             }
         });
 
+        menuInformacionCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graficos/icon_opciones16.png"))); // NOI18N
         menuInformacionCompras.setText("Opciones");
+        menuInformacionCompras.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
 
+        menuRegresarInformacionCompras.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        menuRegresarInformacionCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graficos/icon_regresar16.png"))); // NOI18N
         menuRegresarInformacionCompras.setText("Regresar");
         menuInformacionCompras.add(menuRegresarInformacionCompras);
 
@@ -125,33 +131,30 @@ public class VistaInformacionCompras extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 870, Short.MAX_VALUE)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 856, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(btnCargarTodoCompa)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(jButton1)))
-                                                .addGap(0, 0, Short.MAX_VALUE)))
-                                .addContainerGap())
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 856, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnCargarTodoCompa)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel1)
-                                .addGap(50, 50, 50)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnCargarTodoCompa)
-                                        .addComponent(jButton1))
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(282, Short.MAX_VALUE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCargarTodoCompa)
+                    .addComponent(jButton1))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
