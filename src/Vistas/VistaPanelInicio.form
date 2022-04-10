@@ -177,6 +177,7 @@
             <LineBorder roundedCorners="true" thickness="3"/>
           </Border>
         </Property>
+        <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[165, 149]"/>
         </Property>
@@ -202,6 +203,7 @@
             <LineBorder roundedCorners="true" thickness="3"/>
           </Border>
         </Property>
+        <Property name="borderPainted" type="boolean" value="false"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -221,6 +223,7 @@
             <LineBorder roundedCorners="true" thickness="3"/>
           </Border>
         </Property>
+        <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="requestFocusEnabled" type="boolean" value="false"/>
       </Properties>
       <AccessibilityProperties>

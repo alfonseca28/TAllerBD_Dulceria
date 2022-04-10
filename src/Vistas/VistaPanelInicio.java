@@ -53,6 +53,7 @@ public class VistaPanelInicio extends javax.swing.JFrame {
         btnVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graficos/icon_ventas32.png"))); // NOI18N
         btnVentas.setToolTipText("Realice ventas");
         btnVentas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnVentas.setBorderPainted(false);
         btnVentas.setPreferredSize(new java.awt.Dimension(165, 149));
         btnVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,11 +65,13 @@ public class VistaPanelInicio extends javax.swing.JFrame {
         btnPedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graficos/icon_pedidos32.png"))); // NOI18N
         btnPedidos.setToolTipText("Solicite pedidos de productos");
         btnPedidos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnPedidos.setBorderPainted(false);
 
         btnInformacion.setBackground(new java.awt.Color(242, 242, 242));
         btnInformacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graficos/icon_info32.png"))); // NOI18N
         btnInformacion.setToolTipText("Consulte informacion relacionada con la dulceria");
         btnInformacion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnInformacion.setBorderPainted(false);
         btnInformacion.setRequestFocusEnabled(false);
 
         lblVentas.setFont(new java.awt.Font("Montserrat Medium", 0, 18)); // NOI18N

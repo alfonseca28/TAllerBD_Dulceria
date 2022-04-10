@@ -76,6 +76,7 @@ public class VistaInicio extends javax.swing.JFrame {
         btnIngresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graficos/icon_ingresar16.png"))); // NOI18N
         btnIngresar.setText("Ingresar");
         btnIngresar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        btnIngresar.setBorderPainted(false);
         btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnIngresar.setPreferredSize(new java.awt.Dimension(80, 25));
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
@@ -92,6 +93,7 @@ public class VistaInicio extends javax.swing.JFrame {
         btnIngresar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graficos/icon_salir16.png"))); // NOI18N
         btnIngresar1.setText("Salir");
         btnIngresar1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        btnIngresar1.setBorderPainted(false);
         btnIngresar1.setPreferredSize(new java.awt.Dimension(55, 25));
         btnIngresar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
