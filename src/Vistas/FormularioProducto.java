@@ -62,7 +62,7 @@ public class FormularioProducto extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Montserrat", 1, 22)); // NOI18N
-        jLabel1.setText("Panel de productos");
+        jLabel1.setText("Panel Productos");
 
         txtProveedorProducto.setEditable(false);
         txtProveedorProducto.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N

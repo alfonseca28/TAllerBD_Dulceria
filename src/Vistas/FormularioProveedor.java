@@ -65,7 +65,7 @@ public class FormularioProveedor extends javax.swing.JFrame {
         jLabel2.setText("IdProveedor");
 
         jLabel1.setFont(new java.awt.Font("Montserrat", 1, 22)); // NOI18N
-        jLabel1.setText("Panel proveedores");
+        jLabel1.setText("Panel Proveedores");
 
         txtNombreProveedor.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
 
@@ -156,7 +156,7 @@ public class FormularioProveedor extends javax.swing.JFrame {
                         .addComponent(txtIdProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnBuscarProveedor)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

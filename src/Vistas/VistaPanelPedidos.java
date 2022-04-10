@@ -57,7 +57,7 @@ public class VistaPanelPedidos extends javax.swing.JFrame {
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
-        jLabel1.setText("Dulceria Itver");
+        jLabel1.setText("Panel Pedidos");
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         jLabel2.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N

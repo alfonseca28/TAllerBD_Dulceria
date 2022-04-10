@@ -63,7 +63,7 @@ public class FormularioEmpleado extends javax.swing.JFrame {
         setTitle("Formulario Empleado");
 
         jLabel1.setFont(new java.awt.Font("Montserrat", 1, 22)); // NOI18N
-        jLabel1.setText("Panel empleados");
+        jLabel1.setText("Panel Empleados");
 
         jLabel2.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jLabel2.setText("IdEmpleado");
@@ -167,7 +167,7 @@ public class FormularioEmpleado extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtIdEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)

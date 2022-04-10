@@ -51,7 +51,7 @@ public class FormularioCliente extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Montserrat", 1, 22)); // NOI18N
-        jLabel1.setText("Panel clientes");
+        jLabel1.setText("Panel Clientes");
 
         jLabel2.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         jLabel2.setText("IdCliente");

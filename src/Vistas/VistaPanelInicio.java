@@ -48,7 +48,7 @@ public class VistaPanelInicio extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Panel de inicio");
+        jLabel1.setText("Panel de Inicio");
 
         btnVentas.setBackground(new java.awt.Color(242, 242, 242));
         btnVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graficos/icon_ventas32.png"))); // NOI18N
