@@ -17,8 +17,7 @@ public class VistaPanelInicio extends javax.swing.JFrame {
      */
     public VistaPanelInicio() {
         initComponents();
-
-        //
+        this.setLocationRelativeTo(null);
     }
 
     /**

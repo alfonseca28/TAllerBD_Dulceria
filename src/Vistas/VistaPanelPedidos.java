@@ -17,6 +17,7 @@ public class VistaPanelPedidos extends javax.swing.JFrame {
      */
     public VistaPanelPedidos() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

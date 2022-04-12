@@ -29,6 +29,7 @@ public class VistaInformacionVentas extends javax.swing.JFrame {
      */
     public VistaInformacionVentas() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

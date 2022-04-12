@@ -17,6 +17,7 @@ public class VistaPanelInformacion extends javax.swing.JFrame {
      */
     public VistaPanelInformacion() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

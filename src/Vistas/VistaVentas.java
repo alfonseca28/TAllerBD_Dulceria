@@ -17,6 +17,7 @@ public class VistaVentas extends javax.swing.JFrame {
      */
     public VistaVentas() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

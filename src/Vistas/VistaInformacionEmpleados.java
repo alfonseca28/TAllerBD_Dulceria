@@ -29,6 +29,7 @@ public class VistaInformacionEmpleados extends javax.swing.JFrame {
      */
     public VistaInformacionEmpleados() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

@@ -26,6 +26,7 @@ public class VistaInformacionProveedores extends javax.swing.JFrame {
      */
     public VistaInformacionProveedores() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
